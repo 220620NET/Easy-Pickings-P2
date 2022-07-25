@@ -21,7 +21,7 @@ namespace Models
         public Insurance(string provider, string benefactor)
         {
             this.provider = provider;
-            this.benefactor = be;
+            this.benefactor = benefactor;
         }
     }
 }
