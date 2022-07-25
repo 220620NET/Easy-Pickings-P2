@@ -1,3 +1,4 @@
+![Trello]()
 # ABOUT
 As the health care insurance world becomes more complicted as various companies strive to confuse patient health billing, Easy Pickings LLC. strives to simplify the process with a stream-lined user interface to manage claims amongst various insurance companies and hospitals. We serve as an intermediary between all parties and where users have the independence to file and montitor their own claims. This will remove the strain on the hospitals to deal with the business side of these claims so they can focus on getting everyone back in working order.
 # User Stories
@@ -24,15 +25,22 @@ As the health care insurance world becomes more complicted as various companies 
     - A patient can file a claim for insurance assistance
 - Processing claims
     - An employee can either approve or deny a pending claim
+- Ticketing system
+    - In the case of incomplete information, a patient may send a ticket for a request to review and resubmit their initial claim
+- Dark Mode/Color themes
+    - For ease of viewing and making a nicer interface for the user
+- COVAX Verification
+    - Verifying vaccination status
 # Stretch Goals 
 - JWT Implementation
-- Discussion boards
-- COVAX Verification 
-- Dark Mode
+- Discussion boards (HIGH PRIORITY)
+    - For patients to discuss issues or discuss life with other patients
 - Insurance card exportation
-- Tech support Live Chat
-- Ticketing system
+    - Sending out a pdf printable version of the insurance card for a specific plan and user
+- Tech support Live Chat (MEDIUM PRIORITY)
+    - For fixing possible issues that may arise in the technology used by the patient/employee
 - Scheduling tools
+    - A calendar setup for the patient to schedule hospital visits or general physcian visits among in-network physicians
 # Technology used
 - C#
 - ASP.NET Core
@@ -49,6 +57,9 @@ As the health care insurance world becomes more complicted as various companies 
 - insurance
 - address
 - claims
+- hospital
+- doctors
+- insuranceProvider
 
 # Entity Relationship Diagram
 ![ERD](ERD.png)

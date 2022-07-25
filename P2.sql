@@ -3,6 +3,10 @@ drop table P2.claims;
 drop table P2.address;
 drop table P2.insurance;
 drop table P2.users;
+drop table P2.insuranceProvider;
+drop table P2.hospital;
+drop table P2.doctor;
+
 create table P2.users(
 	userID int identity primary key,
 	first_name varchar(100) not null,
@@ -16,8 +20,46 @@ create table P2.users(
 	role varchar(10) not null
 );
 
+create table P2.insuranceProvider(
+	policyID int identity primary key,
+	companyID int not null,
+	companyName varchar(100) not null,
+	details varbinary(MAX) not null,
+	PO_or_street bit not null,
+	PO_number int not null default 0,
+	street_number int not null default 0,
+	street_name varchar(100) not null,
+	city_state varchar(100) not null,
+	zipcode int not null
+);
+
+create table P2.doctor(
+	doctorID int identity primary key,
+	name varchar(200) not null,
+	PO_or_street bit not null,
+	PO_number int not null default 0,
+	street_number int not null default 0,
+	street_name varchar(100) not null,
+	city_state varchar(100) not null,
+	zipcode int not null 
+);
+create table P2.hospital(
+	userID_fk int foreign key references P2.users(userID),	
+	hospitalID int not null,
+	hospitalName varchar(100) not null,
+	doctorID int not null foreign key references P2.doctor(doctorID),
+	PO_or_street bit not null,
+	PO_number int not null default 0,
+	street_number int not null default 0,
+	street_name varchar(100) not null,
+	city_state varchar(100) not null,
+	zipcode int not null,
+	primary key(hospitalID, doctorID)
+);
+
+
 create table P2.insurance(
-	provider int unique not null,
+	provider int foreign key references P2.insuranceProvider(policyID),
 	benefactor int foreign key references P2.users(userID),
 	primary key(provider,benefactor)
 );
@@ -36,7 +78,8 @@ create table P2.address(
 create table P2.claims(
 	claimID int identity primary key,
 	userID_fk int foreign key references P2.users(userID),
-	provider_fk int foreign key references P2.insurance(provider),
+	provider_fk int foreign key references P2.insuranceProvider(policyID),
 	details varbinary(MAX) not null,
 	status varchar(10) not null default 'Pending'
 );
+alter table P2.hospital add constraint doctor foreign key (name) references P2.doctor(name);
