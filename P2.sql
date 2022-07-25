@@ -1,5 +1,8 @@
 create schema P2;
-
+drop table P2.claims;
+drop table P2.address;
+drop table P2.insurance;
+drop table P2.users;
 create table P2.users(
 	userID int identity primary key,
 	first_name varchar(100) not null,
@@ -9,7 +12,8 @@ create table P2.users(
 	password varchar(50) not null,
 	DoB date not null, 
 	phone int,
-	email varchar(100)
+	email varchar(100),
+	role varchar(10) not null
 );
 
 create table P2.insurance(
@@ -33,5 +37,6 @@ create table P2.claims(
 	claimID int identity primary key,
 	userID_fk int foreign key references P2.users(userID),
 	provider_fk int foreign key references P2.insurance(provider),
-	details varbinary(MAX) not null
+	details varbinary(MAX) not null,
+	status varchar(10) not null default 'Pending'
 );
