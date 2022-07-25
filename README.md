@@ -61,6 +61,5 @@ As the health care insurance world becomes more complicted as various companies 
 - claims
 - policy
 
-
 # Entity Relationship Diagram
 ![ERD](ERD.png)
