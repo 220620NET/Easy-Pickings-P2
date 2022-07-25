@@ -57,11 +57,9 @@ As the health care insurance world becomes more complicted as various companies 
 # Tables
 - users
 - insurance
-- address
+- contact
 - claims
-- hospital
-- doctors
-- insuranceProvider
+- policy
 
 # Entity Relationship Diagram
 ![ERD](ERD.png)
