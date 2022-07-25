@@ -1,4 +1,4 @@
-![Trello]()
+[Trello](https://trello.com/b/1tXpTnqR/easy-pickings)
 # ABOUT
 As the health care insurance world becomes more complicted as various companies strive to confuse patient health billing, Easy Pickings strives to simplify the process with a stream-lined user interface to manage claims amongst various insurance companies and hospitals. We serve as an intermediary between all parties and where users have the independence to file and montitor their own claims. This will remove the strain on the hospitals to deal with the business side of these claims so they can focus on getting everyone back in working order.
 # User Stories
