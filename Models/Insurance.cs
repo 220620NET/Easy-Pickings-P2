@@ -11,7 +11,7 @@ namespace Models
              benefactor= null;
              
         }
-        // Used for creating a insurance
+        // Used for creating a new insurace class
         public Insurance(string provider, string benefactor)
         {
             this.provider = provider;
