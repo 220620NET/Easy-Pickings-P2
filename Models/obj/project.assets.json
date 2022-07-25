@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\krish\\.nuget\\packages\\": {}
+    "C:\\Users\\slynn\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\krish\\Documents\\Revature\\Training\\Easy-Pickings-P2\\Models\\Models.csproj",
+      "projectUniqueName": "C:\\Users\\slynn\\Documents\\Revature\\P2\\Models\\Models.csproj",
       "projectName": "Models",
-      "projectPath": "C:\\Users\\krish\\Documents\\Revature\\Training\\Easy-Pickings-P2\\Models\\Models.csproj",
-      "packagesPath": "C:\\Users\\krish\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\krish\\Documents\\Revature\\Training\\Easy-Pickings-P2\\Models\\obj\\",
+      "projectPath": "C:\\Users\\slynn\\Documents\\Revature\\P2\\Models\\Models.csproj",
+      "packagesPath": "C:\\Users\\slynn\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\slynn\\Documents\\Revature\\P2\\Models\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\krish\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\slynn\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
