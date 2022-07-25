@@ -5,11 +5,13 @@ As the health care insurance world becomes more complicted as various companies 
 - The user will need a way to register a new account
 - The user will need a way to login with an existing account
 - The user will be able to reset their password
+- The user will be able to update any information if the need arises
 - A user can either be a patient or employee of the insurance company
 - A patient can file a claim
 - A patient can view all their filed claims
 - An employee can view all filed claims
 - An employee can approve or deny a pending claim
+- In the case of incomplete information, a patient may send a ticket for a request to review and resubmit their initial claim
 # MVP Requirements
 - Login
     - existing users can use the system
