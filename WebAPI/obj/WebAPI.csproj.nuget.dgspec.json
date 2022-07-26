@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\slynn\\Documents\\Revature\\P2\\WebAPI\\WebAPI.csproj": {}
+    "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\WebAPI\\WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\slynn\\Documents\\Revature\\P2\\DataAccess\\DataAccess.csproj": {
+    "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\DataAccess\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\slynn\\Documents\\Revature\\P2\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\DataAccess\\DataAccess.csproj",
         "projectName": "DataAccess",
-        "projectPath": "C:\\Users\\slynn\\Documents\\Revature\\P2\\DataAccess\\DataAccess.csproj",
-        "packagesPath": "C:\\Users\\slynn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\slynn\\Documents\\Revature\\P2\\DataAccess\\obj\\",
+        "projectPath": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\DataAccess\\DataAccess.csproj",
+        "packagesPath": "C:\\Users\\krish\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\slynn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\krish\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\slynn\\Documents\\Revature\\P2\\Models\\Models.csproj": {
-                "projectPath": "C:\\Users\\slynn\\Documents\\Revature\\P2\\Models\\Models.csproj"
+              "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Models\\Models.csproj": {
+                "projectPath": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Models\\Models.csproj"
               }
             }
           }
@@ -44,6 +44,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.3, )"
@@ -68,17 +72,17 @@
         }
       }
     },
-    "C:\\Users\\slynn\\Documents\\Revature\\P2\\Models\\Models.csproj": {
+    "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Models\\Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\slynn\\Documents\\Revature\\P2\\Models\\Models.csproj",
+        "projectUniqueName": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Models\\Models.csproj",
         "projectName": "Models",
-        "projectPath": "C:\\Users\\slynn\\Documents\\Revature\\P2\\Models\\Models.csproj",
-        "packagesPath": "C:\\Users\\slynn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\slynn\\Documents\\Revature\\P2\\Models\\obj\\",
+        "projectPath": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Models\\Models.csproj",
+        "packagesPath": "C:\\Users\\krish\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\slynn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\krish\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -103,6 +107,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -122,17 +132,17 @@
         }
       }
     },
-    "C:\\Users\\slynn\\Documents\\Revature\\P2\\Services\\Services.csproj": {
+    "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\slynn\\Documents\\Revature\\P2\\Services\\Services.csproj",
+        "projectUniqueName": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Services\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "C:\\Users\\slynn\\Documents\\Revature\\P2\\Services\\Services.csproj",
-        "packagesPath": "C:\\Users\\slynn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\slynn\\Documents\\Revature\\P2\\Services\\obj\\",
+        "projectPath": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Services\\Services.csproj",
+        "packagesPath": "C:\\Users\\krish\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\slynn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\krish\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -146,75 +156,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\slynn\\Documents\\Revature\\P2\\DataAccess\\DataAccess.csproj": {
-                "projectPath": "C:\\Users\\slynn\\Documents\\Revature\\P2\\DataAccess\\DataAccess.csproj"
+              "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\DataAccess\\DataAccess.csproj": {
+                "projectPath": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\DataAccess\\DataAccess.csproj"
               },
-              "C:\\Users\\slynn\\Documents\\Revature\\P2\\Models\\Models.csproj": {
-                "projectPath": "C:\\Users\\slynn\\Documents\\Revature\\P2\\Models\\Models.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "C:\\Users\\slynn\\Documents\\Revature\\P2\\WebAPI\\WebAPI.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\slynn\\Documents\\Revature\\P2\\WebAPI\\WebAPI.csproj",
-        "projectName": "WebAPI",
-        "projectPath": "C:\\Users\\slynn\\Documents\\Revature\\P2\\WebAPI\\WebAPI.csproj",
-        "packagesPath": "C:\\Users\\slynn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\slynn\\Documents\\Revature\\P2\\WebAPI\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\slynn\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net6.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
-            "projectReferences": {
-              "C:\\Users\\slynn\\Documents\\Revature\\P2\\DataAccess\\DataAccess.csproj": {
-                "projectPath": "C:\\Users\\slynn\\Documents\\Revature\\P2\\DataAccess\\DataAccess.csproj"
-              },
-              "C:\\Users\\slynn\\Documents\\Revature\\P2\\Models\\Models.csproj": {
-                "projectPath": "C:\\Users\\slynn\\Documents\\Revature\\P2\\Models\\Models.csproj"
-              },
-              "C:\\Users\\slynn\\Documents\\Revature\\P2\\Services\\Services.csproj": {
-                "projectPath": "C:\\Users\\slynn\\Documents\\Revature\\P2\\Services\\Services.csproj"
+              "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Models\\Models.csproj": {
+                "projectPath": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Models\\Models.csproj"
               }
             }
           }
@@ -229,6 +175,80 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\WebAPI\\WebAPI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\WebAPI\\WebAPI.csproj",
+        "projectName": "WebAPI",
+        "projectPath": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\WebAPI\\WebAPI.csproj",
+        "packagesPath": "C:\\Users\\krish\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\WebAPI\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\krish\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\DataAccess\\DataAccess.csproj": {
+                "projectPath": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\DataAccess\\DataAccess.csproj"
+              },
+              "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Models\\Models.csproj": {
+                "projectPath": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Models\\Models.csproj"
+              },
+              "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Services\\Services.csproj": {
+                "projectPath": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Services\\Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
             "Swashbuckle.AspNetCore.Swagger": {
               "target": "Package",
               "version": "[6.4.0, )"

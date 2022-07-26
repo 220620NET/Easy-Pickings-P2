@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\slynn\\Documents\\Revature\\P2\\Models\\Models.csproj": {}
+    "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Models\\Models.csproj": {}
   },
   "projects": {
-    "C:\\Users\\slynn\\Documents\\Revature\\P2\\Models\\Models.csproj": {
+    "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Models\\Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\slynn\\Documents\\Revature\\P2\\Models\\Models.csproj",
+        "projectUniqueName": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Models\\Models.csproj",
         "projectName": "Models",
-        "projectPath": "C:\\Users\\slynn\\Documents\\Revature\\P2\\Models\\Models.csproj",
-        "packagesPath": "C:\\Users\\slynn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\slynn\\Documents\\Revature\\P2\\Models\\obj\\",
+        "projectPath": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Models\\Models.csproj",
+        "packagesPath": "C:\\Users\\krish\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\slynn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\krish\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,6 +39,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
