@@ -1,27 +1,24 @@
+
+using System.ComponentModel.DataAnnotations;
 namespace Models
 {
     public class Insurance
     {
-        public string provider { get; set; }
-        public string benefactor { get; set; }
+        
+        public int policyID { get; set; }
+        public int userID { get; set; }
 
-        public insurance()
+        public Insurance()
         {
-             provider = null;
-             benefactor= null;
+             policyID = 0;
+             userID= 0;
              
         }
-        // Used for creating a new insurace class
-        public Insurance(string provider, string benefactor)
+        // Used for creating and getting a new insurace class
+        public Insurance(int provider, int benefactor)
         {
-            this.provider = provider;
-            this.benefactor = benefactor;
-        }
-        // Used for getting all insurance
-        public Insurance(string provider, string benefactor)
-        {
-            this.provider = provider;
-            this.benefactor = benefactor;
-        }
+            this.policyID = provider;
+            this.userID = benefactor;
+        } 
     }
 }

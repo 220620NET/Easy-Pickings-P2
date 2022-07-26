@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    internal interface IUsers
+    internal class ClaimsRepo
     {
-
     }
 }
