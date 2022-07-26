@@ -12,6 +12,6 @@ save all progress
 `git checkout <YourName>`
 `git add .`
 `git commit -s -m "<Message>"`
-`git push origin <YourName>`
+`git push <YourName>`
 `git checkout main`
 `git merge main <YourName>`
