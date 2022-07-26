@@ -14,6 +14,9 @@ As the health care insurance world becomes more complicted as various companies 
 - In the case of incomplete information, a patient may send a ticket for a request to review and resubmit their initial claim
 
 ![Lifecycle of a claim](Flowchart.png)
+_Lifecylce of a claim_
+
+
 # MVP Requirements
 - Login
     - existing users can use the system
