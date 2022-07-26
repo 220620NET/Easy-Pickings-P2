@@ -1,11 +1,13 @@
-﻿namespace Models;
+﻿using System.ComponentModel.DataAnnotations;
+namespace Models;
 
 public enum Role
 {
     Patient, Employee, Doctor
 }
-public class Users
+public class User
 {
+    [Key]
     public int userID { get; set; }
     public string firstName { get; set; }
     public char middleInit { get; set; }
@@ -13,11 +15,11 @@ public class Users
     public string username { get; set; }
     public string password { get; set; }
     public DateOnly DoB { get; set; }
-    public int contactFk { get; set; }
+    public int contactID { get; set; }
     public Role role { get; set; }
 
     // This is for reading from a Json
-    public Users()
+    public User()
     {
         userID = 0;
         firstName = "";
@@ -27,17 +29,17 @@ public class Users
         password = "";
         role = Role.Patient;
         DoB= new DateOnly();
-        contactFk = 0;
+        contactID = 0;
     }
 
     // Login Information
-    public Users(string username,string password):this()
+    public User(string username,string password):this()
     {
         this.username = username;
         this.password = password;
     }
     // Registering new user
-    public Users(string firstName, char middleInit, string lastName, string username,string password, DateOnly DoB, int contactFk,int role):this()
+    public User(string firstName, char middleInit, string lastName, string username,string password, DateOnly DoB, int contactFk,int role):this()
     {
         this.firstName = firstName;
         this.middleInit = middleInit;
@@ -45,7 +47,7 @@ public class Users
         this.username=username;
         this.password = password;
         this.DoB = DoB;
-        this.contactFk = contactFk;
+        this.contactID = contactFk;
         this.role = (Role)role;
     }
 

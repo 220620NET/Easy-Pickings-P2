@@ -9,11 +9,11 @@ namespace DataAccess
 {
     public interface IUserRepository
     {
-        public List<Users> GetAllUsers();
-        public Users GetUserById(int userID);
-        public Users GetUserByName(string userName);
-        public Users GetUserByEmail(string email);
-        public Users CreateUser(Users user);
-        public void ResetPassword(Users user);
+        public List<User> GetAllUsers();
+        public User GetUserById(int userID);
+        public User GetUserByName(string userName);
+        public User GetUserByEmail(string email);
+        public User CreateUser(User user);
+        public void ResetPassword(User user);
     }
 }

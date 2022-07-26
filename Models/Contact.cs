@@ -1,9 +1,10 @@
-﻿
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Models
 {
     public class Contact
     {
+        [Key]
         public int contactId { get; set; }
         public bool POorStreet { get; set; }
         public int PONumber { get; set; }
