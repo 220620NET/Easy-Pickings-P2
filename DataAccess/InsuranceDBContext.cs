@@ -14,12 +14,5 @@ namespace DataAccess
         public DbSet<Insurance> Insurances { get; set; }
         public DbSet<Policy> Policies { get; set; }
         public DbSet<Contact> Contacts { get; set; }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Claim>()
-                .HasOne<User>()
-                .WithMany()
-                .HasForeignKey(p => p.doctorID);
-        }
     }
 }
