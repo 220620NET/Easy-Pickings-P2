@@ -8,6 +8,7 @@ namespace DataAccess.Entities
         public Policy()
         {
             Claims = new HashSet<Claim>();
+            Tickets = new HashSet<Ticket>();
             Benefactors = new HashSet<User>();
         }
 
@@ -17,6 +18,7 @@ namespace DataAccess.Entities
 
         public virtual User? InsuranceNavigation { get; set; }
         public virtual ICollection<Claim> Claims { get; set; }
+        public virtual ICollection<Ticket> Tickets { get; set; }
 
         public virtual ICollection<User> Benefactors { get; set; }
     }

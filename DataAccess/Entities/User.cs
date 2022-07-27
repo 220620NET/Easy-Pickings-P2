@@ -10,6 +10,7 @@ namespace DataAccess.Entities
             ClaimDoctorIdFkNavigations = new HashSet<Claim>();
             ClaimUserIdFkNavigations = new HashSet<Claim>();
             Policies = new HashSet<Policy>();
+            Tickets = new HashSet<Ticket>();
             Providers = new HashSet<Policy>();
         }
 
@@ -27,6 +28,7 @@ namespace DataAccess.Entities
         public virtual ICollection<Claim> ClaimDoctorIdFkNavigations { get; set; }
         public virtual ICollection<Claim> ClaimUserIdFkNavigations { get; set; }
         public virtual ICollection<Policy> Policies { get; set; }
+        public virtual ICollection<Ticket> Tickets { get; set; }
 
         public virtual ICollection<Policy> Providers { get; set; }
     }
