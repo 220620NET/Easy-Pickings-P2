@@ -1,4 +1,4 @@
 using Services;
-using Models;
+using DataAccess.Entities;
 using DataAccess;
 namespace WebAPI.Controllers;
