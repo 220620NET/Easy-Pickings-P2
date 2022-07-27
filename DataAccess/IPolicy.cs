@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    internal interface IPolicy
+    public interface IPolicy
     {
+       public List<Policy> GetPolicyByPolicyId(int policyID);
+       public List<Policy> GetAllPolicy();
+       public List<Policy> GetPolicyByuserID(int insurance);
+      public List<Policy> GetPolicyBycoverage(FileStream coverage);
     }
 }
