@@ -6,33 +6,36 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class PolicyRepo : IPolicy
+  public class PolicyRepo : IPolicy
     {
-         private readonly ConnectionFactory _connectionFactory;
-    }
-     public PolicyRepo(ConnectionFactory factory)
-    {
-        _connectionFactory = factory;
-    }
-    public Pokemon GetPolicyByPolicyId(int policyID)
-    {
-         List<Policy> policy = new();
-        using SqlCommand conn = new SqlCommand("Select * From Policy where policyID = @ID", _connectionFactory.GetConnection());
-        command.Parameters.AddWithValue("@ID", policyID);
-        
-        conn.Connection.Open();
-        using SqlDataReader reader = command.ExecuteReader();
-         if(reader.Read())
+        // Dependency injection
+        private readonly easypickingsContext _dbContext;
+        public PolicyRepo(easypickingsContext dbContext)
         {
-            return new Policy{
-                Id = (int) reader["policyID"],
-                Insurance = (int) reader["policyInsurance"],
-                coverage = (Filestream) reader["coverage"],
-                userID = (int) reader["userID"]
-            };
+            _dbContext = dbContext;
         }
 
-        return Policy;
-    }
+        public List<Policy> GetAllPolicy()
+        {
+            return _dbContext.Policy.ToList();
+        }
+
+        public List<Policy> GetPolicyByPolicyID(int policyID)
+        {
+            return _dbContext.Tickets.Where(p => p.userIDFK == policyID).ToList();
+        }
+        
+        public List<Policy> GetPolicyByuserID(int userID)
+        {
+            return _dbContext.Tickets.Where(p => p.userID == userID).ToList();
+        }
+
+    
+     public List<Policy> GetPolicyBycoverage(FileStream coverage)
+        {
+            return _dbContext.Tickets.Where(p => p.coverage == coverage).ToList();
+        }
+   }
+
 }
 
