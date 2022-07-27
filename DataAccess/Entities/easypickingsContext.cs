@@ -21,6 +21,7 @@ namespace DataAccess.Entities
         public virtual DbSet<Policy> Policies { get; set; } = null!;
         public virtual DbSet<Test> Tests { get; set; } = null!;
         public virtual DbSet<Test2> Test2s { get; set; } = null!;
+        public virtual DbSet<Ticket> Tickets { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -142,6 +143,38 @@ namespace DataAccess.Entities
                 entity.ToTable("test2");
 
                 entity.Property(e => e.Hello).HasColumnName("hello");
+            });
+
+            modelBuilder.Entity<Ticket>(entity =>
+            {
+                entity.ToTable("ticket", "P2");
+
+                entity.Property(e => e.TicketId).HasColumnName("ticketID");
+
+                entity.Property(e => e.ClaimIdFk).HasColumnName("claimID_fk");
+
+                entity.Property(e => e.Details)
+                    .IsUnicode(false)
+                    .HasColumnName("details");
+
+                entity.Property(e => e.PolicyIdFk).HasColumnName("policyID_fk");
+
+                entity.Property(e => e.UserIdFk).HasColumnName("userID_fk");
+
+                entity.HasOne(d => d.ClaimIdFkNavigation)
+                    .WithMany(p => p.Tickets)
+                    .HasForeignKey(d => d.ClaimIdFk)
+                    .HasConstraintName("FK__ticket__claimID___76969D2E");
+
+                entity.HasOne(d => d.PolicyIdFkNavigation)
+                    .WithMany(p => p.Tickets)
+                    .HasForeignKey(d => d.PolicyIdFk)
+                    .HasConstraintName("FK__ticket__policyID__787EE5A0");
+
+                entity.HasOne(d => d.UserIdFkNavigation)
+                    .WithMany(p => p.Tickets)
+                    .HasForeignKey(d => d.UserIdFk)
+                    .HasConstraintName("FK__ticket__userID_f__778AC167");
             });
 
             modelBuilder.Entity<User>(entity =>
