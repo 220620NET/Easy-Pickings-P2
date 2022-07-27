@@ -2648,19 +2648,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\krish\\.nuget\\packages\\": {}
+    "C:\\Users\\slynn\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\WebAPI\\WebAPI.csproj",
+      "projectUniqueName": "C:\\Users\\slynn\\Documents\\Revature\\proj2\\WebAPI\\WebAPI.csproj",
       "projectName": "WebAPI",
-      "projectPath": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\WebAPI\\WebAPI.csproj",
-      "packagesPath": "C:\\Users\\krish\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\WebAPI\\obj\\",
+      "projectPath": "C:\\Users\\slynn\\Documents\\Revature\\proj2\\WebAPI\\WebAPI.csproj",
+      "packagesPath": "C:\\Users\\slynn\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\slynn\\Documents\\Revature\\proj2\\WebAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\krish\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\slynn\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2674,14 +2674,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\DataAccess\\DataAccess.csproj": {
-              "projectPath": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\DataAccess\\DataAccess.csproj"
+            "C:\\Users\\slynn\\Documents\\Revature\\proj2\\DataAccess\\DataAccess.csproj": {
+              "projectPath": "C:\\Users\\slynn\\Documents\\Revature\\proj2\\DataAccess\\DataAccess.csproj"
             },
-            "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Models\\Models.csproj": {
-              "projectPath": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Models\\Models.csproj"
+            "C:\\Users\\slynn\\Documents\\Revature\\proj2\\Models\\Models.csproj": {
+              "projectPath": "C:\\Users\\slynn\\Documents\\Revature\\proj2\\Models\\Models.csproj"
             },
-            "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Services\\Services.csproj": {
-              "projectPath": "C:\\Users\\krish\\Documents\\Revature\\Training\\fix\\Easy-Pickings-P2\\Services\\Services.csproj"
+            "C:\\Users\\slynn\\Documents\\Revature\\proj2\\Services\\Services.csproj": {
+              "projectPath": "C:\\Users\\slynn\\Documents\\Revature\\proj2\\Services\\Services.csproj"
             }
           }
         }
