@@ -9,10 +9,14 @@ namespace DataAccess;
 
 public class ClaimsRepo : IClaimRepo
 {
+<<<<<<< HEAD
      
     private readonly easypickingsContext _context;
 
     public ClaimsRepo (easypickingsContext context)
+=======
+    internal class ClaimsRepo
+>>>>>>> 03fca4615e192ac424f2ffe0d208e97b4f52d3fe
     {
         _context = context;
     }
