@@ -49,4 +49,11 @@ create table P2.claims(
 	reasonForVisit varbinary(MAX) not null,
 	status varchar(50) not null default 'Pending'
 );
+create table P2.ticket(
+	ticketID int identity primary key,
+	claimID_fk int foreign key references P2.claims(claimID),
+	userID_fk int foreign key references P2.users(userID),
+	policyID_fk int foreign key references P2.policy(policyID),
+	details varchar(MAX) not null
+);
 alter table P2.users add constraint contact_fk foreign key (contactID) references P2.contact(contactID);
