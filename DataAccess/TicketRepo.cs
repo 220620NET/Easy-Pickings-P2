@@ -19,7 +19,7 @@ namespace DataAccess
         { 
             _dbContext.Tickets.Add(ticket);
             _dbContext.SaveChanges();
-            return ticket;
+            return ticket ?? throw new NotImplementedException();
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace DataAccess
                 throw new Exception();
             }
             _dbContext.SaveChanges();
-            return ticketToDelete;
+            return ticketToDelete ?? throw new NotImplementedException();
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace DataAccess
         /// <returns>All Tickets</returns>
         public List<Ticket> GetAllTickets()
         {
-            return _dbContext.Tickets.ToList();
+            return _dbContext.Tickets.ToList() ?? throw new NotImplementedException();
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace DataAccess
         /// <returns>The specific ticket by claim</returns>
         public List<Ticket> GetTicketByClaim(int claimID)
         {
-            return _dbContext.Tickets.Where(p => p.ClaimIdFk == claimID).ToList();
+            return _dbContext.Tickets.Where(p => p.ClaimIdFk == claimID).ToList() ?? throw new NotImplementedException();
         }
         /// <summary>
         /// Will grab all tickets related to a patient
@@ -67,7 +67,7 @@ namespace DataAccess
         /// <returns>List of all tickets from a particular patient</returns>
         public List<Ticket> GetTicketByPatient(int patientID)
         {
-            return _dbContext.Tickets.Where(p => p.UserIdFk == patientID).ToList();
+            return _dbContext.Tickets.Where(p => p.UserIdFk == patientID).ToList() ?? throw new NotImplementedException();
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace DataAccess
         {
             _dbContext.Tickets.Update(ticket);
             _dbContext.SaveChanges();
-            return ticket;
+            return ticket ?? throw new NotImplementedException();
         }
     }
 }
