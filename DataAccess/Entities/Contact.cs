@@ -5,12 +5,8 @@ namespace DataAccess.Entities
 {
     public partial class Contact
     {
-        public Contact()
-        {
-            Users = new HashSet<User>();
-        }
-
         public int ContactId { get; set; }
+        public int? UserId { get; set; }
         public bool PoOrStreet { get; set; }
         public int PoNumber { get; set; }
         public int StreetNumber { get; set; }
@@ -20,6 +16,6 @@ namespace DataAccess.Entities
         public int? Phone { get; set; }
         public string? Email { get; set; }
 
-        public virtual ICollection<User> Users { get; set; }
+        public virtual User1? User { get; set; }
     }
 }

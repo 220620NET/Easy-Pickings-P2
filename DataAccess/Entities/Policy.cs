@@ -5,21 +5,10 @@ namespace DataAccess.Entities
 {
     public partial class Policy
     {
-        public Policy()
-        {
-            Claims = new HashSet<Claim>();
-            Tickets = new HashSet<Ticket>();
-            Benefactors = new HashSet<User>();
-        }
-
         public int PolicyId { get; set; }
         public int? Insurance { get; set; }
         public byte[] Coverage { get; set; } = null!;
 
-        public virtual User? InsuranceNavigation { get; set; }
-        public virtual ICollection<Claim> Claims { get; set; }
-        public virtual ICollection<Ticket> Tickets { get; set; }
-
-        public virtual ICollection<User> Benefactors { get; set; }
+        public virtual User1? InsuranceNavigation { get; set; }
     }
 }

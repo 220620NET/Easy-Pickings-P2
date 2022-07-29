@@ -11,8 +11,8 @@ namespace DataAccess.Entities
         public int? PolicyIdFk { get; set; }
         public string Details { get; set; } = null!;
 
-        public virtual Claim? ClaimIdFkNavigation { get; set; }
-        public virtual Policy? PolicyIdFkNavigation { get; set; }
-        public virtual User? UserIdFkNavigation { get; set; }
+        public virtual Claim1? ClaimIdFkNavigation { get; set; }
+        public virtual Policy1? PolicyIdFkNavigation { get; set; }
+        public virtual User1? UserIdFkNavigation { get; set; }
     }
 }
