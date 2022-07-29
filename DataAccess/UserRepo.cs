@@ -17,7 +17,7 @@ public class UserRepo : IUserRepo
     {
         _context.Users.Add(newUser);
         _context.SaveChanges();
-            return newUser;
+        return newUser;
     }
 
     public List<User> GetAllUsers()
@@ -39,7 +39,7 @@ public class UserRepo : IUserRepo
         if (foundUser != null) return foundUser;
         throw new NotImplementedException();
     }
-
+    //Should this be in auth service?
     public User ResetPassword(User user)
     {
         _context.Users.Update(user);
