@@ -32,4 +32,15 @@ public class AuthController
             return Results.BadRequest();
         }
     }
+    public IResult ResetPassword(User update)
+    {
+        try
+        {
+            return Results.Accepted("/reset", _authService.ResetPassword(update));
+        }
+        catch (NotImplementedException)
+        {
+            return Results.BadRequest();
+        }
+    }
 }

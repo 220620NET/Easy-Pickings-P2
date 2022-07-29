@@ -54,5 +54,16 @@ namespace Services
                 throw new NotImplementedException();
             }
         }
+        public User ResetPassword(User update)
+        {
+            try
+            {
+                return _userRep.ResetPassword(update);
+            }
+            catch(NotImplementedException)
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }
