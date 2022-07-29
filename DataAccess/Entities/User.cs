@@ -5,15 +5,6 @@ namespace DataAccess.Entities
 {
     public partial class User
     {
-        public User()
-        {
-            ClaimDoctorIdFkNavigations = new HashSet<Claim>();
-            ClaimUserIdFkNavigations = new HashSet<Claim>();
-            Policies = new HashSet<Policy>();
-            Tickets = new HashSet<Ticket>();
-            Providers = new HashSet<Policy>();
-        }
-
         public int UserId { get; set; }
         public string? FirstName { get; set; }
         public string? MiddleInit { get; set; }
@@ -21,15 +12,6 @@ namespace DataAccess.Entities
         public string Username { get; set; } = null!;
         public string Password { get; set; } = null!;
         public DateTime? DoB { get; set; }
-        public int? ContactFk { get; set; }
         public string Role { get; set; } = null!;
-
-        public virtual Contact? ContactFkNavigation { get; set; }
-        public virtual ICollection<Claim> ClaimDoctorIdFkNavigations { get; set; }
-        public virtual ICollection<Claim> ClaimUserIdFkNavigations { get; set; }
-        public virtual ICollection<Policy> Policies { get; set; }
-        public virtual ICollection<Ticket> Tickets { get; set; }
-
-        public virtual ICollection<Policy> Providers { get; set; }
     }
 }

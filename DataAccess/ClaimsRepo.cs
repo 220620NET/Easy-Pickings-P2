@@ -8,7 +8,10 @@ namespace DataAccess;
 
 
 public class ClaimsRepo : IClaimRepo
-{ 
+
+{
+
+     
      
     private readonly easypickingsContext _context;
 
@@ -17,11 +20,13 @@ public class ClaimsRepo : IClaimRepo
         _context = context;
     }
   
+
   public Claim CreateClaims(Claim claim)
   {   
     // EF core can tell which class it is, so it is unnecessary to specify which dbSet you want this object to be added
    _context.Add(claim);
    _context.SaveChanges();
+
 
    //Clear the change tracker
    _context.ChangeTracker.Clear();
@@ -48,17 +53,17 @@ public class ClaimsRepo : IClaimRepo
     return _context.Claims.AsNoTracking().ToList();
   }
 
-  public Claim getClaimById(int ID)
+  public Claim GetClaimById(int ID)
   {
     return _context.Claims.AsNoTracking().FirstOrDefault(c => c.ClaimId == ID);
   }
 
-  public List<Claim> getClaimByStatus(string status)
+  public List<Claim> GetClaimByStatus(string status)
   {
     return _context.Claims.AsNoTracking().Where(c => c.Status == status).ToList();
   }
 
-  public List<Claim> getUserByPatientID(int ID)                                  // user is the patient?
+  public List<Claim> GetUserByPatientID(int ID)                                  // user is the patient?
   {
     return _context.Claims.AsNoTracking().Where(p => p.ClaimId == ID).ToList();  // claims only has user id or doctor id 
   }
