@@ -8,12 +8,18 @@ namespace DataAccess;
 
 
 public class ClaimsRepo : IClaimRepo
+
 {
 
      
+     
     private readonly easypickingsContext _context;
 
-    public ClaimsRepo (easypickingsContext context){_context = context;}
+    public ClaimsRepo (easypickingsContext context)
+    {
+        _context = context;
+    }
+  
 
   public Claim CreateClaims(Claim claim)
   {   
