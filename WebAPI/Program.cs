@@ -14,8 +14,8 @@ builder.Services.AddDbContext<easypickingsContext>(options => options.UseSqlServ
 builder.Services.AddScoped<ITicket, TicketRepo>();
 builder.Services.AddScoped<IPolicy, PolicyRepo>();
 builder.Services.AddScoped<IClaimRepo, ClaimsRepo>();
-builder.Services.AddScoped<IContact, ContactRepo>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IContactRepo, ContactRepo>();
+builder.Services.AddScoped<IUserRepo, UserRepo>();
 /*
  *      Service Layer Scoping    
 */
