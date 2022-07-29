@@ -45,8 +45,9 @@ app.UseSwaggerUI();
 app.MapGet("/", () => "Hello World!");
 
 app.MapGet("/policy", (PolicyController controller) =>controller.GetAllPolicy());
-//app.MapGet("/users/id/{id}", (int id, UserController controller) => controller.GetUserByID(id));
-//app.MapGet("/users/name/{username}", (string username, UserController controller) => controller.GetUserByUsername(username));
-//app.MapDelete("/fire/{id}",(int id, UserController controller) => controller.DeleteUser(id));
+app.MapGet("/policy/ID/{ID}", (int policyID, PolicyController controller) => controller.GetPolicyByID(policyID));
+app.MapGet("/policy/insurance/{insurance}", (int insurance, PolicyController controller) => controller.GetPolicyByInsurance(insurance));
+app.MapGet("/policy/coverage/{coverage}", (byte[] coverage, PolicyController controller) => controller.GetPolicyBycoverage(coverage));
+
 
 app.Run();

@@ -27,7 +27,7 @@ namespace WebAPI.Controllers;
             }
         }
         
-        public IResult GetTicketByInsurance(int insurance)
+        public IResult GetPolicyByInsurance(int insurance)
         {
             try
             {
