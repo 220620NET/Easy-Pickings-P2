@@ -4,11 +4,11 @@ using Microsoft.Data.SqlClient;
 using DataAccess.Entities;
 
 namespace DataAccess;
-public class UserRepository : IUserRepository
+public class UserRepo : IUserRepo
 {
     private readonly easypickingsContext _context;
 
-    public UserRepository(easypickingsContext context)
+    public UserRepo(easypickingsContext context)
     {
         _context = context;
     }
@@ -40,8 +40,11 @@ public class UserRepository : IUserRepository
         throw new NotImplementedException();
     }
 
-    public void ResetPassword(User user)
+    public User ResetPassword(User user)
     {
+        _context.Users.Update(user);
+        _context.SaveChanges();
+        return user; 
         throw new NotImplementedException();
     }
 }
