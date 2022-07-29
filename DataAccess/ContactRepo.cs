@@ -29,12 +29,11 @@ namespace DataAccess
             return _context.Contacts.ToList();
         }
 
-        //playing around with a different format. 
-        public Contact GetContactInfoByEmail(string Email)
+        public Contact GetContactInfoByEmail(string email)
         {
-            Contact ? contact = _context.Contacts.FirstOrDefault(contact => contact.Equals(Email));
-            if (contact == null) throw new NotImplementedException();
-            return contact;
+            Contact? contact = _context.Contacts.FirstOrDefault(contact => contact.Email == email);
+            if (contact != null) return contact;
+            throw new NotImplementedException();
         }
 
         public Contact GetContactInfoById(int contactID)

@@ -64,12 +64,14 @@ public class UserRepo : IUserRepo
         }
         throw new NotImplementedException();
     }
+
     /// <summary>
     /// Will allow the user to update information
     /// </summary>
     /// <param name="user">The userID and the information to update</param>
     /// <returns>The updated user</returns>
     /// <exception cref="NotImplementedException">That user could not be updated</exception>
+
     public User ResetPassword(User user)
     {
         _context.users.Update(user);
