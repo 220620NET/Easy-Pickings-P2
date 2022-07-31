@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccess.Entities;
+using NewModels;
 using DataAccess;
 
 namespace Services
@@ -27,7 +27,7 @@ namespace Services
         }
         public User GetUserByName(string username)
         {
-            return _contact.GetUserByName(username);
+            return _contact.GetUserByName(username,false);
             throw new NotImplementedException();
         }
        /* public User CreateUser(User user)

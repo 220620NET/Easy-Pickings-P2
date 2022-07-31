@@ -1,11 +1,11 @@
 using Services;
-using DataAccess.Entities;
+using NewModels;
 using DataAccess;
 using CustomExceptions;
 
 namespace WebAPI.Controllers;
 
-//{
+
     public class PolicyController
     {
         private readonly PolicyService _Services;
@@ -39,7 +39,7 @@ namespace WebAPI.Controllers;
                 return Results.BadRequest("That user hasn't made any policies.");
             }
         }
-        public IResult GetPolicyBycoverage(byte[] coverage)
+        public IResult GetPolicyBycoverage(string coverage)
         {
             try
             {
@@ -67,4 +67,3 @@ namespace WebAPI.Controllers;
             }
         }
     }
-//}

@@ -3,7 +3,6 @@ using NewModels;
 using DataAccess;
 using WebAPI.Controllers;
 using Microsoft.EntityFrameworkCore;
-//using DataAccess.Entities;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +13,7 @@ builder.Services.AddDbContext<InsuranceDbContext>(options => options.UseSqlServe
  *      DataAccess Layer scoping
 */
 builder.Services.AddScoped<ITicket, TicketRepo>();
-//builder.Services.AddScoped<IPolicy, PolicyRepo>();
+builder.Services.AddScoped<IPolicy, PolicyRepo>();
 //builder.Services.AddScoped<IClaimRepo, ClaimsRepo>();
 //builder.Services.AddScoped<IContactRepo, ContactRepo>();
 builder.Services.AddScoped<IUserRepo, UserRepo>();
@@ -22,12 +21,11 @@ builder.Services.AddScoped<IUserRepo, UserRepo>();
 /*
  *      Service Layer Scoping    
 */
-//builder.Services.AddTransient<AuthService>();
+builder.Services.AddTransient<AuthService>();
 builder.Services.AddTransient<TicketService>();
-//builder.Services.AddTransient<UserService>();
+builder.Services.AddTransient<UserService>();
 //builder.Services.AddTransient<ClaimsService>();
 //builder.Services.AddTransient<ContactService>();
-
 builder.Services.AddTransient<PolicyService>();
 
 /*
@@ -35,27 +33,24 @@ builder.Services.AddTransient<PolicyService>();
 */
 builder.Services.AddScoped<AuthController>();
 builder.Services.AddScoped<TicketController>();
-//builder.Services.AddScoped<UserController>();
-//builder.Services.AddScoped<PolicyController>();
-
+builder.Services.AddScoped<UserController>();
+builder.Services.AddScoped<PolicyController>();
 //builder.Services.AddScoped<ClaimsController>();
 //builder.Services.AddScoped<ContactController>();
 
+/*
+ *      Setting up web app
+ */
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
-
 app.UseSwagger();
 app.UseSwaggerUI();
 
 app.MapGet("/", () => "Hello World!");
 
-app.Run();
 
-app.UseSwagger();
-app.UseSwaggerUI();
-app.MapGet("/", () => "Hello World!");
 
 /*
  *      AuthController End Points
@@ -78,14 +73,13 @@ app.MapGet("/ticket", (TicketController controller) => controller.GetAllTickets(
 app.MapGet("/ticket/claim/{ID}", (int ID, TicketController controller) => controller.GetTicketByClaim(ID));
 app.MapGet("/ticket/patient/{ID}", (int ID, TicketController controller) => controller.GetTicketByPatient(ID));
 
-
 /*
  *      PolicyController End Points
  */
 app.MapGet("/policy", (PolicyController controller) =>controller.GetAllPolicy());
 app.MapGet("/policy/ID/{ID}", (int policyID, PolicyController controller) => controller.GetPolicyByID(policyID));
 app.MapGet("/policy/insurance/{insurance}", (int insurance, PolicyController controller) => controller.GetPolicyByInsurance(insurance));
-app.MapGet("/policy/coverage/{coverage}", (byte[] coverage, PolicyController controller) => controller.GetPolicyBycoverage(coverage));
+app.MapGet("/policy/coverage/{coverage}", (string coverage, PolicyController controller) => controller.GetPolicyBycoverage(coverage));
 /*
  *      ClaimsController End Points
  */
