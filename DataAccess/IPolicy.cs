@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using DataAccess.Entities;
+using NewModels;
 
 
 namespace DataAccess
@@ -14,6 +14,6 @@ namespace DataAccess
        public List<Policy> GetPolicyByID(int policyID);
        public List<Policy> GetAllPolicy();
        public List<Policy> GetPolicyByInsurance(int insurance);
-      public List<Policy> GetPolicyBycoverage(byte[] coverage);
+      public List<Policy> GetPolicyBycoverage(string coverage);
     }
 }

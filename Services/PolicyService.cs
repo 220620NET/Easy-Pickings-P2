@@ -1,5 +1,5 @@
 using DataAccess;
-using DataAccess.Entities;
+using NewModels;
 
 namespace Services;
 
@@ -21,5 +21,9 @@ public class PolicyService
     public List<Policy> GetPolicyByInsurance(int insurance)
     {
         return _repo.GetPolicyByInsurance(insurance);
+    }
+    public List<Policy> GetPolicyBycoverage(string coverage)
+    {
+        return _repo.GetPolicyBycoverage(coverage);
     }
 }
