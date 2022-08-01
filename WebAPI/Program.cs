@@ -50,8 +50,6 @@ app.UseSwaggerUI();
 
 app.MapGet("/", () => "Hello World!");
 
-
-
 /*
  *      AuthController End Points
 */
@@ -85,6 +83,7 @@ app.MapGet("/policy", (PolicyController controller) =>controller.GetAllPolicy())
 app.MapGet("/policy/ID/{ID}", (int policyID, PolicyController controller) => controller.GetPolicyByID(policyID));
 app.MapGet("/policy/insurance/{insurance}", (int insurance, PolicyController controller) => controller.GetPolicyByInsurance(insurance));
 app.MapGet("/policy/coverage/{coverage}", (string coverage, PolicyController controller) => controller.GetPolicyBycoverage(coverage));
+
 /*
  *      ClaimsController End Points
  */
