@@ -22,4 +22,14 @@ public class PolicyService
     {
         return _repo.GetPolicyByInsurance(insurance);
     }
+    public List<Policy> GetPolicyBycoverage(byte[] coverage)
+    {
+        return _repo.GetPolicyBycoverage(coverage);
+    }
+    public Ticket UpdateTicket(Ticket ticket)
+    {
+        return _ticket.UpdateTicket(ticket) ?? throw new NotImplementedException();
+    }
+  
+
 }
