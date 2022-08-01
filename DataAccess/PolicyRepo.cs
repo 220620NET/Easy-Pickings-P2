@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NewModels;
+﻿using NewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess
@@ -19,7 +14,7 @@ namespace DataAccess
 
         public List<Policy> GetAllPolicy()
         {
-            return _dbContext.policies.ToList();
+            return _dbContext.policies.AsNoTracking().ToList();
         }
 
         public List<Policy> GetPolicyByID(int policyID)
@@ -29,12 +24,11 @@ namespace DataAccess
         
         public List<Policy> GetPolicyByInsurance(int userID)
         {
-            //return _dbContext.Policies.Include("Benefactors").Where((p => p.Benefactors.FirstOrDefault(u => u.UserId == userID) != null)).ToList();
             return _dbContext.policies.Where(p => p.insurance == userID).ToList();
         }
 
     
-     public List<Policy> GetPolicyBycoverage(string coverage)
+        public List<Policy> GetPolicyBycoverage(string coverage)
         {
             return _dbContext.policies.Where(p => p.coverage == coverage).ToList();
         }

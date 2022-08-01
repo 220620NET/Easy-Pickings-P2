@@ -2,11 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using CustomExceptions;
 
-
-namespace DataAccess;
-
-
-
+namespace DataAccess; 
 public class ClaimsRepo : IClaimRepo
 {     
     private readonly InsuranceDbContext _context;
@@ -14,64 +10,87 @@ public class ClaimsRepo : IClaimRepo
     {
         _context = context;
     }
+    /// <summary>
+    /// Will add a claim to the database
+    /// </summary>
+    /// <param name="claim">Claim to add to the table</param>
+    /// <returns>Claim that was added</returns>
     public Claim CreateClaims(Claim claim)
     {   
-    // EF core can tell which class it is, so it is unnecessary to specify which dbSet you want this object to be added
-    _context.Add(claim);
-    _context.SaveChanges();
-
-
-    //Clear the change tracker
-    _context.ChangeTracker.Clear();
-    return claim;
-
-
+        // EF core can tell which class it is, so it is unnecessary to specify which dbSet you want this object to be added
+        _context.Add(claim);
+        Finish();
+        return claim; 
     }
-
+    /// <summary>
+    /// Will delete a specific claim
+    /// </summary>
+    /// <param name="Id">The claim to delete</param>
+    /// <returns>True if deleted false if not</returns>
     public bool DeleteClaims(int Id)
     {
         Claim? ClaimToDelete = _context.claims.AsNoTracking().FirstOrDefault(c => c.claimID == Id);
         if(ClaimToDelete != null)
         {
-        _context.claims.Remove(ClaimToDelete);
-        _context.SaveChanges();
-        _context.ChangeTracker.Clear();
-        return true;
+            _context.claims.Remove(ClaimToDelete);
+            Finish();
+            return true;
         }
         return false;
     }
-
+    /// <summary>
+    /// Will read the entire table of claims
+    /// </summary>
+    /// <returns>Will return a new list if the database is empty other wise will return the entire table as a list</returns>
     public List<Claim> GetAllClaims()
     {
-    return _context.claims.AsNoTracking().ToList();
+    return _context.claims.AsNoTracking().ToList()??new List<Claim>();
     }
-
+    /// <summary>
+    /// will retreive a claim based on the claim ID
+    /// </summary>
+    /// <param name="ID">The specific claim being requested</param>
+    /// <returns>The requested claim</returns> 
     public Claim GetClaimById(int ID)
     {
     return _context.claims.AsNoTracking().FirstOrDefault(c => c.claimID == ID)??throw new NotImplementedException();
     }
-
-  public List<Claim> GetClaimByStatus(string status)
-  {
-    return _context.claims.AsNoTracking().Where(c => c.status == status).ToList();
-  }
-
-  public List<Claim> GetUserByPatientID(int ID)                                  // user is the patient?
-  {
-    return _context.claims.AsNoTracking().Where(p => p.userID == ID).ToList();  // claims only has user id or doctor id 
-  }
-
-  public Claim UpdateClaims(Claim claim)
-  {
-      //update the claim
+    /// <summary>
+    /// will retreive all claims based on a particular status
+    /// </summary>
+    /// <param name="status">The status in question</param>
+    /// <returns>A list of all claims with a specific status</returns> 
+    public List<Claim> GetClaimByStatus(string status)
+    {
+    return _context.claims.AsNoTracking().Where(c => c.status == status).ToList()??throw new NotImplementedException();
+    }
+    /// <summary>
+    /// will retreive all claims based on a patient's id
+    /// </summary>
+    /// <param name="ID">The specific patient in question</param>
+    /// <returns>All claims made by the patient</returns> 
+    public List<Claim> GetUserByPatientID(int ID)
+    {
+    return _context.claims.AsNoTracking().Where(p => p.userID == ID).ToList()??throw new NotImplementedException(); 
+    }
+    /// <summary>
+    /// This will update a claim based on provided input
+    /// </summary>
+    /// <param name="claim">claim to update and the specifics of the update</param>
+    /// <returns>updated claim</returns>
+    public Claim UpdateClaims(Claim claim)
+    {
+        //update the claim
         _context.claims.Update(claim);
+        Finish();
+        return claim; 
+    }
+    protected void Finish()
+    {
         _context.SaveChanges();
-
-   //Clear the change tracker
-       _context.ChangeTracker.Clear();
-        return claim;
-
-  }
+        //Clear the change tracker
+        _context.ChangeTracker.Clear();
+    }
 }
 
  
