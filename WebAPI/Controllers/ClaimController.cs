@@ -1,7 +1,5 @@
 using Services;
-using DataAccess.Entities;
-using DataAccess;
-
+using NewModels;
 namespace WebAPI.Controllers;
 
 public class ClaimController

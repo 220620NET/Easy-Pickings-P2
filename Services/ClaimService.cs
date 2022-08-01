@@ -1,5 +1,5 @@
 using DataAccess;
-using DataAccess.Entities;
+using NewModels;
 
 namespace Services;
 
