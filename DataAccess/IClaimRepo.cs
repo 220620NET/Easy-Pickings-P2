@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using DataAccess.Entities;
+using NewModels;
 
 namespace DataAccess; 
 

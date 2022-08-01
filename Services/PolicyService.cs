@@ -1,5 +1,5 @@
 using DataAccess;
-using DataAccess.Entities;
+using NewModels;
 
 namespace Services;
 
@@ -22,14 +22,21 @@ public class PolicyService
     {
         return _repo.GetPolicyByInsurance(insurance);
     }
-    public List<Policy> GetPolicyBycoverage(byte[] coverage)
+
+    public List<Policy> GetPolicyBycoverage(string coverage)
     {
         return _repo.GetPolicyBycoverage(coverage);
     }
-    public Ticket UpdateTicket(Ticket ticket)
+     public Policy CreatePolicy(Policy policy)
     {
-        return _ticket.UpdateTicket(ticket) ?? throw new NotImplementedException();
+        return _repo.CreatePolicy(policy) ?? throw new NotImplementedException();
     }
-  
-
+    public Policy UpdatePolicy(Policy policy)
+    {
+        return _repo.UpdatePolicy(policy) ?? throw new NotImplementedException();
+    }
+     public Policy DeletePolicy(int policyID)
+    {
+        return _repo.DeletePolicy(policyID) ?? throw new NotImplementedException();
+    }
 }
