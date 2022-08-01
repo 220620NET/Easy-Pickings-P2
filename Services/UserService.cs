@@ -10,34 +10,34 @@ namespace Services
 {
     public class UserService
     {
-        private readonly IUserRepo _contact;
-        public UserService(IUserRepo contact)
+        private readonly IUserRepo _user;
+        public UserService(IUserRepo user)
         {
-            _contact = contact;
+            _user = user;
         }
         public List<User> GetAllUsers()
         {
-            return _contact.GetAllUsers();
+            return _user.GetAllUsers();
             throw new NotImplementedException();
         }
         public User GetUserById(int userID)
         {
-            return _contact.GetUserById(userID);
+            return _user.GetUserById(userID);
             throw new NotImplementedException();
         }
         public User GetUserByName(string username)
         {
-            return _contact.GetUserByName(username,false);
+            return _user.GetUserByName(username,false);
             throw new NotImplementedException();
         }
-       /* public User CreateUser(User user)
-        {
-            return _contact.CreateUser(user);
-        } AuthService */
         public User ResetPassword(User user)
         {
-            return _contact.ResetPassword(user);
+            return _user.ResetPassword(user);
             throw new NotImplementedException();
+        }
+        public User DeleteUser(int userID)
+        {
+            return _user.DeleteUser(userID) ?? throw new NotImplementedException();
         }
 
     }

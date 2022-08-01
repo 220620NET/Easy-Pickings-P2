@@ -79,4 +79,18 @@ public class UserRepo : IUserRepo
         return user; 
         throw new NotImplementedException();
     }
+    public User DeleteUser(int userID)
+    {
+        User? userToDelete = _context.users.FirstOrDefault(user => user.userID == userID);
+        if (userToDelete != null)
+        {
+            _context.users.Remove(userToDelete);
+        }
+        else
+        {
+            throw new Exception();
+        }
+        _context.SaveChanges();
+        return userToDelete ?? throw new NotImplementedException();
+    }
 }
