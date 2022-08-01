@@ -52,8 +52,6 @@ namespace WebAPI.Controllers;
             }
         }
         
-           
-        
         public IResult GetAllPolicy()
         {
             try
@@ -64,6 +62,40 @@ namespace WebAPI.Controllers;
             catch (InputInvalidException )
             {
                 return Results.BadRequest("There are no policies");
+            }
+            
+        }
+         public IResult CreatePolicy(Policy policy)
+        {
+            try
+            {
+                return Results.Accepted("/submit/policy", _Services.CreatePolicy(policy));
+            }
+            catch (NotImplementedException)
+            {
+                return Results.BadRequest();
+            }
+        }
+         public IResult UpdatePolicy(Policy policy)
+        {
+            try
+            {
+                return Results.Accepted("/update/policy", _Services.UpdatePolicy(policy));
+            }
+            catch (NotImplementedException)
+            {
+                return Results.BadRequest();
+            }
+        }
+         public IResult DeletePolicy(int policyID)
+        {
+            try
+            {
+                return Results.Accepted("/delete/policy", _Services.DeletePolicy(policyID));
+            }
+            catch (NotImplementedException)
+            {
+                return Results.BadRequest();
             }
         }
     }
