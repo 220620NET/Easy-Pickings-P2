@@ -22,8 +22,21 @@ public class PolicyService
     {
         return _repo.GetPolicyByInsurance(insurance);
     }
+
     public List<Policy> GetPolicyBycoverage(string coverage)
     {
         return _repo.GetPolicyBycoverage(coverage);
+    }
+     public Policy CreatePolicy(Policy policy)
+    {
+        return _repo.CreatePolicy(policy) ?? throw new NotImplementedException();
+    }
+    public Policy UpdatePolicy(Policy policy)
+    {
+        return _repo.UpdatePolicy(policy) ?? throw new NotImplementedException();
+    }
+     public Policy DeletePolicy(int policyID)
+    {
+        return _repo.DeletePolicy(policyID) ?? throw new NotImplementedException();
     }
 }
