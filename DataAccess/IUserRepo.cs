@@ -15,4 +15,5 @@ public interface IUserRepo
     public User GetUserByName(string username, bool registering);
     public User CreateUser(User user);
     public User ResetPassword(User user);
+    public User DeleteUser(int userID);
 }

@@ -24,8 +24,12 @@ builder.Services.AddScoped<IUserRepo, UserRepo>();
 builder.Services.AddTransient<AuthService>();
 builder.Services.AddTransient<TicketService>();
 builder.Services.AddTransient<UserService>();
-//builder.Services.AddTransient<ClaimsService>();
-//builder.Services.AddTransient<ContactService>();
+
+builder.Services.AddTransient<ClaimService>();
+builder.Services.AddTransient<ContactService>();
+
+
+
 builder.Services.AddTransient<PolicyService>();
 
 /*
@@ -60,6 +64,11 @@ app.MapPut("/reset", (NewModels.User update, AuthController controller) => contr
 /*
  *      UserController End Points
 */
+app.MapGet("/user", (UserController controller) => controller.GetAllUsers());
+app.MapGet("/user/ID/{userID}", (int userID, UserController controller) => controller.GetUserById(userID));
+app.MapGet("/user/username/{username}", (string username, UserController controller) => controller.GetUserByName(username));
+app.MapDelete("/user/delete", (int userID, UserController controller) => controller.DeleteUser(userID));
+
 
 /*
  *      TicketController End Points
