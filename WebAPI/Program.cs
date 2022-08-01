@@ -22,7 +22,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddTransient<AuthService>();
 builder.Services.AddTransient<TicketService>();
 builder.Services.AddTransient<UserService>();
-builder.Services.AddTransient<ClaimsService>();
+builder.Services.AddTransient<ClaimService>();
 builder.Services.AddTransient<ContactService>();
 builder.Services.AddTransient<PolicyService>();
 /*
