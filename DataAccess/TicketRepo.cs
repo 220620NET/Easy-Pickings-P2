@@ -1,12 +1,12 @@
-﻿using DataAccess.Entities; 
-
+﻿using NewModels;
+using Microsoft.EntityFrameworkCore;
 namespace DataAccess
 {
     public class TicketRepo : ITicket
     {
         // Dependency injection
-        private readonly easypickingsContext _dbContext;
-        public TicketRepo(easypickingsContext dbContext)
+        private readonly InsuranceDbContext _dbContext;
+        public TicketRepo(InsuranceDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -17,8 +17,8 @@ namespace DataAccess
         /// <returns>New ticket</returns> 
         public Ticket CreateTicket(Ticket ticket)
         { 
-            _dbContext.Tickets.Add(ticket);
-            _dbContext.SaveChanges();
+            _dbContext.tickets.Add(ticket);
+            Finish();
             return ticket ?? throw new NotImplementedException();
         }
 
@@ -29,16 +29,9 @@ namespace DataAccess
         /// <returns>Ticket that was deleted</returns> 
         public Ticket DeleteTicket(int ticketID)
         {
-            Ticket? ticketToDelete =_dbContext.Tickets.FirstOrDefault(ticket=>ticket.TicketId==ticketID);
-            if (ticketToDelete != null)
-            {
-                _dbContext.Tickets.Remove(ticketToDelete);
-            }
-            else
-            {
-                throw new Exception();
-            }
-            _dbContext.SaveChanges();
+            Ticket ticketToDelete =_dbContext.tickets.FirstOrDefault(ticket=>ticket.ticketID==ticketID)??throw new NotImplementedException();
+            _dbContext.tickets.Remove(ticketToDelete);
+            Finish();
             return ticketToDelete ?? throw new NotImplementedException();
         }
 
@@ -48,7 +41,7 @@ namespace DataAccess
         /// <returns>All Tickets</returns>
         public List<Ticket> GetAllTickets()
         {
-            return _dbContext.Tickets.ToList() ?? throw new NotImplementedException();
+            return _dbContext.tickets.AsNoTracking().ToList() ?? throw new NotImplementedException();
         }
 
         /// <summary>
@@ -58,7 +51,7 @@ namespace DataAccess
         /// <returns>The specific ticket by claim</returns>
         public List<Ticket> GetTicketByClaim(int claimID)
         {
-            return _dbContext.Tickets.Where(p => p.ClaimIdFk == claimID).ToList() ?? throw new NotImplementedException();
+            return _dbContext.tickets.AsNoTracking().Where(p => p.claimID == claimID).ToList() ?? throw new NotImplementedException();
         }
         /// <summary>
         /// Will grab all tickets related to a patient
@@ -67,7 +60,7 @@ namespace DataAccess
         /// <returns>List of all tickets from a particular patient</returns>
         public List<Ticket> GetTicketByPatient(int patientID)
         {
-            return _dbContext.Tickets.Where(p => p.UserIdFk == patientID).ToList() ?? throw new NotImplementedException();
+            return _dbContext.tickets.AsNoTracking().Where(p => p.userID == patientID).ToList() ?? throw new NotImplementedException();
         }
 
         /// <summary>
@@ -77,9 +70,17 @@ namespace DataAccess
         /// <returns>Updated ticket</returns>
         public Ticket UpdateTicket(Ticket ticket)
         {
-            _dbContext.Tickets.Update(ticket);
-            _dbContext.SaveChanges();
+            _dbContext.tickets.Update(ticket);
+            Finish();
             return ticket ?? throw new NotImplementedException();
+        }
+        /// <summary>
+        /// Persist changes and clear the tracker
+        /// </summary>
+        protected void Finish( )
+        {
+            _dbContext.SaveChanges();
+            _dbContext.ChangeTracker.Clear();
         }
     }
 }
