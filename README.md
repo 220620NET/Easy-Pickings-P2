@@ -48,6 +48,8 @@ _Lifecylce of a claim_
     - For fixing possible issues that may arise in the technology used by the patient/employee
 - Scheduling tools
     - A calendar setup for the patient to schedule hospital visits or general physcian visits among in-network physicians
+- Foreign Account Authorization
+    - To speed up signing in authorize Amazon, Google or Facebook to see all you medical information
 # Technology used
 - C#
 - ASP.NET Core
@@ -58,7 +60,10 @@ _Lifecylce of a claim_
 - CSS
 - TypeScript
 - Github Action
+    - CI/CD pipeline to automate the publication process of the WebAPI
 - Entity Framework Core
+    - Used for generating a connection to and tables for the database to 
+
 # Tables
 - users
 - insurance
