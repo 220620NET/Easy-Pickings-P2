@@ -6,11 +6,11 @@ using NewModels;
 namespace DataAccess;
 public class UserRepo : IUserRepo
 {
-    private readonly InsuranceDbContext _context;
+    private readonly InsuranceDbContext _dbContext;
 
-    public UserRepo(InsuranceDbContext context)
+    public UserRepo(InsuranceDbContext dbContext)
     {
-        _context = context;
+        _dbContext = dbContext;
     }
     /// <summary>
     /// Will add a user to the database
@@ -19,8 +19,8 @@ public class UserRepo : IUserRepo
     /// <returns>The new user</returns>
     public User CreateUser(User newUser)
     {
-        _context.users.Add(newUser);
-        _context.SaveChanges();
+        _dbContext.users.Add(newUser);
+        _dbContext.SaveChanges();
         return newUser;
     }
     /// <summary>
@@ -29,7 +29,7 @@ public class UserRepo : IUserRepo
     /// <returns>Users in the database</returns>
     public List<User> GetAllUsers()
     {
-        return _context.users.ToList();
+        return _dbContext.users.ToList();
     }
 
     /// <summary>
@@ -40,7 +40,7 @@ public class UserRepo : IUserRepo
     /// <exception cref="NotImplementedException">There is no user with that ID</exception>
     public User GetUserById(int userID)
     {
-        User? foundUser = _context.users.FirstOrDefault(user => user.userID == userID);
+        User? foundUser = _dbContext.users.FirstOrDefault(user => user.userID == userID);
         if(foundUser != null) return foundUser;
         throw new NotImplementedException();
     }
@@ -53,7 +53,7 @@ public class UserRepo : IUserRepo
     /// <exception cref="NotImplementedException">There is no user with that username</exception>
     public User GetUserByName(string username, bool registering)
     {
-        User? foundUser = _context.users.FirstOrDefault(user => user.username == username);
+        User? foundUser = _dbContext.users.FirstOrDefault(user => user.username == username);
         if (registering)
         {
             if (foundUser == null) return new User();
@@ -74,23 +74,23 @@ public class UserRepo : IUserRepo
 
     public User ResetPassword(User user)
     {
-        _context.users.Update(user);
-        _context.SaveChanges();
+        _dbContext.users.Update(user);
+        _dbContext.SaveChanges();
         return user; 
         throw new NotImplementedException();
     }
     public User DeleteUser(int userID)
     {
-        User? userToDelete = _context.users.FirstOrDefault(user => user.userID == userID);
+        User? userToDelete = _dbContext.users.FirstOrDefault(user => user.userID == userID);
         if (userToDelete != null)
         {
-            _context.users.Remove(userToDelete);
+            _dbContext.users.Remove(userToDelete);
         }
         else
         {
             throw new Exception();
         }
-        _context.SaveChanges();
+        _dbContext.SaveChanges();
         return userToDelete ?? throw new NotImplementedException();
     }
 }
