@@ -10,11 +10,13 @@ namespace DataAccess
         {
             _dbContext = dbContext;
         }
+        
         /// <summary>
-        /// Will create a new entry for a Ticket in the tickets table in the database
+        /// 
         /// </summary>
-        /// <param name="ticket">New ticket</param>
-        /// <returns>New ticket</returns> 
+        /// <param name="ticket"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
         public Ticket CreateTicket(Ticket ticket)
         { 
             _dbContext.tickets.Add(ticket);
