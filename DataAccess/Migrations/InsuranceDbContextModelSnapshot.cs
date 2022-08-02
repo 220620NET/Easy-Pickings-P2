@@ -168,15 +168,15 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("DoB")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("firstName")
+                    b.Property<string>("first_name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("lastName")
+                    b.Property<string>("last_name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("middleInit")
+                    b.Property<string>("middle_init")
                         .IsRequired()
                         .HasColumnType("nvarchar(1)");
 
