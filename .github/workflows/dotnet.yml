@@ -3,8 +3,6 @@ name: .NET
 on:
   push:
     branches: [ "main" ,"anthony","Kris","kabiru","Sarah","Sonia"]
-  pull_request:
-    branches: [ "main","anthony","Kris","kabiru","Sarah","Sonia" ]
 
 jobs:
   build:
