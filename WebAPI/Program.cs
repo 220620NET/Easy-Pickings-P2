@@ -38,6 +38,7 @@ builder.Services.AddScoped<PolicyController>();
 builder.Services.AddScoped<ClaimController>();
 builder.Services.AddScoped<ContactController>();
 
+
 /*
  *      Setting up web app
  */
@@ -83,6 +84,9 @@ app.MapGet("/policy", (PolicyController controller) =>controller.GetAllPolicy())
 app.MapGet("/policy/ID/{ID}", (int policyID, PolicyController controller) => controller.GetPolicyByID(policyID));
 app.MapGet("/policy/insurance/{insurance}", (int insurance, PolicyController controller) => controller.GetPolicyByInsurance(insurance));
 app.MapGet("/policy/coverage/{coverage}", (string coverage, PolicyController controller) => controller.GetPolicyBycoverage(coverage));
+app.MapPost("/submit/policy", (NewModels.Policy newPolicy, PolicyController controller) => controller.CreatePolicy(newPolicy));
+app.MapPut("/update/policy", (NewModels.Policy policy, PolicyController controller) => controller.UpdatePolicy(policy));
+app.MapDelete("/delete/policy", (int ID, PolicyController controller) => controller.DeletePolicy(ID));
 
 /*
  *      ClaimsController End Points
