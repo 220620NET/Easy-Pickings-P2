@@ -14,7 +14,7 @@ builder.Services.AddDbContext<InsuranceDbContext>(options => options.UseSqlServe
 */
 builder.Services.AddScoped<ITicket, TicketRepo>();
 builder.Services.AddScoped<IPolicy, PolicyRepo>();
-//builder.Services.AddScoped<IClaimRepo, ClaimsRepo>();
+builder.Services.AddScoped<IClaimRepo, ClaimsRepo>();
 //builder.Services.AddScoped<IContactRepo, ContactRepo>();
 builder.Services.AddScoped<IUserRepo, UserRepo>();
 
@@ -26,7 +26,7 @@ builder.Services.AddTransient<TicketService>();
 builder.Services.AddTransient<UserService>();
 
 builder.Services.AddTransient<ClaimService>();
-builder.Services.AddTransient<ContactService>();
+//builder.Services.AddTransient<ContactService>();
 
 
 
@@ -39,7 +39,7 @@ builder.Services.AddScoped<AuthController>();
 builder.Services.AddScoped<TicketController>();
 builder.Services.AddScoped<UserController>();
 builder.Services.AddScoped<PolicyController>();
-//builder.Services.AddScoped<ClaimsController>();
+builder.Services.AddScoped<ClaimController>();
 //builder.Services.AddScoped<ContactController>();
 
 /*
@@ -87,6 +87,9 @@ app.MapGet("/policy", (PolicyController controller) =>controller.GetAllPolicy())
 app.MapGet("/policy/ID/{ID}", (int policyID, PolicyController controller) => controller.GetPolicyByID(policyID));
 app.MapGet("/policy/insurance/{insurance}", (int insurance, PolicyController controller) => controller.GetPolicyByInsurance(insurance));
 app.MapGet("/policy/coverage/{coverage}", (string coverage, PolicyController controller) => controller.GetPolicyBycoverage(coverage));
+app.MapPost("/submit/policy", (NewModels.Policy newPolicy, PolicyController controller) => controller.CreatePolicy(newPolicy));
+app.MapPut("/update/policy", (NewModels.Policy policy, PolicyController controller) => controller.UpdatePolicy(policy));
+app.MapDelete("/delete/policy", (int ID, PolicyController controller) => controller.DeletePolicy(ID));
 
 /*
  *      ClaimsController End Points
