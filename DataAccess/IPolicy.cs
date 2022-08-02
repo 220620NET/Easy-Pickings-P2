@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using NewModels;
 
 
@@ -14,9 +8,9 @@ namespace DataAccess
        public List<Policy> GetPolicyByID(int policyID);
        public List<Policy> GetAllPolicy();
        public List<Policy> GetPolicyByInsurance(int insurance);
-      public List<Policy> GetPolicyBycoverage(string coverage);
-       public Policy CreatePolicy(Policy policy);
-       public Policy UpdatePolicy(Policy policy);
-      public Policy DeletePolicy(int policyID);
+        public List<Policy> GetPolicyBycoverage(string coverage);
+        public Policy UpdatePolicy(Policy policy);
+        public Policy DeletePolicy(int ID);
+        public Policy CreatePolicy(Policy policy);
     }
 }

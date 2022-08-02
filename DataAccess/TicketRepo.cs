@@ -41,7 +41,7 @@ namespace DataAccess
         /// <returns>All Tickets</returns>
         public List<Ticket> GetAllTickets()
         {
-            return _dbContext.tickets.AsNoTracking().ToList() ?? throw new NotImplementedException();
+            return _dbContext.tickets.AsNoTracking().ToList() ??  new List<Ticket>();
         }
 
         /// <summary>
