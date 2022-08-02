@@ -61,10 +61,10 @@ app.MapPut("/reset", (User update, AuthController controller) => controller.Rese
 /*
  *      UserController End Points
 */
+app.MapDelete("/delete/user", (int userID, UserController controller) => controller.DeleteUser(userID));
 app.MapGet("/user", (UserController controller) => controller.GetAllUsers());
 app.MapGet("/user/ID/{userID}", (int userID, UserController controller) => controller.GetUserById(userID));
 app.MapGet("/user/username/{username}", (string username, UserController controller) => controller.GetUserByName(username));
-app.MapDelete("/delete/user", (int userID, UserController controller) => controller.DeleteUser(userID));
 
 
 /*
