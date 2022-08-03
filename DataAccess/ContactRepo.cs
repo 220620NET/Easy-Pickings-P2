@@ -29,32 +29,41 @@ namespace DataAccess
         }
         public List<Contact> GetAllContactInfo()
         {
+
             return _dbContext.contact.ToList();
+
         }
 
         public Contact GetContactInfoByEmail(string email)
         {
+
             Contact? contact = _dbContext.contact.FirstOrDefault(contact => contact.email == email);
+
             if (contact != null) return contact;
             throw new NotImplementedException();
         }
 
         public Contact GetContactInfoById(int contactID)
         {
+
             Contact? contact = _dbContext.contact.FirstOrDefault(contact => contact.contactID == contactID);
+
             if (contact != null) return contact;
             throw new NotImplementedException();
         }
 
         public Contact GetContactInfoByPhone(int phone)
         {
+
             Contact? contact = _dbContext.contact.FirstOrDefault(contact => contact.phone == phone);
+
             if (contact != null) return contact;
             throw new NotImplementedException();
         }
 
         public Contact UpdateContactInfo(Contact contact)
         {
+
             _dbContext.contact.Update(contact);
             Finish();
             return contact ?? throw new NotImplementedException();
@@ -67,6 +76,7 @@ namespace DataAccess
         {
             _dbContext.SaveChanges();
             _dbContext.ChangeTracker.Clear();
+
         }
     }
 }

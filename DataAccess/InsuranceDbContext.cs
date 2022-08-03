@@ -21,8 +21,8 @@ namespace DataAccess
             modelBuilder.Entity<Claim>().HasOne<User>().WithMany().HasForeignKey(p => p.userID);
             modelBuilder.Entity<Claim>().HasOne<User>().WithMany().HasForeignKey(p => p.doctorID);
             modelBuilder.Entity<Claim>().HasOne<Policy>().WithMany().HasForeignKey(p => p.policyID);
-
             modelBuilder.Entity<Policy>().HasOne<User>().WithMany().HasForeignKey(p => p.insurance);
+            modelBuilder.HasDefaultSchema("dbo");
         }
     }
 }

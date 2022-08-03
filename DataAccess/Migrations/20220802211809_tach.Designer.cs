@@ -4,6 +4,7 @@ using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,13 +12,13 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(InsuranceDbContext))]
-    partial class InsuranceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220802211809_tach")]
+    partial class tach
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasDefaultSchema("dbo")
                 .HasAnnotation("ProductVersion", "6.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
@@ -56,7 +57,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("userID");
 
-                    b.ToTable("claims", "dbo");
+                    b.ToTable("claims");
                 });
 
             modelBuilder.Entity("NewModels.Contact", b =>
@@ -67,13 +68,13 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("contactID"), 1L, 1);
 
-                    b.Property<int>("PO_number")
+                    b.Property<int>("PONumber")
                         .HasColumnType("int");
 
-                    b.Property<bool>("PO_or_street")
+                    b.Property<bool>("POorStreet")
                         .HasColumnType("bit");
 
-                    b.Property<string>("city_state")
+                    b.Property<string>("cityState")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -81,14 +82,14 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("phone")
-                        .HasColumnType("bigint");
+                    b.Property<int>("phone")
+                        .HasColumnType("int");
 
-                    b.Property<string>("street_name")
+                    b.Property<string>("streetName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("street_number")
+                    b.Property<int>("streetNumber")
                         .HasColumnType("int");
 
                     b.Property<int>("userID")
@@ -101,7 +102,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("userID");
 
-                    b.ToTable("contact", "dbo");
+                    b.ToTable("contacts");
                 });
 
             modelBuilder.Entity("NewModels.Policy", b =>
@@ -123,7 +124,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("insurance");
 
-                    b.ToTable("policies", "dbo");
+                    b.ToTable("policies");
                 });
 
             modelBuilder.Entity("NewModels.Ticket", b =>
@@ -155,7 +156,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("userID");
 
-                    b.ToTable("tickets", "dbo");
+                    b.ToTable("tickets");
                 });
 
             modelBuilder.Entity("NewModels.User", b =>
@@ -195,7 +196,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("userID");
 
-                    b.ToTable("users", "dbo");
+                    b.ToTable("users");
                 });
 
             modelBuilder.Entity("NewModels.Claim", b =>
