@@ -53,13 +53,13 @@ public class UserRepo : IUserRepo
     /// <exception cref="NotImplementedException">There is no user with that username</exception>
     public User GetUserByName(string username, bool registering)
     {
-        User? foundUser = _context.users.FirstOrDefault(user => user.username == username);
         if (registering)
         {
-            if (foundUser == null) return new User();
+            return new User();
         }
         else
         {
+            User? foundUser = _context.users.FirstOrDefault(user => user.username == username);
             if (foundUser != null) return foundUser;
         }
         throw new NotImplementedException();

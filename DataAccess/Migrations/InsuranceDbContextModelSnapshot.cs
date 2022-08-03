@@ -17,6 +17,7 @@ namespace DataAccess.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("dbo")
                 .HasAnnotation("ProductVersion", "6.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
@@ -55,7 +56,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("userID");
 
-                    b.ToTable("claims");
+                    b.ToTable("claims", "dbo");
                 });
 
             modelBuilder.Entity("NewModels.Contact", b =>
@@ -66,13 +67,13 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("contactID"), 1L, 1);
 
-                    b.Property<int>("PONumber")
+                    b.Property<int>("PO_number")
                         .HasColumnType("int");
 
-                    b.Property<bool>("POorStreet")
+                    b.Property<bool>("PO_or_street")
                         .HasColumnType("bit");
 
-                    b.Property<string>("cityState")
+                    b.Property<string>("city_state")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -80,14 +81,14 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("phone")
-                        .HasColumnType("int");
+                    b.Property<long>("phone")
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("streetName")
+                    b.Property<string>("street_name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("streetNumber")
+                    b.Property<int>("street_number")
                         .HasColumnType("int");
 
                     b.Property<int>("userID")
@@ -100,7 +101,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("userID");
 
-                    b.ToTable("contacts");
+                    b.ToTable("contact", "dbo");
                 });
 
             modelBuilder.Entity("NewModels.Policy", b =>
@@ -122,7 +123,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("insurance");
 
-                    b.ToTable("policies");
+                    b.ToTable("policies", "dbo");
                 });
 
             modelBuilder.Entity("NewModels.Ticket", b =>
@@ -154,7 +155,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("userID");
 
-                    b.ToTable("tickets");
+                    b.ToTable("tickets", "dbo");
                 });
 
             modelBuilder.Entity("NewModels.User", b =>
@@ -194,7 +195,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("userID");
 
-                    b.ToTable("users");
+                    b.ToTable("users", "dbo");
                 });
 
             modelBuilder.Entity("NewModels.Claim", b =>

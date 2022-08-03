@@ -91,6 +91,7 @@ app.MapGet("/policy/coverage/{coverage}", (string coverage, PolicyController con
 /*
  *      ClaimsController End Points
  */
+app.MapPost("/submit/contact", (Contact contact, ContactController controller) => controller.CreateContactInfo(contact));
 
 /*
  *      ContactController End Points
