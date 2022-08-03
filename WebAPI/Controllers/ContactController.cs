@@ -33,6 +33,11 @@ public Contact UpdateContactInfo(Contact contact)
         return _service.UpdateContactInfo(contact);
    }
 
+public Contact DeleteContactInfo(int contactID)
+   {
+        return _service.DeleteContactInfo(contactID);
+   }
+
     public IResult GetContactInfoById(int contactID)
     {
         try

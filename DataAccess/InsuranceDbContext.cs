@@ -11,7 +11,7 @@ namespace DataAccess
         public DbSet<User> users { get; set; }
         public DbSet<Policy> policies { get; set; }
         public DbSet<Claim> claims { get; set; } 
-        public DbSet<Contact> contacts { get; set; }
+        public DbSet<Contact> contact { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Ticket>().HasOne<User>().WithMany().HasForeignKey(p => p.userID);
