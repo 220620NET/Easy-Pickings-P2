@@ -4,6 +4,7 @@ using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,13 +12,13 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(InsuranceDbContext))]
-    partial class InsuranceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220803130848_contactChange")]
+    partial class contactChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasDefaultSchema("dbo")
                 .HasAnnotation("ProductVersion", "6.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
@@ -56,7 +57,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("userID");
 
-                    b.ToTable("claims", "dbo");
+                    b.ToTable("claims");
                 });
 
             modelBuilder.Entity("NewModels.Contact", b =>
@@ -101,7 +102,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("userID");
 
-                    b.ToTable("contact", "dbo");
+                    b.ToTable("contact");
                 });
 
             modelBuilder.Entity("NewModels.Policy", b =>
@@ -123,7 +124,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("insurance");
 
-                    b.ToTable("policies", "dbo");
+                    b.ToTable("policies");
                 });
 
             modelBuilder.Entity("NewModels.Ticket", b =>
@@ -155,7 +156,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("userID");
 
-                    b.ToTable("tickets", "dbo");
+                    b.ToTable("tickets");
                 });
 
             modelBuilder.Entity("NewModels.User", b =>
@@ -195,7 +196,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("userID");
 
-                    b.ToTable("users", "dbo");
+                    b.ToTable("users");
                 });
 
             modelBuilder.Entity("NewModels.Claim", b =>
