@@ -101,5 +101,12 @@ app.MapGet("/policy/coverage/{coverage}", (string coverage, PolicyController con
 /*
  *      ContactController End Points
  */
+app.MapPost("/submit/contact", (Contact newContact, ContactController controller) => controller.CreateContactInfo(newContact));
+app.MapPut("/update/contact", (Contact contact, ContactController controller) => controller.UpdateContactInfo(contact));
+app.MapDelete("/delete/contact", (int contactID, ContactController controller) => controller.DeleteContactInfo(contactID));
+app.MapGet("/contactinfo", (ContactController controller) =>controller.GetAllContactInfo());
+app.MapGet("/contact/ID/{contactID}", (int contactID, ContactController controller) => controller.GetContactInfoById(contactID));
+app.MapGet("/contact/email/{email}", (string email, ContactController controller) => controller.GetContactInfoByEmail(email));
+app.MapGet("/contact/phone/{phone}", (int phone, ContactController controller) => controller.GetContactInfoByPhone(phone));
 
 app.Run();
