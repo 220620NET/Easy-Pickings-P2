@@ -91,8 +91,18 @@ app.MapGet("/policy/coverage/{coverage}", (string coverage, PolicyController con
 /*
  *      ClaimsController End Points
  */
+<<<<<<< HEAD
 app.MapPost("/submit/contact", (Contact contact, ContactController controller) => controller.CreateContactInfo(contact));
 
+=======
+        app.MapPost("/submit/Claim",(Claim newClaim, ClaimController controller) => controller.CreateClaims(newClaim));
+        app.MapPut("/update/claim",(Claim claim, ClaimController controller) => controller.UpdateClaims(claim));
+        app.MapDelete("/delete/claim", (int ID, ClaimController controller) => controller.DeleteClaims(ID));
+        app.MapGet("/claims", (ClaimController controller) => controller.GetAllClaims());
+        app.MapGet("/claim{ID}",(int Id, ClaimController controller ) => controller.GetClaimById(Id));
+        app.MapGet("/claim/patient{ID}",(int Id, ClaimController controller) => controller.GetUserByPatientId(Id));
+        
+>>>>>>> 464eb3fea814c78a8a5a82c55351c56c1ec5f8e1
 /*
  *      ContactController End Points
  */
