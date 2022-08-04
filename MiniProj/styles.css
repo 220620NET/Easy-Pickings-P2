@@ -1,3 +1,4 @@
+
 .dropbtn {
 background-color: #04AA6D;
 color: white;
@@ -37,28 +38,15 @@ display: block;
 .dropdown:hover .dropdown-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
-:root,
-:root.light {
-    --background-color: #fff;
-    --color: rgb(0, 0, 0);
-}
+.dropdown:hover .dropbtn {background-color: #965832;}
 
-:root.dark {
-    --background-color: #381e1e;
-    --color: #2db61b; 
-}
-
-:root.red{
-    --background-color: crimson;
-    --color: black;
-}
 .navbar{
-    background-color: var(--background-color);
-    color: var(--color);
+    background-color: var(--nav-background-color);
+    color: var(--nav-color);
 }
 body {
     margin: 0;
+    background-image: var(--background-image);
     background-color: var(--background-color);
     color: var(--color);
     font-family: 'Inter', sans-serif
@@ -89,15 +77,9 @@ h1,h2,h3,h4,h5,h6 {
 .theme-btn {
     cursor: pointer;
     color: var(--color);
-    border:#000000
-    
+    border: #00000;
 }
 
-.theme-btn img {
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-}
 
 
 .light .theme-btn.light {
@@ -110,7 +92,15 @@ h1,h2,h3,h4,h5,h6 {
 .red .theme-btn.red{
     display: none;
 }
-
+.spirit .theme-btn.spirit{
+    display: none;
+}
+.fourth .theme-btn.fourth{
+    display: none;
+}
+.earth .theme-btn.earth{
+    display:none;
+}
 footer {
     text-align: center;
     padding: 0.5rem 0;
@@ -126,4 +116,9 @@ footer p {
 footer a {
     text-decoration: none;
     color: inherit;
+}
+.form-control{
+    background-color: var(--form-back);
+    color: var(--form);
+    font-weight: bold;
 }
