@@ -1,10 +1,11 @@
 create schema P2;
+create schema MainProj;
 drop schema P2;
 drop table P2.users;
-drop table P2.policy;
-drop table P2.insurance;
+drop table P2.policy; 
 drop table P2.claims;
 drop table P2.contact;
+
 
 create table  users(
 	userID int identity primary key,
@@ -21,13 +22,6 @@ create table  policy(
 	policyID int identity primary key,
 	insurance int foreign key references P2.users(userID),
 	coverage varbinary(MAX) not null
-);
-
-
-create table insurance(
-	provider int foreign key references P2.policy(policyID),
-	benefactor int foreign key references P2.users(userID),
-	primary key(provider,benefactor)
 );
 
 create table  contact(
@@ -51,11 +45,5 @@ create table  claims(
 	reasonForVisit varbinary(MAX) not null,
 	status varchar(50) not null default 'Pending'
 );
-create table  ticket(
-	ticketID int identity primary key,
-	claimID_fk int foreign key references P2.claims(claimID),
-	userID_fk int foreign key references P2.users(userID),
-	policyID_fk int foreign key references P2.policy(policyID),
-	details varchar(MAX) not null
-);
 alter table P2.users add constraint contact_fk foreign key (contactID) references P2.contact(contactID);
+alter table P2.claims drop constraint FK__claims_doctorID_71D1E811;

@@ -1,0 +1,129 @@
+.dropbtn {
+background-color: #04AA6D;
+color: white;
+padding: 16px;
+font-size: 16px;
+border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+position: relative;
+display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #f1f1f1;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+:root,
+:root.light {
+    --background-color: #fff;
+    --color: rgb(0, 0, 0);
+}
+
+:root.dark {
+    --background-color: #381e1e;
+    --color: #2db61b; 
+}
+
+:root.red{
+    --background-color: crimson;
+    --color: black;
+}
+.navbar{
+    background-color: var(--background-color);
+    color: var(--color);
+}
+body {
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--color);
+    font-family: 'Inter', sans-serif
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2.5rem 0;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    text-align: center;
+    font-weight: normal;
+}
+
+.toggle-container {
+    position: relative;
+}
+
+.theme-btn {
+    cursor: pointer;
+    color: var(--color);
+    border:rgb(0, 0, 0)
+    
+}
+
+.theme-btn img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+
+.light .theme-btn.light {
+    display: none;
+}
+
+.dark .theme-btn.dark {
+    display: none;
+}
+.red .theme-btn.red{
+    display: none;
+}
+
+footer {
+    text-align: center;
+    padding: 0.5rem 0;
+    background-color: #eaeaea90;
+}
+
+footer p {
+    font-size: 0.75rem;
+    margin: 0.25rem 0;
+    color: #221133;
+}
+
+footer a {
+    text-decoration: none;
+    color: inherit;
+}

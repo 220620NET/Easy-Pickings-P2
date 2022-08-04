@@ -1,61 +1,81 @@
-﻿using CustomExceptions;
-using NewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess
 {
     public class ContactRepo : IContactRepo
     {
-        private readonly InsuranceDbContext _context;
+        private readonly InsuranceDbContext _dbContext;
 
-        public ContactRepo(InsuranceDbContext context)
+        public ContactRepo(InsuranceDbContext dbContext)
         {
-            _context = context;
+            _dbContext = dbContext;
         }
 
         public Contact CreateContactInfo(Contact contact)
         {
-            _context.contacts.Add(contact);
-            _context.SaveChanges();
-            return contact;
+            _dbContext.Contacts.Add(contact);
+            Finish();
+            return contact ?? throw new NotImplementedException();
         }
         //probably don't need
+
+        public Contact DeleteContactInfo(int contactID)
+        {
+            Contact contactToDelete =_dbContext.Contacts.FirstOrDefault(contact=>contact.contactID==contactID)??throw new NotImplementedException();
+            _dbContext.Contacts.Remove(contactToDelete);
+            Finish();
+            return contactToDelete ?? throw new NotImplementedException();
+        }
         public List<Contact> GetAllContactInfo()
         {
-            return _context.contacts.ToList();
+
+            return _dbContext.Contacts.ToList();
+
         }
 
         public Contact GetContactInfoByEmail(string email)
         {
-            Contact? contact = _context.contacts.FirstOrDefault(contact => contact.email == email);
+
+            Contact? contact = _dbContext.Contacts.FirstOrDefault(contact => contact.email == email);
+
             if (contact != null) return contact;
             throw new NotImplementedException();
         }
 
         public Contact GetContactInfoById(int contactID)
         {
-            Contact? contact = _context.contacts.FirstOrDefault(contact => contact.contactID == contactID);
+
+            Contact? contact = _dbContext.Contacts.FirstOrDefault(contact => contact.contactID == contactID);
             if (contact != null) return contact;
             throw new NotImplementedException();
         }
 
         public Contact GetContactInfoByPhone(int phone)
         {
-            Contact? contact = _context.contacts.FirstOrDefault(contact => contact.phone == phone);
+
+            Contact? contact = _dbContext.Contacts.FirstOrDefault(contact => contact.phone == phone);
+
             if (contact != null) return contact;
             throw new NotImplementedException();
         }
 
         public Contact UpdateContactInfo(Contact contact)
         {
-            _context.contacts.Update(contact);
-            _context.SaveChanges();
-            return contact;
-            throw new NotImplementedException();
+
+            _dbContext.Contacts.Update(contact);
+            Finish();
+            return contact ?? throw new NotImplementedException();
+        }
+
+         /// <summary>
+        /// Persist changes and clear the tracker
+        /// </summary>
+        protected void Finish( )
+        {
+            _dbContext.SaveChanges();
+            _dbContext.ChangeTracker.Clear();
+
         }
     }
 }

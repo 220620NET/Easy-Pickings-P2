@@ -14,41 +14,41 @@ namespace DataAccess
 
         public List<Policy> GetAllPolicy()
         {
-            return _dbContext.policies.AsNoTracking().ToList();
+            return _dbContext.Policies.AsNoTracking().ToList();
         }
 
         public List<Policy> GetPolicyByID(int policyID)
         {
-            return _dbContext.policies.Where(p => p.policyID == policyID).ToList();
+            return _dbContext.Policies.Where(p => p.policyID == policyID).ToList();
         }
         
         public List<Policy> GetPolicyByInsurance(int userID)
         {
-            return _dbContext.policies.Where(p => p.insurance == userID).ToList();
+            return _dbContext.Policies.Where(p => p.insurance == userID).ToList();
         }
 
     
         public List<Policy> GetPolicyBycoverage(string coverage)
         {
-            return _dbContext.policies.Where(p => p.coverage == coverage).ToList();
+            return _dbContext.Policies.Where(p => p.coverage == coverage).ToList();
         }
    
     public Policy CreatePolicy(Policy policy)
         { 
-            _dbContext.policies.Add(policy);
+            _dbContext.Policies.Add(policy);
             Finish();
             return policy ?? throw new NotImplementedException();
         }
         public Policy DeletePolicy(int policyID)
         {
-            Policy policyToDelete =_dbContext.policies.FirstOrDefault(policy=>policy.policyID==policyID)??throw new NotImplementedException();
-            _dbContext.policies.Remove(policyToDelete);
+            Policy policyToDelete =_dbContext.Policies.FirstOrDefault(policy=>policy.policyID==policyID)??throw new NotImplementedException();
+            _dbContext.Policies.Remove(policyToDelete);
             Finish();
             return policyToDelete ?? throw new NotImplementedException();
         }
          public Policy UpdatePolicy(Policy policy)
         {
-            _dbContext.policies.Update(policy);
+            _dbContext.Policies.Update(policy);
             Finish();
             return policy ?? throw new NotImplementedException();
         }

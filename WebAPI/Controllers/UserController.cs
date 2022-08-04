@@ -50,7 +50,7 @@ public class UserController
     {
         try
         {
-            return Results.Accepted("/user/delete", _service.DeleteUser(userID));
+            return Results.Accepted("/delete/user", _service.DeleteUser(userID));
         }
         catch (NotImplementedException)
         {

@@ -5,14 +5,14 @@ namespace NewModels
     public class Contact
     {
         [Key]public int contactID { get; set; }
-        [Required]public bool POorStreet { get; set; }
-        [Required]public int PONumber { get; set; }
-        [Required]public int streetNumber { get; set; }
-        [Required] public string streetName { get; set; } = null!;
-        [Required]public string cityState { get; set; }=null!;
+        [Required]public bool PO_or_street { get; set; }
+        [Required]public int PO_number { get; set; }
+        [Required]public int street_number { get; set; }
+        [Required] public string street_name { get; set; }
+        [Required]public string city_state { get; set; }
         [Required]public int zipcode { get; set; }
         [ForeignKey("User")] public int userID { get; set; }
-        public int phone { get; set; }
+        public long phone { get; set; }
         public string email { get; set; } = null!;
     }
 }

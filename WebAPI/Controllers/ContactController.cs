@@ -23,14 +23,19 @@ public class ContactController
         }
     }
 
-   public Contact CreateContactInfo(Contact contact)
+   public IResult CreateContactInfo(Contact contact)
    {
-       return _service.CreateContactInfo(contact);
+       return Results.Accepted("/submit/contact",_service.CreateContactInfo(contact));
    }
 
 public Contact UpdateContactInfo(Contact contact)
    {
         return _service.UpdateContactInfo(contact);
+   }
+
+public Contact DeleteContactInfo(int contactID)
+   {
+        return _service.DeleteContactInfo(contactID);
    }
 
     public IResult GetContactInfoById(int contactID)

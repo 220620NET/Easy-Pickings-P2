@@ -61,10 +61,10 @@ app.MapPut("/reset", (User update, AuthController controller) => controller.Rese
 /*
  *      UserController End Points
 */
+app.MapDelete("/delete/user", (int userID, UserController controller) => controller.DeleteUser(userID));
 app.MapGet("/user", (UserController controller) => controller.GetAllUsers());
 app.MapGet("/user/ID/{userID}", (int userID, UserController controller) => controller.GetUserById(userID));
 app.MapGet("/user/username/{username}", (string username, UserController controller) => controller.GetUserByName(username));
-app.MapDelete("/user/delete", (int userID, UserController controller) => controller.DeleteUser(userID));
 
 
 /*
@@ -80,13 +80,13 @@ app.MapGet("/ticket/patient/{ID}", (int ID, TicketController controller) => cont
 /*
  *      PolicyController End Points
  */
+app.MapPost("/submit/policy", (Policy newPolicy, PolicyController controller) => controller.CreatePolicy(newPolicy));
+app.MapPut("/update/policy", (Policy policy, PolicyController controller) => controller.UpdatePolicy(policy));
+app.MapDelete("/delete/policy", (int ID, PolicyController controller) => controller.DeletePolicy(ID));
 app.MapGet("/policy", (PolicyController controller) =>controller.GetAllPolicy());
 app.MapGet("/policy/ID/{ID}", (int policyID, PolicyController controller) => controller.GetPolicyByID(policyID));
 app.MapGet("/policy/insurance/{insurance}", (int insurance, PolicyController controller) => controller.GetPolicyByInsurance(insurance));
 app.MapGet("/policy/coverage/{coverage}", (string coverage, PolicyController controller) => controller.GetPolicyBycoverage(coverage));
-app.MapPost("/submit/policy", (NewModels.Policy newPolicy, PolicyController controller) => controller.CreatePolicy(newPolicy));
-app.MapPut("/update/policy", (NewModels.Policy policy, PolicyController controller) => controller.UpdatePolicy(policy));
-app.MapDelete("/delete/policy", (int ID, PolicyController controller) => controller.DeletePolicy(ID));
 
 /*
  *      ClaimsController End Points
@@ -101,5 +101,12 @@ app.MapDelete("/delete/policy", (int ID, PolicyController controller) => control
 /*
  *      ContactController End Points
  */
+app.MapPost("/submit/contact", (Contact newContact, ContactController controller) => controller.CreateContactInfo(newContact));
+app.MapPut("/update/contact", (Contact contact, ContactController controller) => controller.UpdateContactInfo(contact));
+app.MapDelete("/delete/contact", (int contactID, ContactController controller) => controller.DeleteContactInfo(contactID));
+app.MapGet("/contactinfo", (ContactController controller) =>controller.GetAllContactInfo());
+app.MapGet("/contact/ID/{contactID}", (int contactID, ContactController controller) => controller.GetContactInfoById(contactID));
+app.MapGet("/contact/email/{email}", (string email, ContactController controller) => controller.GetContactInfoByEmail(email));
+app.MapGet("/contact/phone/{phone}", (int phone, ContactController controller) => controller.GetContactInfoByPhone(phone));
 
 app.Run();

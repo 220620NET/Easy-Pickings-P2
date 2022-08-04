@@ -10,14 +10,16 @@ namespace DataAccess
         {
             _dbContext = dbContext;
         }
+        
         /// <summary>
-        /// Will create a new entry for a Ticket in the tickets table in the database
+        /// 
         /// </summary>
-        /// <param name="ticket">New ticket</param>
-        /// <returns>New ticket</returns> 
+        /// <param name="ticket"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
         public Ticket CreateTicket(Ticket ticket)
         { 
-            _dbContext.tickets.Add(ticket);
+            _dbContext.Tickets.Add(ticket);
             Finish();
             return ticket ?? throw new NotImplementedException();
         }
@@ -29,8 +31,8 @@ namespace DataAccess
         /// <returns>Ticket that was deleted</returns> 
         public Ticket DeleteTicket(int ticketID)
         {
-            Ticket ticketToDelete =_dbContext.tickets.FirstOrDefault(ticket=>ticket.ticketID==ticketID)??throw new NotImplementedException();
-            _dbContext.tickets.Remove(ticketToDelete);
+            Ticket ticketToDelete =_dbContext.Tickets.FirstOrDefault(ticket=>ticket.ticketID==ticketID)??throw new NotImplementedException();
+            _dbContext.Tickets.Remove(ticketToDelete);
             Finish();
             return ticketToDelete ?? throw new NotImplementedException();
         }
@@ -41,7 +43,7 @@ namespace DataAccess
         /// <returns>All Tickets</returns>
         public List<Ticket> GetAllTickets()
         {
-            return _dbContext.tickets.AsNoTracking().ToList() ??  new List<Ticket>();
+            return _dbContext.Tickets.AsNoTracking().ToList() ??  new List<Ticket>();
         }
 
         /// <summary>
@@ -51,7 +53,7 @@ namespace DataAccess
         /// <returns>The specific ticket by claim</returns>
         public List<Ticket> GetTicketByClaim(int claimID)
         {
-            return _dbContext.tickets.AsNoTracking().Where(p => p.claimID == claimID).ToList() ?? throw new NotImplementedException();
+            return _dbContext.Tickets.AsNoTracking().Where(p => p.claimID == claimID).ToList() ?? throw new NotImplementedException();
         }
         /// <summary>
         /// Will grab all tickets related to a patient
@@ -60,7 +62,7 @@ namespace DataAccess
         /// <returns>List of all tickets from a particular patient</returns>
         public List<Ticket> GetTicketByPatient(int patientID)
         {
-            return _dbContext.tickets.AsNoTracking().Where(p => p.userID == patientID).ToList() ?? throw new NotImplementedException();
+            return _dbContext.Tickets.AsNoTracking().Where(p => p.userID == patientID).ToList() ?? throw new NotImplementedException();
         }
 
         /// <summary>
@@ -70,7 +72,7 @@ namespace DataAccess
         /// <returns>Updated ticket</returns>
         public Ticket UpdateTicket(Ticket ticket)
         {
-            _dbContext.tickets.Update(ticket);
+            _dbContext.Tickets.Update(ticket);
             Finish();
             return ticket ?? throw new NotImplementedException();
         }
