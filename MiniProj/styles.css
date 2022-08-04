@@ -1,3 +1,4 @@
+
 .dropbtn {
 background-color: #04AA6D;
 color: white;
@@ -38,24 +39,10 @@ display: block;
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
-:root,
-:root.light {
-    --background-color: #fff;
-    --color: rgb(0, 0, 0);
-}
 
-:root.dark {
-    --background-color: #381e1e;
-    --color: #2db61b; 
-}
-
-:root.red{
-    --background-color: crimson;
-    --color: black;
-}
 .navbar{
-    background-color: var(--background-color);
-    color: var(--color);
+    background-color: var(--nav-background-color);
+    color: var(--nav-color);
 }
 body {
     margin: 0;
