@@ -1,4 +1,6 @@
+
 const setTheme = theme => document.documentElement.className = theme;
+
 function findTrail(a,b){
     console.log('HI');
     let elem = document.getElementById('post-code');
