@@ -17,7 +17,7 @@ namespace DataAccess
       /// <returns> All Policy </returns>
         public List<Policy> GetAllPolicy()
         {
-            return _dbContext.policies.AsNoTracking().ToList();
+            return _dbContext.Policies.AsNoTracking().ToList();
         }
          /// <summary>
          /// will grab all policy related to the ID
@@ -26,7 +26,7 @@ namespace DataAccess
          /// <returns>List of aall policy from a particular ID</returns>
         public List<Policy> GetPolicyByID(int policyID)
         {
-            return _dbContext.policies.Where(p => p.policyID == policyID).ToList();
+            return _dbContext.Policies.Where(p => p.policyID == policyID).ToList();
         }
         /// <summary>
         /// Will grab all policy related to the insurance
@@ -35,7 +35,7 @@ namespace DataAccess
         /// <returns>The specific policy by insurance</returns>
         public List<Policy> GetPolicyByInsurance(int userID)
         {
-            return _dbContext.policies.Where(p => p.insurance == userID).ToList();
+            return _dbContext.Policies.Where(p => p.insurance == userID).ToList();
         }
         /// <summary>
         /// Will grab all policy related to the coverage
@@ -44,7 +44,7 @@ namespace DataAccess
         /// <returns>List of all coverage from a specific coverage</returns>
         public List<Policy> GetPolicyBycoverage(string coverage)
         {
-            return _dbContext.policies.Where(p => p.coverage == coverage).ToList();
+            return _dbContext.Policies.Where(p => p.coverage == coverage).ToList();
         }
          /// <summary>
          /// Will create a new entry for a Policy in the policy table in the database
@@ -53,7 +53,7 @@ namespace DataAccess
          /// <returns>new policy</returns>
     public Policy CreatePolicy(Policy policy)
         { 
-            _dbContext.policies.Add(policy);
+            _dbContext.Policies.Add(policy);
             Finish();
             return policy ?? throw new NotImplementedException();
         }
@@ -64,8 +64,8 @@ namespace DataAccess
         /// <returns>Policy deleted</returns>
         public Policy DeletePolicy(int policyID)
         {
-            Policy policyToDelete =_dbContext.policies.FirstOrDefault(policy=>policy.policyID==policyID)??throw new NotImplementedException();
-            _dbContext.policies.Remove(policyToDelete);
+            Policy policyToDelete =_dbContext.Policies.FirstOrDefault(policy=>policy.policyID==policyID)??throw new NotImplementedException();
+            _dbContext.Policies.Remove(policyToDelete);
             Finish();
             return policyToDelete ?? throw new NotImplementedException();
         }
@@ -76,7 +76,7 @@ namespace DataAccess
         /// <returns>updated policy</returns>
          public Policy UpdatePolicy(Policy policy)
         {
-            _dbContext.policies.Update(policy);
+            _dbContext.Policies.Update(policy);
             Finish();
             return policy ?? throw new NotImplementedException();
         }

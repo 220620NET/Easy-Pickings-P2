@@ -14,7 +14,7 @@ namespace DataAccess
 
         public Contact CreateContactInfo(Contact contact)
         {
-            _dbContext.contact.Add(contact);
+            _dbContext.Contacts.Add(contact);
             Finish();
             return contact ?? throw new NotImplementedException();
         }
@@ -22,22 +22,22 @@ namespace DataAccess
 
         public Contact DeleteContactInfo(int contactID)
         {
-            Contact contactToDelete =_dbContext.contact.FirstOrDefault(contact=>contact.contactID==contactID)??throw new NotImplementedException();
-            _dbContext.contact.Remove(contactToDelete);
+            Contact contactToDelete =_dbContext.Contacts.FirstOrDefault(contact=>contact.contactID==contactID)??throw new NotImplementedException();
+            _dbContext.Contacts.Remove(contactToDelete);
             Finish();
             return contactToDelete ?? throw new NotImplementedException();
         }
         public List<Contact> GetAllContactInfo()
         {
 
-            return _dbContext.contact.ToList();
+            return _dbContext.Contacts.ToList();
 
         }
 
         public Contact GetContactInfoByEmail(string email)
         {
 
-            Contact? contact = _dbContext.contact.FirstOrDefault(contact => contact.email == email);
+            Contact? contact = _dbContext.Contacts.FirstOrDefault(contact => contact.email == email);
 
             if (contact != null) return contact;
             throw new NotImplementedException();
@@ -46,8 +46,7 @@ namespace DataAccess
         public Contact GetContactInfoById(int contactID)
         {
 
-            Contact? contact = _dbContext.contact.FirstOrDefault(contact => contact.contactID == contactID);
-
+            Contact? contact = _dbContext.Contacts.FirstOrDefault(contact => contact.contactID == contactID);
             if (contact != null) return contact;
             throw new NotImplementedException();
         }
@@ -55,7 +54,7 @@ namespace DataAccess
         public Contact GetContactInfoByPhone(int phone)
         {
 
-            Contact? contact = _dbContext.contact.FirstOrDefault(contact => contact.phone == phone);
+            Contact? contact = _dbContext.Contacts.FirstOrDefault(contact => contact.phone == phone);
 
             if (contact != null) return contact;
             throw new NotImplementedException();
@@ -64,7 +63,7 @@ namespace DataAccess
         public Contact UpdateContactInfo(Contact contact)
         {
 
-            _dbContext.contact.Update(contact);
+            _dbContext.Contacts.Update(contact);
             Finish();
             return contact ?? throw new NotImplementedException();
         }

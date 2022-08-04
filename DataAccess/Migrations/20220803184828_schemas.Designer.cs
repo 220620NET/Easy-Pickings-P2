@@ -12,13 +12,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(InsuranceDbContext))]
-    [Migration("20220729190953_trial")]
-    partial class trial
+    [Migration("20220803184828_schemas")]
+    partial class schemas
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("P2")
                 .HasAnnotation("ProductVersion", "6.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
@@ -51,7 +52,13 @@ namespace DataAccess.Migrations
 
                     b.HasKey("claimID");
 
-                    b.ToTable("claims");
+                    b.HasIndex("doctorID");
+
+                    b.HasIndex("policyID");
+
+                    b.HasIndex("userID");
+
+                    b.ToTable("Claims", "P2");
                 });
 
             modelBuilder.Entity("NewModels.Contact", b =>
@@ -62,13 +69,13 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("contactID"), 1L, 1);
 
-                    b.Property<int>("PONumber")
+                    b.Property<int>("PO_number")
                         .HasColumnType("int");
 
-                    b.Property<bool>("POorStreet")
+                    b.Property<bool>("PO_or_street")
                         .HasColumnType("bit");
 
-                    b.Property<string>("cityState")
+                    b.Property<string>("city_state")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -76,14 +83,17 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("phone")
-                        .HasColumnType("int");
+                    b.Property<long>("phone")
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("streetName")
+                    b.Property<string>("street_name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("streetNumber")
+                    b.Property<int>("street_number")
+                        .HasColumnType("int");
+
+                    b.Property<int>("userID")
                         .HasColumnType("int");
 
                     b.Property<int>("zipcode")
@@ -91,7 +101,9 @@ namespace DataAccess.Migrations
 
                     b.HasKey("contactID");
 
-                    b.ToTable("contacts");
+                    b.HasIndex("userID");
+
+                    b.ToTable("Contacts", "P2");
                 });
 
             modelBuilder.Entity("NewModels.Policy", b =>
@@ -111,7 +123,9 @@ namespace DataAccess.Migrations
 
                     b.HasKey("policyID");
 
-                    b.ToTable("policies");
+                    b.HasIndex("insurance");
+
+                    b.ToTable("Policies", "P2");
                 });
 
             modelBuilder.Entity("NewModels.Ticket", b =>
@@ -137,7 +151,13 @@ namespace DataAccess.Migrations
 
                     b.HasKey("ticketID");
 
-                    b.ToTable("tickets");
+                    b.HasIndex("claimID");
+
+                    b.HasIndex("policyID");
+
+                    b.HasIndex("userID");
+
+                    b.ToTable("Tickets", "P2");
                 });
 
             modelBuilder.Entity("NewModels.User", b =>
@@ -151,15 +171,15 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("DoB")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("firstName")
+                    b.Property<string>("first_name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("lastName")
+                    b.Property<string>("last_name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("middleInit")
+                    b.Property<string>("middle_init")
                         .IsRequired()
                         .HasColumnType("nvarchar(1)");
 
@@ -177,7 +197,67 @@ namespace DataAccess.Migrations
 
                     b.HasKey("userID");
 
-                    b.ToTable("users");
+                    b.ToTable("Users", "P2");
+                });
+
+            modelBuilder.Entity("NewModels.Claim", b =>
+                {
+                    b.HasOne("NewModels.User", null)
+                        .WithMany()
+                        .HasForeignKey("doctorID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("NewModels.Policy", null)
+                        .WithMany()
+                        .HasForeignKey("policyID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("NewModels.User", null)
+                        .WithMany()
+                        .HasForeignKey("userID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("NewModels.Contact", b =>
+                {
+                    b.HasOne("NewModels.User", null)
+                        .WithMany()
+                        .HasForeignKey("userID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("NewModels.Policy", b =>
+                {
+                    b.HasOne("NewModels.User", null)
+                        .WithMany()
+                        .HasForeignKey("insurance")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("NewModels.Ticket", b =>
+                {
+                    b.HasOne("NewModels.Claim", null)
+                        .WithMany()
+                        .HasForeignKey("claimID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("NewModels.Policy", null)
+                        .WithMany()
+                        .HasForeignKey("policyID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("NewModels.User", null)
+                        .WithMany()
+                        .HasForeignKey("userID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

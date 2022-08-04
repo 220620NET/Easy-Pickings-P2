@@ -19,7 +19,7 @@ public class UserRepo : IUserRepo
     /// <returns>The new user</returns>
     public User CreateUser(User newUser)
     {
-        _dbContext.users.Add(newUser);
+        _dbContext.Users.Add(newUser);
         _dbContext.SaveChanges();
         return newUser;
     }
@@ -29,7 +29,7 @@ public class UserRepo : IUserRepo
     /// <returns>Users in the database</returns>
     public List<User> GetAllUsers()
     {
-        return _dbContext.users.ToList();
+        return _dbContext.Users.ToList();
     }
 
     /// <summary>
@@ -40,7 +40,7 @@ public class UserRepo : IUserRepo
     /// <exception cref="NotImplementedException">There is no user with that ID</exception>
     public User GetUserById(int userID)
     {
-        User? foundUser = _dbContext.users.FirstOrDefault(user => user.userID == userID);
+        User? foundUser = _dbContext.Users.FirstOrDefault(user => user.userID == userID);
         if(foundUser != null) return foundUser;
         throw new NotImplementedException();
     }
@@ -59,7 +59,7 @@ public class UserRepo : IUserRepo
         }
         else
         {
-            User? foundUser = _dbContext.users.FirstOrDefault(user => user.username == username);
+            User? foundUser = _dbContext.Users.FirstOrDefault(user => user.username == username);
             if (foundUser != null) return foundUser;
         }
         throw new NotImplementedException();
@@ -74,17 +74,17 @@ public class UserRepo : IUserRepo
 
     public User ResetPassword(User user)
     {
-        _dbContext.users.Update(user);
+        _dbContext.Users.Update(user);
         _dbContext.SaveChanges();
         return user; 
         throw new NotImplementedException();
     }
     public User DeleteUser(int userID)
     {
-        User? userToDelete = _dbContext.users.FirstOrDefault(user => user.userID == userID);
+        User? userToDelete = _dbContext.Users.FirstOrDefault(user => user.userID == userID);
         if (userToDelete != null)
         {
-            _dbContext.users.Remove(userToDelete);
+            _dbContext.Users.Remove(userToDelete);
         }
         else
         {

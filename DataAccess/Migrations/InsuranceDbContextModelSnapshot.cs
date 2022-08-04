@@ -17,7 +17,7 @@ namespace DataAccess.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasDefaultSchema("dbo")
+                .HasDefaultSchema("P2")
                 .HasAnnotation("ProductVersion", "6.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
@@ -56,7 +56,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("userID");
 
-                    b.ToTable("claims", "dbo");
+                    b.ToTable("Claims", "P2");
                 });
 
             modelBuilder.Entity("NewModels.Contact", b =>
@@ -101,7 +101,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("userID");
 
-                    b.ToTable("contact", "dbo");
+                    b.ToTable("Contacts", "P2");
                 });
 
             modelBuilder.Entity("NewModels.Policy", b =>
@@ -123,7 +123,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("insurance");
 
-                    b.ToTable("policies", "dbo");
+                    b.ToTable("Policies", "P2");
                 });
 
             modelBuilder.Entity("NewModels.Ticket", b =>
@@ -155,7 +155,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("userID");
 
-                    b.ToTable("tickets", "dbo");
+                    b.ToTable("Tickets", "P2");
                 });
 
             modelBuilder.Entity("NewModels.User", b =>
@@ -195,7 +195,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("userID");
 
-                    b.ToTable("users", "dbo");
+                    b.ToTable("Users", "P2");
                 });
 
             modelBuilder.Entity("NewModels.Claim", b =>
@@ -203,19 +203,19 @@ namespace DataAccess.Migrations
                     b.HasOne("NewModels.User", null)
                         .WithMany()
                         .HasForeignKey("doctorID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("NewModels.Policy", null)
                         .WithMany()
                         .HasForeignKey("policyID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("NewModels.User", null)
                         .WithMany()
                         .HasForeignKey("userID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });
 
@@ -224,7 +224,7 @@ namespace DataAccess.Migrations
                     b.HasOne("NewModels.User", null)
                         .WithMany()
                         .HasForeignKey("userID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });
 
@@ -233,7 +233,7 @@ namespace DataAccess.Migrations
                     b.HasOne("NewModels.User", null)
                         .WithMany()
                         .HasForeignKey("insurance")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });
 
@@ -242,19 +242,19 @@ namespace DataAccess.Migrations
                     b.HasOne("NewModels.Claim", null)
                         .WithMany()
                         .HasForeignKey("claimID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("NewModels.Policy", null)
                         .WithMany()
                         .HasForeignKey("policyID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("NewModels.User", null)
                         .WithMany()
                         .HasForeignKey("userID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

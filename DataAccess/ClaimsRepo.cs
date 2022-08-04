@@ -18,7 +18,7 @@ public class ClaimsRepo : IClaimRepo
     public Claim CreateClaims(Claim claim)
     {   
         // EF core can tell which class it is, so it is unnecessary to specify which dbSet you want this object to be added
-        _context.Add(claim);
+        _context.Claims.Add(claim);
         Finish();
         return claim; 
     }
@@ -29,10 +29,10 @@ public class ClaimsRepo : IClaimRepo
     /// <returns>True if deleted false if not</returns>
     public bool DeleteClaims(int Id)
     {
-        Claim? ClaimToDelete = _context.claims.AsNoTracking().FirstOrDefault(c => c.claimID == Id);
+        Claim? ClaimToDelete = _context.Claims.AsNoTracking().FirstOrDefault(c => c.claimID == Id);
         if(ClaimToDelete != null)
         {
-            _context.claims.Remove(ClaimToDelete);
+            _context.Claims.Remove(ClaimToDelete);
             Finish();
             return true;
         }
@@ -44,7 +44,7 @@ public class ClaimsRepo : IClaimRepo
     /// <returns>Will return a new list if the database is empty other wise will return the entire table as a list</returns>
     public List<Claim> GetAllClaims()
     {
-    return _context.claims.AsNoTracking().ToList()??new List<Claim>();
+    return _context.Claims.AsNoTracking().ToList()??new List<Claim>();
     }
     /// <summary>
     /// will retreive a claim based on the claim ID
@@ -53,7 +53,7 @@ public class ClaimsRepo : IClaimRepo
     /// <returns>The requested claim</returns> 
     public Claim GetClaimById(int ID)
     {
-    return _context.claims.AsNoTracking().FirstOrDefault(c => c.claimID == ID)??throw new NotImplementedException();
+    return _context.Claims.AsNoTracking().FirstOrDefault(c => c.claimID == ID)??throw new NotImplementedException();
     }
     /// <summary>
     /// will retreive all claims based on a particular status
@@ -62,7 +62,7 @@ public class ClaimsRepo : IClaimRepo
     /// <returns>A list of all claims with a specific status</returns> 
     public List<Claim> GetClaimByStatus(string status)
     {
-    return _context.claims.AsNoTracking().Where(c => c.status == status).ToList()??throw new NotImplementedException();
+    return _context.Claims.AsNoTracking().Where(c => c.status == status).ToList()??throw new NotImplementedException();
     }
     /// <summary>
     /// will retreive all claims based on a patient's id
@@ -71,7 +71,7 @@ public class ClaimsRepo : IClaimRepo
     /// <returns>All claims made by the patient</returns> 
     public List<Claim> GetUserByPatientID(int ID)
     {
-    return _context.claims.AsNoTracking().Where(p => p.userID == ID).ToList()??throw new NotImplementedException(); 
+    return _context.Claims.AsNoTracking().Where(p => p.userID == ID).ToList()??throw new NotImplementedException(); 
     }
     /// <summary>
     /// This will update a claim based on provided input
@@ -81,7 +81,7 @@ public class ClaimsRepo : IClaimRepo
     public Claim UpdateClaims(Claim claim)
     {
         //update the claim
-        _context.claims.Update(claim);
+        _context.Claims.Update(claim);
         Finish();
         return claim; 
     }
