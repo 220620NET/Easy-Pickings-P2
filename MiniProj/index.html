@@ -11,10 +11,20 @@
 
 <body>
     <header>
-        <nav class="navbar bg-light">
+
+        <nav class="navbar">
             <div class="container-fluid">
                 <span class="navbar-brand mb-0 h1">Trail Finder</span>
             </div>
+            <div class="dropdown">
+                <button class="dropbtn">Themes</button>
+                <div class="dropdown-content">
+                    <a><button class="theme-btn light" onclick="setTheme('light')">Light Mode</button></a>
+                    <a><button class="theme-btn dark" onclick="setTheme('dark')">Dark Mode</button></a>
+                    <a><button class="theme-btn red" onclick="setTheme('red')">Red</button></a>
+                </div>
+            </div>
+
         </nav>
     </header>
 
