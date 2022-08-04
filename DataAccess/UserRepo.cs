@@ -7,7 +7,10 @@ namespace DataAccess;
 public class UserRepo : IUserRepo
 {
     private readonly InsuranceDbContext _context;
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="context"></param>
     public UserRepo(InsuranceDbContext context)
     {
         _context = context;
