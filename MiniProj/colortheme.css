@@ -1,0 +1,44 @@
+:root,
+:root.light {
+    --background-color: lightgrey;
+    --color: rgb(0, 0, 0);
+    --nav-background-color: grey;
+    --nav-color: black;
+}
+
+:root.dark {
+    --nav-background-color:black;
+    --nav-color:white;
+    --background-color: #381e1e;
+    --color: #2db61b; 
+}
+
+:root.red{
+    --background-color: rgb(81, 5, 20);
+    --color: grey;
+    --nav-background-color: rgb(170, 82, 82);
+    --nav-color: grey;
+}
+
+:root.spirit{
+    --background-color: rgb(47, 24, 9);
+    --color: rgb(250, 20, 20);
+    --nav-background-color: rgb(11, 43, 2);
+    --nav-color: rgb(243, 180, 7);
+}
+
+:root.earth{
+    --background-color: darkblue;
+    --color: rgb(34, 227, 34);
+    --nav-background-color: skyblue;
+    --nav-color: yellow;
+}
+
+:root.fourth{
+    --background-color: red;
+    --background-image: url("https://en.wikipedia.org/wiki/Flag_of_the_United_States#/media/File:Flag_of_the_United_States.svg");
+    --color: White;
+    
+    --nav-background-color: Blue;
+    --nav-color: White;
+}
