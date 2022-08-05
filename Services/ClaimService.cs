@@ -43,7 +43,6 @@ public class ClaimService
        return _repo.GetClaimByPatientID(ID);
    }
 
-   // public List<Claim> GetClaimByStatus(string status);
 
    public List<Claim> GetClaimByStatus(string status)
    {
