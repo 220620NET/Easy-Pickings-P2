@@ -52,7 +52,7 @@ jobs:
     
     # Make sure all tests pass
     - name: Test
-      run: dotnet test --verbosity normal --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+      run: dotnet test ./Tests --verbosity normal --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
     
     # Try building the app
     - name: Build and analyze
