@@ -1,4 +1,4 @@
-﻿
+﻿using Microsoft.EntityFrameworkCore;
 using CustomExceptions;
 using Microsoft.Data.SqlClient;
 using NewModels;
@@ -26,7 +26,7 @@ public class UserRepo : IUserRepo
     public User CreateUser(User newUser)
     {
         _context.Users.Add(newUser);
-        _context.SaveChanges();
+        Finish();
         return newUser;
     }
     /// <summary>
@@ -46,7 +46,7 @@ public class UserRepo : IUserRepo
     /// <exception cref="NotImplementedException">There is no user with that ID</exception>
     public User GetUserById(int userID)
     {
-        User? foundUser = _context.Users.FirstOrDefault(user => user.userID == userID);
+        User? foundUser = _context.Users.AsNoTracking().FirstOrDefault(user => user.userID == userID);
         if(foundUser != null) return foundUser;
         throw new NotImplementedException();
     }
@@ -60,12 +60,20 @@ public class UserRepo : IUserRepo
     public User GetUserByName(string username, bool registering)
     {
         if (registering)
-        {
+        { 
+            List<User> all = GetAllUsers();
+            foreach(User u in all)
+            {
+                if (username == u.username)
+                {
+                    throw new NotImplementedException();
+                }
+            }
             return new User();
         }
         else
         {
-            User? foundUser = _context.Users.FirstOrDefault(user => user.username == username);
+            User? foundUser = _context.Users.AsNoTracking().FirstOrDefault(user => user.username == username);
             if (foundUser != null) return foundUser;
         }
         throw new NotImplementedException();
@@ -81,22 +89,19 @@ public class UserRepo : IUserRepo
     public User ResetPassword(User user)
     {
         _context.Users.Update(user);
-        _context.SaveChanges();
-        return user; 
-        throw new NotImplementedException();
+        Finish();
+        return user??throw new NotImplementedException();        
     }
     public User DeleteUser(int userID)
     {
-        User? userToDelete = _context.Users.FirstOrDefault(user => user.userID == userID);
-        if (userToDelete != null)
-        {
-            _context.Users.Remove(userToDelete);
-        }
-        else
-        {
-            throw new Exception();
-        }
+        User? userToDelete = _context.Users.AsNoTracking().FirstOrDefault(user => user.userID == userID) ?? throw new NotImplementedException();
+        _context.Users.Remove(userToDelete);
+        Finish();
+        return userToDelete;
+    }
+    protected void Finish()
+    {
         _context.SaveChanges();
-        return userToDelete ?? throw new NotImplementedException();
+        _context.ChangeTracker.Clear();
     }
 }

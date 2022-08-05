@@ -34,7 +34,7 @@ namespace DataAccess
             Ticket ticketToDelete =_dbContext.Tickets.FirstOrDefault(ticket=>ticket.ticketID==ticketID)??throw new NotImplementedException();
             _dbContext.Tickets.Remove(ticketToDelete);
             Finish();
-            return ticketToDelete ?? throw new NotImplementedException();
+            return ticketToDelete;
         }
 
         /// <summary>

@@ -8,9 +8,9 @@ namespace DataAccess;
           public List<Claim> GetAllClaims();
           public Claim CreateClaims(Claim claim);
           public Claim UpdateClaims(Claim claim);
-          public bool DeleteClaims(int ID);
+          public Claim DeleteClaims(int ID);
           public Claim GetClaimById(int ID);
-          public List<Claim> GetUserByPatientID(int ID);
+          public List<Claim> GetClaimByPatientID(int ID);
           public List<Claim> GetClaimByStatus(string status);
      }
 

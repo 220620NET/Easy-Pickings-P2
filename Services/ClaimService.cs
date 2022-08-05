@@ -27,7 +27,7 @@ public class ClaimService
         return _repo.UpdateClaims(claim);
    }
 
-   public bool DeleteClaims(int ID)
+   public Claim DeleteClaims(int ID)
    {
         return _repo.DeleteClaims(ID);
    }
@@ -38,9 +38,9 @@ public class ClaimService
    }
 
 
-   public List<Claim> GetUserByPatientID(int ID)
+   public List<Claim> GetClaimByPatientID(int ID)
    {
-       return _repo.GetUserByPatientID(ID);
+       return _repo.GetClaimByPatientID(ID);
    }
 
    // public List<Claim> GetClaimByStatus(string status);

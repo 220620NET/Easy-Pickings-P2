@@ -22,11 +22,10 @@ namespace WebAPI.Controllers;
         public IResult GetPolicyByID(int policyID)
         {
             try
-            {
-                List<Policy> policy = _Services.GetPolicyByID(policyID);
-                return Results.Accepted("/policy/ID/{ID}", policy);
+            { 
+                return Results.Accepted("/policy/ID/{ID}", _Services.GetPolicyByID(policyID));
             }
-            catch (InputInvalidException)
+            catch (NotImplementedException)
             {
                 return Results.BadRequest("That policy hasn't been made yet");
             }
@@ -40,11 +39,10 @@ namespace WebAPI.Controllers;
         public IResult GetPolicyByInsurance(int insurance)
         {
             try
-            {
-                List<Policy> policy = _Services.GetPolicyByInsurance(insurance);
-                return Results.Accepted("/policy/insurance/{insurance}", policy);
+            { 
+                return Results.Accepted("/policy/insurance/{insurance}", _Services.GetPolicyByInsurance(insurance));
             }
-            catch (InputInvalidException)
+            catch (NotImplementedException)
             {
                 return Results.BadRequest("That user hasn't made any policies.");
             }
@@ -58,11 +56,10 @@ namespace WebAPI.Controllers;
         public IResult GetPolicyBycoverage(string coverage)
         {
             try
-            {
-                List<Policy> policy = _Services.GetPolicyBycoverage(coverage);
-                return Results.Accepted("/policy/coverage/{coverage}", policy);
+            { 
+                return Results.Accepted("/policy/coverage/{coverage}", _Services.GetPolicyBycoverage(coverage));
             }
-            catch (InputInvalidException)
+            catch (NotImplementedException)
             {
                 return Results.BadRequest("That user hasn't made any policies.");
             }
@@ -75,11 +72,10 @@ namespace WebAPI.Controllers;
         public IResult GetAllPolicy()
         {
             try
-            {
-                List<Policy> all = _Services.GetAllPolicy();
-                return Results.Accepted("/policy", all);
+            { 
+                return Results.Accepted("/policy", _Services.GetAllPolicy());
             }
-            catch (InputInvalidException )
+            catch (NotImplementedException )
             {
                 return Results.BadRequest("There are no policies");
             }
