@@ -47,6 +47,7 @@
 
 :root.fourth{
     --form-back: red;
+    --background-color: red;
     --background-image: url("https://cdn.britannica.com/92/152292-050-EAF28A45/Bald-eagle.jpg");
     --color: black;
     --nav-background-color: Blue;
