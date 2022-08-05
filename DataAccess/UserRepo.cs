@@ -59,24 +59,34 @@ public class UserRepo : IUserRepo
     /// <exception cref="NotImplementedException">There is no user with that username</exception>
     public User GetUserByName(string username, bool registering)
     {
-        if (registering)
-        { 
-            List<User> all = GetAllUsers();
-            foreach(User u in all)
-            {
-                if (username == u.username)
-                {
-                    throw new NotImplementedException();
-                }
-            }
-            return new User();
-        }
-        else
+        try
         {
-            User? foundUser = _context.Users.AsNoTracking().FirstOrDefault(user => user.username == username);
-            if (foundUser != null) return foundUser;
+            if (registering)
+            { 
+                List<User> all = GetAllUsers();
+                foreach(User u in all)
+                {
+                    if (username == u.username)
+                    {
+                        throw new NotImplementedException();
+                    }
+                }
+                return new User();
+            }
+            else
+            {
+                return _context.Users.AsNoTracking().FirstOrDefault(user => user.username == username)!;
+            }            
         }
-        throw new NotImplementedException();
+        catch (NullReferenceException)
+        {
+            throw new NullReferenceException();
+        }
+        catch (NotImplementedException)
+        {
+            throw new NotImplementedException();
+        }
+        
     }
 
     /// <summary>
