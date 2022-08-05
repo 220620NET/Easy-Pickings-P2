@@ -1,5 +1,13 @@
-
-const setTheme = theme => document.documentElement.className = theme;
+var y =new Audio("the_star_spangled_banner_64kb.mp3");
+const setTheme = theme =>{
+    document.documentElement.className = theme;
+    if(theme ==='fourth'){
+        y.play(); 
+    }else{
+        y.pause();
+        y.currentTime=0;
+    }
+};
 
 function findTrail(a,b){
     console.log('HI');
@@ -12,7 +20,7 @@ function findTrail(a,b){
             document.querySelector('#result-city').innerText = places['place name'];
             document.querySelector('#result-state').innerText=places['state abbreviation'];
             document.querySelector('#result-num').innerText = a;
-            document.querySelector('#result-name').innerText=b;
+            document.querySelector('#result-name').innerText=b; 
         })
     }
 }

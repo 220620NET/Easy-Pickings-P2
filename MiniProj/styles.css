@@ -2,8 +2,8 @@
 .dropbtn {
 background-color: #04AA6D;
 color: white;
-padding: 16px;
-font-size: 16px;
+padding: 8px; /* adjusting box on theme*/
+font-size: 16px; /* adjusting the size*/
 border: none;
 }
 
@@ -18,7 +18,7 @@ display: inline-block;
 display: none;
 position: absolute;
 background-color: #f1f1f1;
-min-width: 160px;
+min-width: 100px; /* changing the dropdown list */
 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 z-index: 1;
 }
@@ -26,7 +26,7 @@ z-index: 1;
 /* Links inside the dropdown */
 .dropdown-content a {
 color: black;
-padding: 12px 16px;
+padding: 12px 16px; /* set the thickness of padding area*/
 text-decoration: none;
 display: block;
 }
@@ -38,7 +38,7 @@ display: block;
 .dropdown:hover .dropdown-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.dropdown:hover .dropbtn {background-color: #965832;}
 
 .navbar{
     background-color: var(--nav-background-color);
@@ -46,6 +46,7 @@ display: block;
 }
 body {
     margin: 0;
+    background-image: var(--background-image);
     background-color: var(--background-color);
     color: var(--color);
     font-family: 'Inter', sans-serif
@@ -76,15 +77,9 @@ h1,h2,h3,h4,h5,h6 {
 .theme-btn {
     cursor: pointer;
     color: var(--color);
-    border:rgb(0, 0, 0)
-    
+    border: #00000;
 }
 
-.theme-btn img {
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-}
 
 
 .light .theme-btn.light {
@@ -97,7 +92,15 @@ h1,h2,h3,h4,h5,h6 {
 .red .theme-btn.red{
     display: none;
 }
-
+.spirit .theme-btn.spirit{
+    display: none;
+}
+.fourth .theme-btn.fourth{
+    display: none;
+}
+.earth .theme-btn.earth{
+    display:none;
+}
 footer {
     text-align: center;
     padding: 0.5rem 0;
@@ -113,4 +116,9 @@ footer p {
 footer a {
     text-decoration: none;
     color: inherit;
+}
+.form-control{
+    background-color: var(--form-back);
+    color: var(--form);
+    font-weight: bold;
 }
