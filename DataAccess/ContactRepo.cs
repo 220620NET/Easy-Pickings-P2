@@ -22,10 +22,10 @@ namespace DataAccess
 
         public Contact DeleteContactInfo(int contactID)
         {
-            Contact contactToDelete =_dbContext.Contacts.FirstOrDefault(contact=>contact.contactID==contactID)??throw new NotImplementedException();
+            Contact contactToDelete =_dbContext.Contacts.AsNoTracking().FirstOrDefault(contact=>contact.contactID==contactID)??throw new NotImplementedException();
             _dbContext.Contacts.Remove(contactToDelete);
             Finish();
-            return contactToDelete ?? throw new NotImplementedException();
+            return contactToDelete;
         }
         public List<Contact> GetAllContactInfo()
         {
@@ -37,32 +37,26 @@ namespace DataAccess
         public Contact GetContactInfoByEmail(string email)
         {
 
-            Contact? contact = _dbContext.Contacts.FirstOrDefault(contact => contact.email == email);
-
-            if (contact != null) return contact;
-            throw new NotImplementedException();
+            Contact? contact = _dbContext.Contacts.AsNoTracking().FirstOrDefault(contact => contact.email == email);
+            return contact?? throw new NotImplementedException();
         }
 
         public Contact GetContactInfoById(int contactID)
         {
 
-            Contact? contact = _dbContext.Contacts.FirstOrDefault(contact => contact.contactID == contactID);
-            if (contact != null) return contact;
-            throw new NotImplementedException();
+            Contact? contact = _dbContext.Contacts.AsNoTracking().FirstOrDefault(contact => contact.contactID == contactID);
+            return contact ?? throw new NotImplementedException();
         }
 
         public Contact GetContactInfoByPhone(int phone)
         {
 
-            Contact? contact = _dbContext.Contacts.FirstOrDefault(contact => contact.phone == phone);
-
-            if (contact != null) return contact;
-            throw new NotImplementedException();
+            Contact? contact = _dbContext.Contacts.AsNoTracking().FirstOrDefault(contact => contact.phone == phone);
+            return contact ?? throw new NotImplementedException();
         }
 
         public Contact UpdateContactInfo(Contact contact)
         {
-
             _dbContext.Contacts.Update(contact);
             Finish();
             return contact ?? throw new NotImplementedException();

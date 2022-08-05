@@ -23,20 +23,41 @@ public class ContactController
         }
     }
 
-   public IResult CreateContactInfo(Contact contact)
-   {
-       return Results.Accepted("/submit/contact",_service.CreateContactInfo(contact));
-   }
+    public IResult CreateContactInfo(Contact contact)
+    {
+        try
+        {
+            return Results.Accepted("/submit/contact", _service.CreateContactInfo(contact));
+        }
+        catch (NotImplementedException)
+        {
+            return Results.BadRequest();
+        }
+    }
 
-public Contact UpdateContactInfo(Contact contact)
-   {
-        return _service.UpdateContactInfo(contact);
-   }
+    public IResult UpdateContactInfo(Contact contact)
+    { 
+        try
+        {
+            return Results.Accepted("/contact/ID/{contactID}", _service.UpdateContactInfo(contact));
+        }
+        catch (NotImplementedException)
+        {
+            return Results.BadRequest();
+        }
+    }
 
-public Contact DeleteContactInfo(int contactID)
-   {
-        return _service.DeleteContactInfo(contactID);
-   }
+    public IResult DeleteContactInfo(int contactID)
+    { 
+        try
+        {
+            return Results.Accepted("/contact/ID/{contactID}", _service.DeleteContactInfo(contactID));
+        }
+        catch (NotImplementedException)
+        {
+            return Results.BadRequest();
+        }
+    }
 
     public IResult GetContactInfoById(int contactID)
     {
@@ -61,7 +82,7 @@ public Contact DeleteContactInfo(int contactID)
         }
     }
 
-     public IResult GetContactInfoByPhone(int phone)
+    public IResult GetContactInfoByPhone(int phone)
     {
         try
         {
