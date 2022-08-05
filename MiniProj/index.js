@@ -9,7 +9,20 @@ const setTheme = theme =>{
         y.src ="hokie_theme.mp3";
         y.play();
     } else if(theme ==='spirit'){
-        
+        y.src = "spirit.mp3";
+        y.play(); 
+    }else if (theme==='red'){
+        y.src = "red.m4a";
+        y.play(); 
+    } else if(theme==='dark'){
+        y.src = "dark.m4a";
+        y.play(); 
+    } else if(theme==='light'){
+        y.src = "light.m4a";
+        y.play(); 
+    }else if(theme==='earth'){
+        y.src = "earth.m4a";
+        y.play(); 
     }
     else{
         y.pause();
