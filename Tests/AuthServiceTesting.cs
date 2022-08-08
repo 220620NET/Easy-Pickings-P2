@@ -2,6 +2,7 @@ using Moq;
 using NewModels;
 using Services;
 using DataAccess;
+using CustomExceptions;
 using System;
 using Xunit;
 using System.Threading.Tasks;
@@ -37,7 +38,7 @@ namespace Tests
             };
             mockedRepo.Setup(r => r.GetUserByName(userToAdd.username, false)).Returns(userToAdd);
             AuthService authService = new(mockedRepo.Object);
-            Assert.Throws<NotImplementedException>(() => authService.Login(userToReturn.username,userToReturn.password));
+            Assert.Throws<InvalidCredentialsException>(() => authService.Login(userToReturn.username,userToReturn.password));
         }
         [Fact]
         public void LoginFailsWithInvalidUsername()
@@ -67,7 +68,7 @@ namespace Tests
             };
             mockedRepo.Setup(r => r.GetUserByName(userToAdd.username, false)).Returns(userToAdd);
             AuthService authService = new(mockedRepo.Object);
-            Assert.Throws<NullReferenceException>(() => authService.Login(userToReturn.username, userToReturn.password));
+            Assert.Throws<InputInvalidException>(() => authService.Login(userToReturn.username, userToReturn.password));
         }
         [Fact]
         public void RegisterFailsWithDuplicateUserName()
@@ -94,9 +95,9 @@ namespace Tests
                 DoB = new DateTime(),
                 role = "Employee"
             };
-            mockedRepo.Setup(repo => repo.GetUserByName(userToAdd.username,true)).Returns(userToReturn);
+            mockedRepo.Setup(repo => repo.GetUserByName(userToReturn.username,true)).Returns(userToReturn);
             AuthService service = new(mockedRepo.Object);
-            Assert.Throws<NotImplementedException>(() => service.Register(userToAdd));
+            Assert.Throws<DuplicateRecordException>(() => service.Register(userToAdd));
             mockedRepo.Verify(repo => repo.GetUserByName(userToAdd.username,true), Times.Once());
         }
         [Fact]
@@ -124,7 +125,37 @@ namespace Tests
             };
             mockedRepo.Setup(repo => repo.GetUserByName(userToAdd.username, true)).Returns(new User());
             AuthService service = new(mockedRepo.Object);
-            Assert.Throws<NotImplementedException>(() => service.Register(userToAdd));
+            Assert.Throws<InputInvalidException>(() => service.Register(userToAdd));
+        }
+
+        [Fact]
+        public void ResetFailsWithInvalidInfo()
+        {
+            var mockedRepo = new Mock<IUserRepo>();
+            User userToAdd = new()
+            {
+                first_name = "Joanne",
+                middle_init = 'T',
+                last_name = "Scammer",
+                username = "Micke",
+                password = "1234",
+                DoB = new DateTime(),
+                role = "Employee"
+            };
+            User userToReturn = new()
+            {
+                userID = 2,
+                first_name = "Joanne",
+                middle_init = 'T',
+                last_name = "Scammer",
+                username = "Micke",
+                password = "2",
+                DoB = new DateTime(),
+                role = "Employee"
+            };
+            mockedRepo.Setup(repo => repo.GetUserByName(userToReturn.username, false)).Returns(userToReturn);
+            AuthService service = new(mockedRepo.Object);
+            Assert.Throws<InputInvalidException>(() => service.ResetPassword(userToAdd));
         }
     }
 }

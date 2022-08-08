@@ -1,4 +1,5 @@
 ﻿using DataAccess;
+using CustomExceptions;
 using NewModels;
 
 namespace Services
@@ -25,22 +26,26 @@ namespace Services
                 username = username != null ? username : "";
                 password = password != null ? password : "";
                 user = _userRep.GetUserByName(username, false);
-                if (user.username == "")
-                {
-                    throw new NotImplementedException();
-                }
                 if (user.password == password)
                 {
                     return user;
                 }
                 else
                 {
-                    throw new NotImplementedException();
+                    throw new InvalidCredentialsException();
                 }
             }
-            catch (NotImplementedException)
+            catch (InvalidCredentialsException)
             {
-                throw new NotImplementedException();
+                throw new InvalidCredentialsException();
+            }
+            catch(InputInvalidException)
+            {
+                throw new InputInvalidException();
+            }
+            catch (NullReferenceException)
+            {
+                throw new InputInvalidException();
             }
         }
         /// <summary>
@@ -54,23 +59,30 @@ namespace Services
             try
             {
                 newUser.username = newUser.username != null ? newUser.username : "";
-                User test = _userRep.GetUserByName(newUser.username,true);
-                if (newUser.username == test.username ||newUser.password==null||newUser.first_name==null||newUser.last_name==null||newUser.role==null)
+                User test = _userRep.GetUserByName(newUser.username, true);
+                if (newUser.password==null||newUser.first_name==null||newUser.last_name==null||newUser.role==null)
                 {
-                    throw new NotImplementedException();
-                } 
+                    throw new InputInvalidException();
+                } else if (newUser.username == test.username)
+                {
+                    throw new DuplicateRecordException();
+                }
                 else
                 {
                     return _userRep.CreateUser(newUser);
                 }
             }
-            catch (NotImplementedException)
+            catch (DuplicateRecordException)
             {
-                throw new NotImplementedException();
+                throw new DuplicateRecordException();
             }
-            catch (NullReferenceException)
+            catch (InvalidCredentialsException)
             {
-                throw new NullReferenceException();
+                throw new InvalidCredentialsException();
+            }
+            catch (InputInvalidException)
+            {
+                throw new InputInvalidException();
             }
         }
         /// <summary>
@@ -83,12 +95,19 @@ namespace Services
         {
             try
             {
+                User test = _userRep.GetUserByName(update.username, false);
+                if (update.userID == null || update.password == null || update.username == null || update.first_name == null || update.last_name == null)
+                {
+                    throw new InputInvalidException();
+                }
                 return _userRep.ResetPassword(update);
             }
-            catch (NotImplementedException)
+            catch (InputInvalidException)
             {
-                throw new NotImplementedException();
+                throw new InputInvalidException();
             }
+            
+             
         }
     }
 }
