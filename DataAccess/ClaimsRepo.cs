@@ -27,16 +27,12 @@ public class ClaimsRepo : IClaimRepo
     /// </summary>
     /// <param name="Id">The claim to delete</param>
     /// <returns>True if deleted false if not</returns>
-    public bool DeleteClaims(int Id)
+    public Claim DeleteClaims(int Id)
     {
-        Claim? ClaimToDelete = _context.Claims.AsNoTracking().FirstOrDefault(c => c.claimID == Id);
-        if(ClaimToDelete != null)
-        {
-            _context.Claims.Remove(ClaimToDelete);
-            Finish();
-            return true;
-        }
-        return false;
+        Claim? ClaimToDelete = _context.Claims.AsNoTracking().FirstOrDefault(c => c.claimID == Id)??throw new NotImplementedException();
+        _context.Claims.Remove(ClaimToDelete);
+        Finish();        
+        return ClaimToDelete;
     }
     /// <summary>
     /// Will read the entire table of claims
@@ -69,7 +65,7 @@ public class ClaimsRepo : IClaimRepo
     /// </summary>
     /// <param name="ID">The specific patient in question</param>
     /// <returns>All claims made by the patient</returns> 
-    public List<Claim> GetUserByPatientID(int ID)
+    public List<Claim> GetClaimByPatientID(int ID)
     {
     return _context.Claims.AsNoTracking().Where(p => p.userID == ID).ToList()??throw new NotImplementedException(); 
     }

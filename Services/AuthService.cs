@@ -55,10 +55,10 @@ namespace Services
             {
                 newUser.username = newUser.username != null ? newUser.username : "";
                 User test = _userRep.GetUserByName(newUser.username,true);
-                if (newUser.username == test.username)
+                if (newUser.username == test.username ||newUser.password==null||newUser.first_name==null||newUser.last_name==null||newUser.role==null)
                 {
                     throw new NotImplementedException();
-                }
+                } 
                 else
                 {
                     return _userRep.CreateUser(newUser);
@@ -67,6 +67,10 @@ namespace Services
             catch (NotImplementedException)
             {
                 throw new NotImplementedException();
+            }
+            catch (NullReferenceException)
+            {
+                throw new NullReferenceException();
             }
         }
         /// <summary>
