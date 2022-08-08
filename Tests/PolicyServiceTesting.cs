@@ -11,34 +11,34 @@ namespace Tests
     public class PolicyServiceTesting
     {  
         [Fact]
-        public void LoginWithValidpolicyID()
+        public void LoginwithpolicyID()
         {
             var mockedRepo = new Mock<IPolicy>();
             Policy policyToAdd = new()
             {
                 policyID = 3,
-                insurance= "Rockwell",
+                insurance= 250,
                 coverage = "Full",
             };
             Policy policyToReturn = new()
             {
                 policyID = 3,
-                insurance= "Rockwell",
+                insurance= 250,
                 coverage = "Full",
             };
-            mockedRepo.Setup(repo => repo.GetUserByName(userToAdd.username,true)).Returns(userToReturn);
+            mockedRepo.Setup(repo => repo.GetPolicyByID(userToAdd.insurace,true)).Returns(policyToReturn);
             PolicyService service = new(mockedRepo.Object);
             Assert.Throws<NotImplementedException>(() => service.Login(policyToAdd));
             mockedRepo.Verify(repo => repo.GetPolicyByID(policyToAdd.insurance,true)());
         }
         [Fact]
-        public void Createcoverage()
+        public void Updatecoverage()
         {
             var mockedRepo = new Mock<IPolicy>();
             Policy policyToAdd = new()
             {
                 policyID = 3,
-                insurance = "Rockwell",
+                insurance = 250,
             };
             Policy policyToReturn = new()
             {
