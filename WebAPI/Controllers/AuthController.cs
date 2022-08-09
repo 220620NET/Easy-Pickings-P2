@@ -1,5 +1,6 @@
 using Services;
 using NewModels;
+using CustomExceptions;
 using DataAccess;
 namespace WebAPI.Controllers;
 
@@ -23,9 +24,13 @@ public class AuthController
         {
             return Results.Accepted("/login",_authService.Login(username, password));
         }
-        catch (NotImplementedException)
+        catch (InputInvalidException)
         {
-            return Results.BadRequest("Incorrect credentials");
+            return Results.BadRequest("There is no user with that username.");
+        }
+        catch (InvalidCredentialsException)
+        {
+            return Results.BadRequest("That password does not match that username");
         }
     }
     /// <summary>
@@ -40,9 +45,13 @@ public class AuthController
         {
             return Results.Accepted("/register",_authService.Register(userToRegister));
         }
-        catch (NotImplementedException)
+        catch (DuplicateRecordException)
         {
-            return Results.BadRequest();
+            return Results.BadRequest("That user already exists in the system please either login or use a different username.");
+        }
+        catch (InputInvalidException)
+        {
+            return Results.BadRequest("The information that you submitted was improper and need to be corrected.");
         }
     }
     /// <summary>
@@ -57,9 +66,9 @@ public class AuthController
         {
             return Results.Accepted("/reset", _authService.ResetPassword(update));
         }
-        catch (NotImplementedException)
+        catch (InputInvalidException)
         {
-            return Results.BadRequest();
+            return Results.BadRequest("Please make sure to enter the required information properly.");
         }
     }
 }

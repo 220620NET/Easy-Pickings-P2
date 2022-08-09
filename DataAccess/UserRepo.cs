@@ -61,30 +61,16 @@ public class UserRepo : IUserRepo
     {
         try
         {
-            if (registering)
-            { 
-                List<User> all = GetAllUsers();
-                foreach(User u in all)
-                {
-                    if (username == u.username)
-                    {
-                        throw new NotImplementedException();
-                    }
-                }
-                return new User();
-            }
-            else
-            {
-                return _context.Users.AsNoTracking().FirstOrDefault(user => user.username == username)!;
-            }            
+             return _context.Users.AsNoTracking().FirstOrDefault(user => user.username == username)!;
+           
         }
         catch (NullReferenceException)
         {
-            throw new NullReferenceException();
+            throw new InputInvalidException();
         }
-        catch (NotImplementedException)
+        catch (DuplicateRecordException)
         {
-            throw new NotImplementedException();
+            throw new DuplicateRecordException();
         }
         
     }
@@ -98,9 +84,10 @@ public class UserRepo : IUserRepo
 
     public User ResetPassword(User user)
     {
-        _context.Users.Update(user);
-        Finish();
-        return user??throw new NotImplementedException();        
+            _context.Users.Update(user);
+            Finish();
+            return user;
+        
     }
     public User DeleteUser(int userID)
     {
