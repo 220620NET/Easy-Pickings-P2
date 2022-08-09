@@ -20,10 +20,10 @@ public class TicketService
     /// Will grab all tickets
     /// </summary>
     /// <returns>All tickets</returns>
-    /// <exception cref="NotImplementedException">There are no tickets</exception>
+    /// <exception cref="TicketNotAvailable">There are no tickets</exception>
     public List<Ticket> GetAllTickets()
     {
-        return _ticket.GetAllTickets() ?? throw new NotImplementedException();
+        return _ticket.GetAllTickets() ?? throw new TicketNotAvailable();
     }
     /// <summary>
     /// Will return all tickets related to a particular claim
@@ -54,9 +54,9 @@ public class TicketService
         {
             throw new InvalidClaimException();
         }
-        catch (NotImplementedException)
+        catch (TicketNotAvailable)
         {
-            throw new InvalidClaimException();
+            throw new TicketNotAvailable();
         }
     }
 
@@ -83,9 +83,9 @@ public class TicketService
         {
             throw new InvalidPolicyException();
         }
-        catch (NotImplementedException)
+        catch (TicketNotAvailable)
         {
-            throw new InvalidPolicyException();
+            throw new TicketNotAvailable();
         }
     }
     /// <summary>
@@ -117,9 +117,9 @@ public class TicketService
         {
             throw new InvalidUserException();
         }
-        catch (NotImplementedException)
+        catch (TicketNotAvailable)
         {
-            throw new InvalidUserException();
+            throw new TicketNotAvailable();
         }
     }
     /// <summary>
@@ -158,7 +158,30 @@ public class TicketService
     /// <exception cref="NotImplementedException">That ticket could not be updated</exception>
     public Ticket UpdateTicket(Ticket ticket)
     {
-        return _ticket.UpdateTicket(ticket) ?? throw new NotImplementedException();
+        try
+        {
+            List<Ticket> tickets = GetTicketByClaim(ticket.claimID);
+            List<Ticket> ticketsP = GetTicketByPolicy(ticket.policyID);
+            List<Ticket> ticketsU = GetTicketByPatient(ticket.userID);
+            Ticket thisTicket = GetTicketByID(ticket.ticketID);
+            return _ticket.UpdateTicket(ticket);
+        }
+        catch (InvalidClaimException)
+        {
+            throw new InvalidClaimException();
+        }
+        catch (InvalidPolicyException)
+        {
+            throw new InvalidPolicyException();
+        }
+        catch (InvalidUserException)
+        {
+            throw new InvalidUserException();
+        }
+        catch (TicketNotAvailable)
+        {
+            throw new TicketNotAvailable();
+        }
     }
     /// <summary>
     /// Will delete a ticket
@@ -168,10 +191,50 @@ public class TicketService
     /// <exception cref="NotImplementedException">That ticket doesn't exist</exception>
     public Ticket DeleteTicket(int ticketID)
     {
-        return _ticket.DeleteTicket(ticketID) ?? throw new NotImplementedException();
+        try
+        {
+            List<Ticket> all = GetAllTickets();
+            foreach(Ticket ticket in all)
+            {
+                if(ticket.ticketID == ticketID)
+                {
+                    return _ticket.DeleteTicket(ticketID);
+                }
+            }
+            throw new TicketNotAvailable();
+        }
+        catch (TicketNotAvailable)
+        {
+            throw new TicketNotAvailable();
+        }
     }
     public Ticket GetTicketByID(int ticketId)
     {
-        return _ticket.GetTicketByID(ticketId) ?? throw new NotImplementedException();
+        try
+        {
+            List<Ticket> all = _ticket.GetAllTickets();
+            bool there = true;
+            foreach (Ticket ticket in all)
+            {
+                if (ticketId != ticket.ticketID)
+                {
+                    there = false;
+                }
+            }
+            if (!there)
+            {
+                throw new TicketNotAvailable();
+            }
+            return _ticket.GetTicketByID(ticketId);
+        }
+        catch (TicketNotAvailable)
+        {
+            throw new TicketNotAvailable();
+        }
+        catch (NotImplementedException)
+        {
+            throw new TicketNotAvailable();
+        }
+         
     }
 }
