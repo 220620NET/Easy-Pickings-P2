@@ -6,9 +6,11 @@ namespace Services;
 public class PolicyService
 {
     private readonly IPolicy _repo;
-    public PolicyService(IPolicy repo)
+    private readonly IUserRepo _repos;
+    public PolicyService(IPolicy repo, IUser repos)
     {
         _repo = repo;
+        -repos = repos;
     }
     /// <summary>
     /// wiil get all policy
