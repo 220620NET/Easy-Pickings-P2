@@ -7,10 +7,10 @@ public class PolicyService
 {
     private readonly IPolicy _repo;
     private readonly IUserRepo _repos;
-    public PolicyService(IPolicy repo, IUser repos)
+    public PolicyService(IPolicy repo, IUserRepo repos)
     {
         _repo = repo;
-        -repos = repos;
+        _repos = repos;
     }
     /// <summary>
     /// wiil get all policy

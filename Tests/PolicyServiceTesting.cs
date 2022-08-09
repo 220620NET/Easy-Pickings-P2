@@ -4,6 +4,7 @@ using Services;
 using DataAccess;
 using System;
 using Xunit;
+using CustomExceptions;
 using System.Threading.Tasks;
 
 namespace Tests
@@ -11,7 +12,7 @@ namespace Tests
     public class PolicyServiceTesting
     { 
          [Fact]
-        public void PolicyCreationFailsWithInvalidUpdate()
+        public void PolicyUpdateFailsWithNonExistentPolicy()
         {
             var mockedUser = new Mock<IUserRepo>();
             var mockedPolicy = new Mock<IPolicy>();
@@ -35,7 +36,7 @@ namespace Tests
                 coverage = "Test"
             });
 
-            Policy policy = new()
+            Policy policy1 = new()
             {
                 policyID = 2,
                 insurance = 1,
@@ -44,11 +45,11 @@ namespace Tests
             mockedUser.Setup(r => r.GetAllUsers()).Returns(user);
             mockedPolicy.Setup(r => r.GetAllPolicy()).Returns(policy);
             PolicyService policyService = new(mockedPolicy.Object,mockedUser.Object);
-            Assert.Throws<InvalidResourceException>(() => policyService.CreatePolicy(policy));
+            Assert.Throws<NotImplementedException>(() => policyService.UpdatePolicy(policy1));
         }
 
         [Fact]
-        public void PolicyCreationFailsWithInvalidDelete()
+        public void PolicyDeleteFailsWithNonExistentPolicy()
         {
             var mockedUser = new Mock<IUserRepo>();
             var mockedPolicy = new Mock<IPolicy>();
@@ -74,7 +75,7 @@ namespace Tests
             });
 
            
-            Policy policy = new()
+            Policy policy1 = new()
             {
                 policyID = 2,
                 insurance = 1,
@@ -84,7 +85,7 @@ namespace Tests
             mockedUser.Setup(r => r.GetAllUsers()).Returns(user);
             mockedPolicy.Setup(r => r.GetAllPolicy()).Returns(policy);
             PolicyService policyService = new(mockedPolicy.Object, mockedUser.Object);
-            Assert.Throws<InvalidPolicyException>(() => policyService.CreatePolicy(policy));
+            Assert.Throws<NotImplementedException>(() => policyService.DeletePolicy(policy1.policyID));
         }
         [Fact]
         public void PolicyCreationFailsWithInvalidUser()
@@ -111,7 +112,7 @@ namespace Tests
                 insurance = 3,
                 coverage = "Test"
             });
-            Policy policy = new()
+            Policy policy1 = new()
             {
                 policyID = 2,
                 insurance = 1,
@@ -121,7 +122,7 @@ namespace Tests
             mockedUser.Setup(r => r.GetAllUsers()).Returns(user);
             mockedPolicy.Setup(r => r.GetAllPolicy()).Returns(policy);
             PolicyService policyService = new(mockedPolicy.Object, mockedUser.Object);
-            Assert.Throws<InvalidUserException>(() => policyService.CreatePolicy(policy));
+            Assert.Throws<NotImplementedException>(() => policyService.CreatePolicy(policy1));
         }
      }
         
