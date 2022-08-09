@@ -16,7 +16,7 @@ public class PolicyService
     /// <param name="policyID">policyID itself</param>
     /// <returns>related policy</returns>
     /// <exception cref="NotImplementedException">There is no policy related to that ID</exception>
-    public List<Policy> GetPolicyByID(int policyID)
+    public Policy GetPolicyByID(int policyID)
     {
         return _repo.GetPolicyByID(policyID)?? throw new NotImplementedException();
     }

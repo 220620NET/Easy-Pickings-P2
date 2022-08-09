@@ -24,9 +24,9 @@ namespace DataAccess
          /// </summary>
          /// <param name="policyID">policyID to sort by</param>
          /// <returns>List of aall policy from a particular ID</returns>
-        public List<Policy> GetPolicyByID(int policyID)
+        public Policy GetPolicyByID(int policyID)
         {
-            return _dbContext.Policies.Where(p => p.policyID == policyID).ToList() ?? throw new NotImplementedException();
+            return _dbContext.Policies.FirstOrDefault(p => p.policyID == policyID) ?? throw new NotImplementedException();
         }
         /// <summary>
         /// Will grab all policy related to the insurance
