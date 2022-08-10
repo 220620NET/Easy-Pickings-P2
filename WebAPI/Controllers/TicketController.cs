@@ -1,5 +1,6 @@
 ﻿using Services;
-using NewModels; 
+using NewModels;
+using CustomExceptions;
 namespace WebAPI.Controllers
 {
     public class TicketController
@@ -21,9 +22,26 @@ namespace WebAPI.Controllers
             {
                 return Results.Accepted("/ticket",ticketService.GetAllTickets());
             }
-            catch (NotImplementedException)
+            catch (TicketNotAvailable)
             {
-                return Results.BadRequest();
+                return Results.BadRequest("No tickets have been made or all tickets have been removed by their owners");
+            }
+        }
+        /// <summary>
+        /// This will allow the API to read a specific ticket
+        /// </summary>
+        /// <remarks>Returns Status Code 404 if there is no such tickets</remarks>
+        /// <param name="ticketID">The requested ticket</param>
+        /// <returns>202 and the requested Ticket</returns>
+        public IResult GetTicketByID(int ticketID)
+        {
+            try
+            {
+                return Results.Accepted("/ticket/id/{ticketID}",ticketService.GetTicketByID(ticketID));
+            }
+            catch (TicketNotAvailable)
+            {
+                return Results.BadRequest("That Ticket does not exist yet, please make sure what the ticket ID is before requesting it");
             }
         }
         /// <summary>
@@ -38,9 +56,13 @@ namespace WebAPI.Controllers
             {
                 return Results.Accepted("/ticket/claim/{ID}",ticketService.GetTicketByClaim(claimID));
             }
-            catch (NotImplementedException)
+            catch (InvalidClaimException)
             {
-                return Results.BadRequest();
+                return Results.BadRequest("That claim does not exist yet.");
+            }
+            catch (TicketNotAvailable)
+            {
+                return Results.BadRequest("There is no ticket associated with that claim");
             }
         }
         /// <summary>
@@ -55,10 +77,30 @@ namespace WebAPI.Controllers
             {
                 return Results.Accepted("/ticket/patient/{ID}",ticketService.GetTicketByPatient(patientID));
             }
-            catch (NotImplementedException)
+            catch (InvalidUserException)
             {
-                return Results.BadRequest();
+                return Results.BadRequest("That patient does not exist yet.");
             }
+            catch (TicketNotAvailable)
+            {
+                return Results.BadRequest("That patient hasn't made any tickets yet");
+            }
+        }
+        public IResult GetTicketByPolicy(int policyID)
+        {
+            try
+            {
+                return Results.Accepted("/tickets/policy/{id}", ticketService.GetTicketByPolicy(policyID));
+            }
+            catch (TicketNotAvailable)
+            {
+                return Results.BadRequest("There are no tickets associated with that policy.");
+            }
+            catch (InvalidPolicyException)
+            {
+                return Results.BadRequest("That policy does not exist.");
+            }
+          
         }
         public IResult CreateTicket(Ticket ticket)
         {
@@ -66,9 +108,17 @@ namespace WebAPI.Controllers
             {
                 return Results.Accepted("/submit/ticket", ticketService.CreateTicket(ticket));
             }
-            catch (NotImplementedException)
+            catch (InvalidUserException)
             {
-                return Results.BadRequest();
+                return Results.BadRequest("That user does not exist");
+            }
+            catch (InvalidClaimException)
+            {
+                return Results.BadRequest("That claim does not exist");
+            }
+            catch (InvalidPolicyException)
+            {
+                return Results.BadRequest("That policy does not exist");
             }
         }
         public IResult UpdateTicket(Ticket ticket)
@@ -77,9 +127,21 @@ namespace WebAPI.Controllers
             {
                 return Results.Accepted("/update/ticket", ticketService.UpdateTicket(ticket));
             }
-            catch (NotImplementedException)
+            catch (InvalidUserException)
             {
-                return Results.BadRequest();
+                return Results.BadRequest("That user does not exist");
+            }
+            catch (InvalidClaimException)
+            {
+                return Results.BadRequest("That claim does not exist");
+            }
+            catch (InvalidPolicyException)
+            {
+                return Results.BadRequest("That policy does not exist");
+            }
+            catch (TicketNotAvailable)
+            {
+                return Results.BadRequest("That ticket does not exist.");
             }
         }
         public IResult DeleteTicket(int ticketID)
@@ -88,9 +150,9 @@ namespace WebAPI.Controllers
             {
                 return Results.Accepted("/delete/ticket", ticketService.DeleteTicket(ticketID));
             }
-            catch (NotImplementedException)
+            catch (TicketNotAvailable)
             {
-                return Results.BadRequest();
+                return Results.BadRequest("That ticket does not exist.");
             }
         }
     }
