@@ -1,5 +1,6 @@
 ﻿using NewModels;
 using Microsoft.EntityFrameworkCore;
+using CustomExceptions;
 namespace DataAccess
 {
     public class TicketRepo : ITicket
@@ -53,7 +54,12 @@ namespace DataAccess
         /// <returns>The specific ticket by claim</returns>
         public List<Ticket> GetTicketByClaim(int claimID)
         {
-            return _dbContext.Tickets.AsNoTracking().Where(p => p.claimID == claimID).ToList() ?? throw new NotImplementedException();
+            return _dbContext.Tickets.AsNoTracking().Where(p => p.claimID == claimID).ToList() ?? throw new InvalidClaimException();
+        }
+
+        public Ticket GetTicketByID(int ticketID)
+        {
+            return _dbContext.Tickets.AsNoTracking().FirstOrDefault(p => p.ticketID == ticketID)?? throw new NotImplementedException();
         }
         /// <summary>
         /// Will grab all tickets related to a patient
@@ -62,7 +68,12 @@ namespace DataAccess
         /// <returns>List of all tickets from a particular patient</returns>
         public List<Ticket> GetTicketByPatient(int patientID)
         {
-            return _dbContext.Tickets.AsNoTracking().Where(p => p.userID == patientID).ToList() ?? throw new NotImplementedException();
+            return _dbContext.Tickets.AsNoTracking().Where(p => p.userID == patientID).ToList() ?? throw new InvalidUserException();
+        }
+
+        public List<Ticket> GetTicketByPolicy(int policyID)
+        {
+            return _dbContext.Tickets.AsNoTracking().Where(p => p.policyID == policyID).ToList() ?? throw new InvalidPolicyException();
         }
 
         /// <summary>
