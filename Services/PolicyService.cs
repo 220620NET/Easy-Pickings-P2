@@ -1,5 +1,6 @@
 using DataAccess;
 using NewModels;
+using CustomExceptions;
 
 namespace Services;
 
@@ -20,7 +21,32 @@ public class PolicyService
     /// <exception cref="NotImplementedException">There is no policy related to that ID</exception>
     public Policy GetPolicyByID(int policyID)
     {
-        return _repo.GetPolicyByID(policyID)?? throw new NotImplementedException();
+       // return _repo.GetPolicyByID(policyID)?? throw new NotImplementedException();
+        try
+        {
+            List<Policy> all = _repo.GetAllPolicy();
+            bool there = true;
+            foreach (Policy policy in all)
+            {
+                if (policyID != policy.policyID)
+                {
+                    there = false;
+                }
+            }
+            if (!there)
+            {
+                throw new PolicyNotAvailable();
+            }
+            return _repo.GetPolicyByID(policyID);
+        }
+        catch (PolicyNotAvailable)
+        {
+            throw new PolicyNotAvailable();
+        }
+        catch (NotImplementedException)
+        {
+            throw new PolicyNotAvailable();
+        }
     }
     /// <summary>
     /// Will get all policy
@@ -39,7 +65,32 @@ public class PolicyService
     /// <exception cref="NotImplementedException">There are no policy related to that insurance</exception>
     public List<Policy> GetPolicyByInsurance(int insurance)
     {
-        return _repo.GetPolicyByInsurance(insurance)?? throw new NotImplementedException();
+       // return _repo.GetPolicyByInsurance(insurance)?? throw new NotImplementedException();
+        try
+        {
+            List<User> all = _repos.GetAllUsers();
+            bool there = true;
+            foreach (User policy in all)
+            {
+                if (insurance != policy.userID)
+                {
+                    there = false;
+                }
+            }
+            if (!there)
+            {
+                throw new InvalidUserException();
+            }
+            return _repo.GetPolicyByInsurance(insurance);
+        }
+        catch (InvalidUserException)
+        {
+            throw new InvalidUserException();
+        }
+        catch (PolicyNotAvailable)
+        {
+            throw new PolicyNotAvailable();
+        }
     }
     /// <summary>
     /// will get all policy from the specific coverage
@@ -58,7 +109,16 @@ public class PolicyService
     /// <exception cref="NotImplementedException">That policy couldn't be created</exception>
      public Policy CreatePolicy(Policy policy)
     {
-        return _repo.CreatePolicy(policy) ?? throw new NotImplementedException();
+       // return _repo.CreatePolicy(policy) ?? throw new NotImplementedException();
+        try
+        {
+            List<Policy> policyU = GetPolicyByInsurance(policy.insurance);
+            return _repo.CreatePolicy(policy);
+        }
+        catch (InvalidUserException)
+        {
+            throw new InvalidUserException();
+        }
     }
     /// <summary>
     /// wiil update a policy
@@ -68,7 +128,21 @@ public class PolicyService
     /// <exception cref="NotImplementedException">That policy could not be updated</exception>
     public Policy UpdatePolicy(Policy policy)
     {
-        return _repo.UpdatePolicy(policy) ?? throw new NotImplementedException();
+       // return _repo.UpdatePolicy(policy) ?? throw new NotImplementedException();
+        try
+        {
+            List<Policy> policyU = GetPolicyByInsurance(policy.insurance);
+            Policy thisPolicy = GetPolicyByID(policy.policyID);
+            return _repo.UpdatePolicy(policy);
+        }
+        catch (InvalidUserException)
+        {
+            throw new InvalidUserException();
+        }
+        catch (PolicyNotAvailable)
+        {
+            throw new PolicyNotAvailable();
+        }
     }
     /// <summary>
     /// will delete a policy
@@ -78,6 +152,22 @@ public class PolicyService
     /// <exception cref="NotImplementedException">That policy is not exist</exception>
      public Policy DeletePolicy(int policyID)
     {
-        return _repo.DeletePolicy(policyID) ?? throw new NotImplementedException();
+       // return _repo.DeletePolicy(policyID) ?? throw new NotImplementedException();
+       try
+        {
+            List<Policy> all = GetAllPolicy();
+            foreach(Policy policy in all)
+            {
+                if(policy.policyID == policyID)
+                {
+                    return _repo.DeletePolicy(policyID);
+                }
+            }
+            throw new PolicyNotAvailable();
+        }
+        catch (PolicyNotAvailable)
+        {
+            throw new PolicyNotAvailable();
+        }
     }
 }
