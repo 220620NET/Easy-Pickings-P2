@@ -1,6 +1,8 @@
 ﻿using NewModels;
 using Microsoft.EntityFrameworkCore;
 
+using CustomExceptions;
+
 namespace DataAccess
 {
     public class ContactRepo : IContactRepo
@@ -22,7 +24,7 @@ namespace DataAccess
 
         public Contact DeleteContactInfo(int contactID)
         {
-            Contact contactToDelete =_dbContext.Contacts.AsNoTracking().FirstOrDefault(contact=>contact.contactID==contactID)??throw new NotImplementedException();
+            Contact contactToDelete =_dbContext.Contacts.AsNoTracking().FirstOrDefault(contact=>contact.contactID==contactID)??throw new ContactNotAvailableException();
             _dbContext.Contacts.Remove(contactToDelete);
             Finish();
             return contactToDelete;
@@ -38,28 +40,28 @@ namespace DataAccess
         {
 
             Contact? contact = _dbContext.Contacts.AsNoTracking().FirstOrDefault(contact => contact.email == email);
-            return contact?? throw new NotImplementedException();
+            return contact?? throw new ContactNotAvailableException();
         }
 
         public Contact GetContactInfoById(int contactID)
         {
 
             Contact? contact = _dbContext.Contacts.AsNoTracking().FirstOrDefault(contact => contact.contactID == contactID);
-            return contact ?? throw new NotImplementedException();
+            return contact ?? throw new ContactNotAvailableException();
         }
 
         public Contact GetContactInfoByPhone(int phone)
         {
 
             Contact? contact = _dbContext.Contacts.AsNoTracking().FirstOrDefault(contact => contact.phone == phone);
-            return contact ?? throw new NotImplementedException();
+            return contact ?? throw new ContactNotAvailableException();
         }
 
         public Contact UpdateContactInfo(Contact contact)
         {
             _dbContext.Contacts.Update(contact);
             Finish();
-            return contact ?? throw new NotImplementedException();
+            return contact ?? throw new ContactNotAvailableException();
         }
 
          /// <summary>
