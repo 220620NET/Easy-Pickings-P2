@@ -358,5 +358,123 @@ namespace Tests
             TicketService ticketService = new(mockedTicket.Object, mockedPolicy.Object, mockedUser.Object, mockedClaim.Object);
             Assert.Throws<TicketNotAvailable>(() => ticketService.DeleteTicket(ticket.ticketID));
         }
+        /*
+         *      GetTickets Testing
+         */
+
+        [Fact]
+        public void GetTicketByIDFailsWithNonExistentTicket()
+        {
+            var mockedTicket = new Mock<ITicket>();
+            var mockedUser = new Mock<IUserRepo>();
+            var mockedPolicy = new Mock<IPolicy>();
+            var mockedClaim = new Mock<IClaimRepo>();
+            List<Ticket> ticket1 = new();
+            ticket1.Add(new()
+            {
+                ticketID = 1,
+                policyID = 1,
+                claimID = 1,
+                userID = 2,
+                details = "Test"
+            });
+            Ticket ticket = new()
+            {
+                ticketID = 2,
+                policyID = 1,
+                claimID = 1,
+                userID = 2,
+                details = "Test"
+            };
+            mockedTicket.Setup(r => r.GetAllTickets()).Returns(ticket1);
+            TicketService ticketService = new(mockedTicket.Object, mockedPolicy.Object, mockedUser.Object, mockedClaim.Object);
+            Assert.Throws<TicketNotAvailable>(() => ticketService.GetTicketByID(ticket.ticketID));
+        }
+        [Fact]
+        public void GetTicketByPatientFailsWithNonExistentPatient()
+        {
+            var mockedTicket = new Mock<ITicket>();
+            var mockedUser = new Mock<IUserRepo>();
+            var mockedPolicy = new Mock<IPolicy>();
+            var mockedClaim = new Mock<IClaimRepo>();
+            List<Ticket> ticket1 = new();
+            ticket1.Add(new()
+            {
+                ticketID = 1,
+                policyID = 1,
+                claimID = 1,
+                userID = 2,
+                details = "Test"
+            });
+            Ticket ticket = new()
+            {
+                ticketID = 1,
+                policyID = 1,
+                claimID = 1,
+                userID = 1,
+                details = "Test"
+            };
+            mockedTicket.Setup(r => r.GetAllTickets()).Returns(ticket1);
+            TicketService ticketService = new(mockedTicket.Object, mockedPolicy.Object, mockedUser.Object, mockedClaim.Object);
+            Assert.Throws<TicketNotAvailable>(() => ticketService.GetTicketByPatient(ticket.userID));
+        }
+
+        [Fact]
+        public void GetTicketByPolicyFailsWithNonExistentPolicy()
+        {
+            var mockedTicket = new Mock<ITicket>();
+            var mockedUser = new Mock<IUserRepo>();
+            var mockedPolicy = new Mock<IPolicy>();
+            var mockedClaim = new Mock<IClaimRepo>();
+            List<Ticket> ticket1 = new();
+            ticket1.Add(new()
+            {
+                ticketID = 1,
+                policyID = 1,
+                claimID = 1,
+                userID = 2,
+                details = "Test"
+            });
+            Ticket ticket = new()
+            {
+                ticketID = 1,
+                policyID = 2,
+                claimID = 1,
+                userID = 2,
+                details = "Test"
+            };
+            mockedTicket.Setup(r => r.GetAllTickets()).Returns(ticket1);
+            TicketService ticketService = new(mockedTicket.Object, mockedPolicy.Object, mockedUser.Object, mockedClaim.Object);
+            Assert.Throws<TicketNotAvailable>(() => ticketService.GetTicketByPolicy(ticket.policyID));
+        }
+
+        [Fact]
+        public void GetTicketByClaimFailsWithNonExistentClaim()
+        {
+            var mockedTicket = new Mock<ITicket>();
+            var mockedUser = new Mock<IUserRepo>();
+            var mockedPolicy = new Mock<IPolicy>();
+            var mockedClaim = new Mock<IClaimRepo>();
+            List<Ticket> ticket1 = new();
+            ticket1.Add(new()
+            {
+                ticketID = 1,
+                policyID = 1,
+                claimID = 1,
+                userID = 2,
+                details = "Test"
+            });
+            Ticket ticket = new()
+            {
+                ticketID = 1,
+                policyID = 1,
+                claimID = 2,
+                userID = 2,
+                details = "Test"
+            };
+            mockedTicket.Setup(r => r.GetAllTickets()).Returns(ticket1);
+            TicketService ticketService = new(mockedTicket.Object, mockedPolicy.Object, mockedUser.Object, mockedClaim.Object);
+            Assert.Throws<TicketNotAvailable>(() => ticketService.GetTicketByClaim(ticket.claimID));
+        }
     }
 }

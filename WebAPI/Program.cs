@@ -74,8 +74,10 @@ app.MapPost("/submit/ticket", (Ticket newTicket, TicketController controller) =>
 app.MapPut("/update/ticket", (Ticket ticket, TicketController controller) => controller.UpdateTicket(ticket));
 app.MapDelete("/delete/ticket", (int ID, TicketController controller) => controller.DeleteTicket(ID));
 app.MapGet("/ticket", (TicketController controller) => controller.GetAllTickets());
+app.MapGet("/ticket/id/{ticketID}", (int ticketID,TicketController controller) => controller.GetTicketByID(ticketID));
 app.MapGet("/ticket/claim/{ID}", (int ID, TicketController controller) => controller.GetTicketByClaim(ID));
 app.MapGet("/ticket/patient/{ID}", (int ID, TicketController controller) => controller.GetTicketByPatient(ID));
+app.MapGet("/ticket/policy/{ID}", (int ID, TicketController controller) => controller.GetTicketByPolicy(ID));
 
 /*
  *      PolicyController End Points

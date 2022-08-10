@@ -30,7 +30,8 @@ public class TicketService
     /// </summary>
     /// <param name="claimID">The claim in question</param>
     /// <returns>A list of all related tickets</returns>
-    /// <exception cref="NotImplementedException">There are no tickets related to that claim</exception>
+    /// <exception cref="InvalidClaimException">There are no tickets related to that claim</exception>
+    /// <exception cref="TicketNotAvailable">There are no tickets</exception>
     public List<Ticket> GetTicketByClaim(int claimID)
     {
         try
@@ -54,12 +55,18 @@ public class TicketService
         {
             throw new InvalidClaimException();
         }
-        catch (TicketNotAvailable)
+        catch (NullReferenceException)
         {
             throw new TicketNotAvailable();
         }
     }
-
+    /// <summary>
+    /// Will return all tickets related to a particular policy
+    /// </summary>
+    /// <param name="policyID">The policy beng requested</param>
+    /// <returns>A list of all related tickets</returns>
+    /// <exception cref="InvalidPolicyException">There are no tickets related to that policty</exception>
+    /// <exception cref="TicketNotAvailable">There are no tickets</exception>
     public List<Ticket> GetTicketByPolicy(int policyID)
     {
         try
@@ -83,7 +90,7 @@ public class TicketService
         {
             throw new InvalidPolicyException();
         }
-        catch (TicketNotAvailable)
+        catch (NullReferenceException)
         {
             throw new TicketNotAvailable();
         }
@@ -93,7 +100,8 @@ public class TicketService
     /// </summary>
     /// <param name="patientID">The patient in question</param>
     /// <returns></returns>
-    /// <exception cref="NotImplementedException">There are no tickets related to that patient</exception>
+    /// <exception cref="InvalidUserException">There are no tickets related to that patient</exception>
+    /// <exception cref="TicketNotAvailable">There are no tickets</exception>
     public List<Ticket> GetTicketByPatient(int patientID)
     {
         try
@@ -117,17 +125,50 @@ public class TicketService
         {
             throw new InvalidUserException();
         }
-        catch (TicketNotAvailable)
+        catch (NullReferenceException)
         {
             throw new TicketNotAvailable();
         }
+    }
+    /// <summary>
+    /// Will read a ticket
+    /// </summary>
+    /// <param name="ticketId">The specific ticket requested</param>
+    /// <returns>The ticket requested</returns>
+    /// <exception cref="TicketNotAvailable">There is no ticket with that ID</exception>
+    public Ticket GetTicketByID(int ticketId)
+    {
+        try
+        {
+            List<Ticket> all = _ticket.GetAllTickets();
+            bool there = true;
+            foreach (Ticket ticket in all)
+            {
+                if (ticketId != ticket.ticketID)
+                {
+                    there = false;
+                }
+            }
+            if (!there)
+            {
+                throw new TicketNotAvailable();
+            }
+            return _ticket.GetTicketByID(ticketId);
+        }
+        catch (TicketNotAvailable)
+        {
+            throw new TicketNotAvailable();
+        } 
+         
     }
     /// <summary>
     /// Will create a ticket
     /// </summary>
     /// <param name="ticket">A valid ticket</param>
     /// <returns>The newly created ticket</returns>
-    /// <exception cref="NotImplementedException">That ticket couldn't be created</exception>
+    /// <exception cref="InvalidClaimException">That claim does not exist yet</exception>
+    /// <exception cref="InvalidUserException">That user does not exist yet</exception>
+    /// <exception cref="InvalidPolicyException">That policy does not exist yet</exception>
     public Ticket CreateTicket(Ticket ticket)
     {
         try
@@ -149,13 +190,20 @@ public class TicketService
         {
             throw new InvalidUserException();
         }
+        catch (TicketNotAvailable)
+        {
+            return _ticket.CreateTicket(ticket);
+        }
     }
     /// <summary>
     /// Will update a ticket
     /// </summary>
     /// <param name="ticket">A valid ticket with the information to update</param>
     /// <returns>The updated ticket</returns>
-    /// <exception cref="NotImplementedException">That ticket could not be updated</exception>
+    /// <exception cref="InvalidClaimException">That claim does not exist yet</exception>
+    /// <exception cref="InvalidUserException">That user does not exist yet</exception>
+    /// <exception cref="InvalidPolicyException">That policy does not exist yet</exception>
+    /// <exception cref="TicketNotAvailable">That ticket does not exist</exception>
     public Ticket UpdateTicket(Ticket ticket)
     {
         try
@@ -188,7 +236,7 @@ public class TicketService
     /// </summary>
     /// <param name="ticketID">A valid Ticket Id</param>
     /// <returns>The ticket that was deleted</returns>
-    /// <exception cref="NotImplementedException">That ticket doesn't exist</exception>
+    /// <exception cref="TicketNotAvailable">That ticket doesn't exist</exception>
     public Ticket DeleteTicket(int ticketID)
     {
         try
@@ -207,34 +255,5 @@ public class TicketService
         {
             throw new TicketNotAvailable();
         }
-    }
-    public Ticket GetTicketByID(int ticketId)
-    {
-        try
-        {
-            List<Ticket> all = _ticket.GetAllTickets();
-            bool there = true;
-            foreach (Ticket ticket in all)
-            {
-                if (ticketId != ticket.ticketID)
-                {
-                    there = false;
-                }
-            }
-            if (!there)
-            {
-                throw new TicketNotAvailable();
-            }
-            return _ticket.GetTicketByID(ticketId);
-        }
-        catch (TicketNotAvailable)
-        {
-            throw new TicketNotAvailable();
-        }
-        catch (NotImplementedException)
-        {
-            throw new TicketNotAvailable();
-        }
-         
     }
 }
