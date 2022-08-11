@@ -3,7 +3,7 @@ using NewModels;
 using DataAccess;
 using WebAPI.Controllers;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -58,6 +58,7 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
+app.UseCors("MyAllowAllHeadersPolicy");
 app.MapGet("/", () => "Hello World!");
 
 /*
