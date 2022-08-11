@@ -173,9 +173,9 @@ public class TicketService
     {
         try
         {
-            List<Ticket> tickets = GetTicketByClaim(ticket.claimID);
-            List<Ticket> ticketsP = GetTicketByPolicy(ticket.policyID);
-            List<Ticket> ticketsU = GetTicketByPatient(ticket.userID);
+            GetTicketByClaim(ticket.claimID);
+            GetTicketByPolicy(ticket.policyID);
+            GetTicketByPatient(ticket.userID);
             return _ticket.CreateTicket(ticket);
         }
         catch (InvalidClaimException)
@@ -208,10 +208,10 @@ public class TicketService
     {
         try
         {
-            List<Ticket> tickets = GetTicketByClaim(ticket.claimID);
-            List<Ticket> ticketsP = GetTicketByPolicy(ticket.policyID);
-            List<Ticket> ticketsU = GetTicketByPatient(ticket.userID);
-            Ticket thisTicket = GetTicketByID(ticket.ticketID);
+            GetTicketByClaim(ticket.claimID);
+            GetTicketByPolicy(ticket.policyID);
+            GetTicketByPatient(ticket.userID);
+            GetTicketByID(ticket.ticketID);
             return _ticket.UpdateTicket(ticket);
         }
         catch (InvalidClaimException)
@@ -241,15 +241,8 @@ public class TicketService
     {
         try
         {
-            List<Ticket> all = GetAllTickets();
-            foreach(Ticket ticket in all)
-            {
-                if(ticket.ticketID == ticketID)
-                {
-                    return _ticket.DeleteTicket(ticketID);
-                }
-            }
-            throw new TicketNotAvailable();
+            GetTicketByID(ticketID);
+            return _ticket.DeleteTicket(ticketID);
         }
         catch (TicketNotAvailable)
         {
