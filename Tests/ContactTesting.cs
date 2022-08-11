@@ -146,4 +146,35 @@ public class ContactTesting
         //Act
         Assert.Throws<ContactNotAvailableException>(() => contactService.UpdateContactInfo(contact));
     }
+
+     [Fact]
+    public void GetContactInfoFailsWithInvalidID()
+    {
+        var mockedRepo = new Mock<IContactRepo>();
+
+        List<Contact> contacts = new();
+
+        contacts.Add(new()
+        {
+            contactID = 1,
+            PO_or_street = false,
+            PO_number = 0,
+            street_number = 1900,
+            street_name = "Main Street",
+            city_state = "San Francisco, CA",
+            zipcode = 97894,
+            userID = 4,
+            phone = 6505557890,
+            email = "someone@somewhere.com"
+        });
+
+        int contactID = 2;
+
+        mockedRepo.Setup(repo => repo.GetAllContactInfo()).Returns(contacts);
+
+        ContactService contactService = new (mockedRepo.Object);
+
+        //Act
+        Assert.Throws<ContactNotAvailableException>(() => contactService.GetContactInfoById(contactID));
+    }
 }
