@@ -1,1 +1,16 @@
-<p>start-screen works!</p>
+<div class="login-component">
+    <div class="login-box">
+        <div class="welcome-text">
+            <div class="row"><h3>Welcome to Sketchiest Connection</h3></div>
+            <div class="row"><p>We make the connections you can't see</p></div>
+        </div>
+        <div class="form-group"> 
+                <h5>Please Login</h5>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" class="form-control" [formControl]="username">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" class="form-control" [formControl]="password">
+                <button class="btn login-btn btn-primary" (click)="login()">Login</button>
+        </div>
+    </div>
+</div>
