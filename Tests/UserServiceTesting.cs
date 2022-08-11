@@ -50,7 +50,7 @@ public class UserServiceTesting
 		UserService userService = new (mockedUser.Object);
 
 		//Act
-		Assert.Throws<UserNotFound>(() => userService.DeleteUser(user.userID));
+		Assert.Throws<UserNotFound>(() => userService.DeleteUser((int)user.userID));
 
 	}
 }
