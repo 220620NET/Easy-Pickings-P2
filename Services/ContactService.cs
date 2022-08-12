@@ -99,7 +99,7 @@ namespace Services
         {
             return _contactRepo.GetContactInfoByEmail(email) ?? throw new ContactNotAvailableException();
         }
-        public Contact GetContactInfoByPhone(int phone)
+        public Contact GetContactInfoByPhone(long phone)
         {
             return _contactRepo.GetContactInfoByPhone(phone) ?? throw new ContactNotAvailableException();
         }
