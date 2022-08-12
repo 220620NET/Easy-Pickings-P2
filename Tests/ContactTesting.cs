@@ -230,13 +230,13 @@ public class ContactTesting
             email = "someone@somewhere.com"
         });
 
-        long phone = (long) 4086504444;
+        long phonenum = 4086504444;
 
         mockedRepo.Setup(repo => repo.GetAllContactInfo()).Returns(contacts);
 
         ContactService contactService = new (mockedRepo.Object);
 
         //Act
-        Assert.Throws<ContactNotAvailableException>(() => contactService.GetContactInfoByPhone(phone));
+        Assert.Throws<ContactNotAvailableException>(() => contactService.GetContactInfoByPhone(phonenum));
     }
 }
