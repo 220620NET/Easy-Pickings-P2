@@ -50,7 +50,7 @@ namespace DataAccess
             return contact ?? throw new ContactNotAvailableException();
         }
 
-        public Contact GetContactInfoByPhone(int phone)
+        public Contact GetContactInfoByPhone(long phone)
         {
 
             Contact? contact = _dbContext.Contacts.AsNoTracking().FirstOrDefault(contact => contact.phone == phone);
