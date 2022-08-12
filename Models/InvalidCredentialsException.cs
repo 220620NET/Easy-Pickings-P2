@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomExceptions
 {
-
+    [System.Serializable]
     public class InvalidCredentialsException : Exception
     {
         public InvalidCredentialsException()

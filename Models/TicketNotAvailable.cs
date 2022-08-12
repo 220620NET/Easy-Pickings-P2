@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace CustomExceptions
 {
-    public class TicketNotAvailable : Exception
+    public class TicketNotAvailableException : Exception
     {
-        public TicketNotAvailable()
+        public TicketNotAvailableException()
         {
         }
 
-        public TicketNotAvailable(string? message) : base(message)
+        public TicketNotAvailableException(string? message) : base(message)
         {
         }
 
-        public TicketNotAvailable(string? message, Exception? innerException) : base(message, innerException)
+        public TicketNotAvailableException(string? message, Exception? innerException) : base(message, innerException)
         {
         }
 
-        protected TicketNotAvailable(SerializationInfo info, StreamingContext context) : base(info, context)
+        protected TicketNotAvailableException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
     }

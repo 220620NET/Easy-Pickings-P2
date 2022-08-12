@@ -23,7 +23,7 @@ public class TicketService
     /// <exception cref="TicketNotAvailable">There are no tickets</exception>
     public List<Ticket> GetAllTickets()
     {
-        return _ticket.GetAllTickets() ?? throw new TicketNotAvailable();
+        return _ticket.GetAllTickets() ?? throw new TicketNotAvailableException();
     }
     /// <summary>
     /// Will return all tickets related to a particular claim
@@ -57,7 +57,7 @@ public class TicketService
         }
         catch (NullReferenceException)
         {
-            throw new TicketNotAvailable();
+            throw new TicketNotAvailableException();
         }
     }
     /// <summary>
@@ -92,7 +92,7 @@ public class TicketService
         }
         catch (NullReferenceException)
         {
-            throw new TicketNotAvailable();
+            throw new TicketNotAvailableException();
         }
     }
     /// <summary>
@@ -127,7 +127,7 @@ public class TicketService
         }
         catch (NullReferenceException)
         {
-            throw new TicketNotAvailable();
+            throw new TicketNotAvailableException();
         }
     }
     /// <summary>
@@ -151,13 +151,13 @@ public class TicketService
             }
             if (!there)
             {
-                throw new TicketNotAvailable();
+                throw new TicketNotAvailableException();
             }
             return _ticket.GetTicketByID(ticketId);
         }
-        catch (TicketNotAvailable)
+        catch (TicketNotAvailableException)
         {
-            throw new TicketNotAvailable();
+            throw new TicketNotAvailableException();
         } 
          
     }
@@ -190,7 +190,7 @@ public class TicketService
         {
             throw new InvalidUserException();
         }
-        catch (TicketNotAvailable)
+        catch (TicketNotAvailableException)
         {
             return _ticket.CreateTicket(ticket);
         }
@@ -226,9 +226,9 @@ public class TicketService
         {
             throw new InvalidUserException();
         }
-        catch (TicketNotAvailable)
+        catch (TicketNotAvailableException)
         {
-            throw new TicketNotAvailable();
+            throw new TicketNotAvailableException();
         }
     }
     /// <summary>
@@ -244,9 +244,9 @@ public class TicketService
             GetTicketByID(ticketID);
             return _ticket.DeleteTicket(ticketID);
         }
-        catch (TicketNotAvailable)
+        catch (TicketNotAvailableException)
         {
-            throw new TicketNotAvailable();
+            throw new TicketNotAvailableException();
         }
     }
 }

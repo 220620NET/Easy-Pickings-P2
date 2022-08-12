@@ -20,8 +20,7 @@ public class PolicyService
     /// <returns>related policy</returns>
     /// <exception cref="NotImplementedException">There is no policy related to that ID</exception>
     public Policy GetPolicyByID(int policyID)
-    {
-       // return _repo.GetPolicyByID(policyID)?? throw new NotImplementedException();
+    { 
         try
         {
             List<Policy> all = _repo.GetAllPolicy();
@@ -35,17 +34,17 @@ public class PolicyService
             }
             if (!there)
             {
-                throw new PolicyNotAvailable();
+                throw new PolicyNotAvailableException();
             }
             return _repo.GetPolicyByID(policyID);
         }
-        catch (PolicyNotAvailable)
+        catch (PolicyNotAvailableException)
         {
-            throw new PolicyNotAvailable();
+            throw new PolicyNotAvailableException();
         }
         catch (NotImplementedException)
         {
-            throw new PolicyNotAvailable();
+            throw new PolicyNotAvailableException();
         }
     }
     /// <summary>
@@ -64,8 +63,7 @@ public class PolicyService
     /// <returns>a list of all ralated insurace </returns>
     /// <exception cref="NotImplementedException">There are no policy related to that insurance</exception>
     public List<Policy> GetPolicyByInsurance(int insurance)
-    {
-       // return _repo.GetPolicyByInsurance(insurance)?? throw new NotImplementedException();
+    { 
         try
         {
             List<User> all = _repos.GetAllUsers();
@@ -87,9 +85,9 @@ public class PolicyService
         {
             throw new InvalidUserException();
         }
-        catch (PolicyNotAvailable)
+        catch (PolicyNotAvailableException)
         {
-            throw new PolicyNotAvailable();
+            throw new PolicyNotAvailableException();
         }
     }
     /// <summary>
@@ -109,7 +107,7 @@ public class PolicyService
     /// <exception cref="NotImplementedException">That policy couldn't be created</exception>
      public Policy CreatePolicy(Policy policy)
     {
-       // return _repo.CreatePolicy(policy) ?? throw new NotImplementedException();
+       
         try
         {
             List<Policy> policyU = GetPolicyByInsurance(policy.insurance);
@@ -127,8 +125,7 @@ public class PolicyService
     /// <returns>updated policy</returns>
     /// <exception cref="NotImplementedException">That policy could not be updated</exception>
     public Policy UpdatePolicy(Policy policy)
-    {
-       // return _repo.UpdatePolicy(policy) ?? throw new NotImplementedException();
+    { 
         try
         {
             List<Policy> policyU = GetPolicyByInsurance(policy.insurance);
@@ -139,9 +136,9 @@ public class PolicyService
         {
             throw new InvalidUserException();
         }
-        catch (PolicyNotAvailable)
+        catch (PolicyNotAvailableException)
         {
-            throw new PolicyNotAvailable();
+            throw new PolicyNotAvailableException();
         }
     }
     /// <summary>
@@ -151,8 +148,7 @@ public class PolicyService
     /// <returns>deleted polcy</returns>
     /// <exception cref="NotImplementedException">That policy is not exist</exception>
      public Policy DeletePolicy(int policyID)
-    {
-       // return _repo.DeletePolicy(policyID) ?? throw new NotImplementedException();
+    { 
        try
         {
             List<Policy> all = GetAllPolicy();
@@ -163,11 +159,11 @@ public class PolicyService
                     return _repo.DeletePolicy(policyID);
                 }
             }
-            throw new PolicyNotAvailable();
+            throw new PolicyNotAvailableException();
         }
-        catch (PolicyNotAvailable)
+        catch (PolicyNotAvailableException)
         {
-            throw new PolicyNotAvailable();
+            throw new PolicyNotAvailableException();
         }
     }
 }

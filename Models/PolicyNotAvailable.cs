@@ -7,21 +7,22 @@ using System.Threading.Tasks;
 
 namespace CustomExceptions
 {
-    public class PolicyNotAvailable : Exception
+    [System.Serializable]
+    public class PolicyNotAvailableException : Exception
     {
-        public PolicyNotAvailable()
+        public PolicyNotAvailableException()
         {
         }
 
-        public PolicyNotAvailable(string message) : base(message)
+        public PolicyNotAvailableException(string message) : base(message)
         {
         }
 
-        public PolicyNotAvailable(string message, Exception innerException) : base(message, innerException)
+        public PolicyNotAvailableException(string message, Exception innerException) : base(message, innerException)
         {
         }
 
-        protected PolicyNotAvailable(SerializationInfo info, StreamingContext context) : base(info, context)
+        protected PolicyNotAvailableException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
     }
