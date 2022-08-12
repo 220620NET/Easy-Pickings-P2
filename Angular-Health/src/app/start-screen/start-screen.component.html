@@ -4,13 +4,55 @@
             <div class="row"><h3>Welcome to Sketchiest Connection</h3></div>
             <div class="row"><p>We make the connections you can't see</p></div>
         </div>
-        <div class="form-group"> 
+        <div class="form-group" *ngIf="mode==='login'"> 
                 <h5>Please Login</h5>
+                <p><label for="username">Username:</label>
+                <input type="text" id="username" name="username" class="form-control" [formControl]="username"></p>
+                <p>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" class="form-control" [formControl]="password">
+                </p>
+                
+        </div>
+        <div class="form-group register" *ngIf="mode==='register'">
+            <h5>Please Register</h5>
+            <p>
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" class="form-control" [formControl]="firstName">
+            </p>
+            <p>
+                <label for="middleInitial">Middle Initial:</label>
+                <input type="text" id="middleInitial" name="middleInitial" class="form-control" [formControl]="middleInitial">
+            </p>
+            <p>
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" class="form-control" [formControl]="lastName">
+            </p>
+            <p>
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" class="form-control" [formControl]="username">
+            </p>
+            <p>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" class="form-control" [formControl]="password">
-                <button class="btn login-btn btn-primary" (click)="login()">Login</button>
+            </p>
+            <p>
+                <label for="DoB">Date Of Birth:</label>
+                <input type="text" id="DoB" name="DoB" class="form-control" [formControl]="DoB">
+            </p>
+            <p>
+                <label for="rol">Select your Role:</label>
+                <select>
+                    <option>Patient</option>
+                    <option>Doctor</option>
+                    <option>Insurance Provider</option>
+                    <option>Employee of Sketchiest Connections</option>
+                </select>
+            </p>
         </div>
+        <div class="form-group">
+            <button class="btn login-btn btn-primary" (click)="login()">Login</button>
+        </div>
+        <p>or <span class="switchbtn" *ngIf="mode === 'login'" (click)="switchMode('register')">Register</span><span *ngIf="mode === 'register'" class="switchbtn" (click)="switchMode('login')">Log In</span> here</p>
     </div>
-</div>
+</div> 
