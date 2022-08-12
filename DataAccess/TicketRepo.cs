@@ -22,7 +22,7 @@ namespace DataAccess
         { 
             _dbContext.Tickets.Add(ticket);
             Finish();
-            return ticket ?? throw new TicketNotAvailable();
+            return ticket ?? throw new TicketNotAvailableException();
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace DataAccess
         /// <exception cref="TicketNotAvailable">That ticket does not exist</exception>
         public Ticket DeleteTicket(int ticketID)
         {
-            Ticket ticketToDelete =_dbContext.Tickets.FirstOrDefault(ticket=>ticket.ticketID==ticketID)??throw new TicketNotAvailable();
+            Ticket ticketToDelete =_dbContext.Tickets.FirstOrDefault(ticket=>ticket.ticketID==ticketID)??throw new TicketNotAvailableException();
             _dbContext.Tickets.Remove(ticketToDelete);
             Finish();
             return ticketToDelete;
@@ -66,7 +66,7 @@ namespace DataAccess
         /// <exception cref="TicketNotAvailable">That ticket does not exist</exception>
         public Ticket GetTicketByID(int ticketID)
         {
-            return _dbContext.Tickets.AsNoTracking().FirstOrDefault(p => p.ticketID == ticketID)?? throw new TicketNotAvailable();
+            return _dbContext.Tickets.AsNoTracking().FirstOrDefault(p => p.ticketID == ticketID)?? throw new TicketNotAvailableException();
         }
         /// <summary>
         /// Will grab all tickets related to a patient
@@ -99,7 +99,7 @@ namespace DataAccess
         {
             _dbContext.Tickets.Update(ticket);
             Finish();
-            return ticket ?? throw new TicketNotAvailable();
+            return ticket ?? throw new TicketNotAvailableException();
         }
         /// <summary>
         /// Persist changes and clear the tracker
