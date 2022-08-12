@@ -13,7 +13,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("MyAllowAllHeadersPolicy",
         builder =>
         {
-            builder.WithOrigins("*")
+            builder.WithOrigins("http://localhost:4200/", "https://yellow-tree-02390bb10.1.azurestaticapps.net/")
                    .AllowAnyHeader()
                    .AllowAnyMethod();
         });
