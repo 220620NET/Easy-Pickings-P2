@@ -81,6 +81,11 @@ public class ClaimsRepo : IClaimRepo
         Finish();
         return claim; 
     }
+
+       public List<Claim> GetClaimByPolicyId(int ID)
+    {
+    return _context.Claims.AsNoTracking().Where(c => c.policyID == ID).ToList()??throw new NotImplementedException();
+    }
     protected void Finish()
     {
         _context.SaveChanges();
