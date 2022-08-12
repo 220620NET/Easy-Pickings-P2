@@ -3,12 +3,21 @@ using NewModels;
 using DataAccess;
 using WebAPI.Controllers;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<InsuranceDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("P2DB")));
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("MyAllowAllHeadersPolicy",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:4200/", "https://yellow-tree-02390bb10.1.azurestaticapps.net/")
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
 /*
  *      DataAccess Layer scoping
 */
@@ -49,12 +58,13 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
+app.UseCors("MyAllowAllHeadersPolicy");
 app.MapGet("/", () => "Hello World!");
 
 /*
  *      AuthController End Points
 */
-app.MapPost("/login", (string? username, string? password, AuthController controller) => controller.Login(username, password));
+app.MapPost("/login", (User user, AuthController controller) => controller.Login(user));
 app.MapPost("/register", (User newUser, AuthController controller) => controller.Register(newUser));
 app.MapPut("/reset", (User update, AuthController controller) => controller.ResetPassword(update));
 
