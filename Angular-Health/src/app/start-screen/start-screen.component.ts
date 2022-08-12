@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { FormControl, Validators } from '@angular/forms';
-
+import { UserLogin } from '../models/UserLogin';
 import { Injectable } from '@angular/core';
 import { User } from '../models/User';
 import { Observable } from 'rxjs';
@@ -24,7 +24,7 @@ export class StartScreenComponent implements OnInit {
   login() : void{
     this.username.markAsTouched();
     this.password.markAsTouched();
-    let user : User = {username:this.username.value,password:this.password.value,firstName:'',lastName:'',middleInitial:'', DoB:'',role:'',userID:0};
+    let user : UserLogin = {username:this.username.value,password:this.password.value};
     console.log(user);
     this.http.post(this.api + `login`,user).subscribe((res)=>
     console.log(res))
