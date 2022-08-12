@@ -21,18 +21,12 @@ export class StartScreenComponent implements OnInit {
   password : FormControl = new FormControl('', [
     Validators.required
   ]); 
-  user:User ={
-    userID:0,
-    firstName:'',
-    middleInitial:'',
-    lastName:'',
-    username: this.username.value,
-    password : this.password.value,
-    DoB: '',
-    role:''
-  };
   login() : void{
-    this.http.post(this.api + `login`,this.user).subscribe((res)=>
+    this.username.markAsTouched();
+    this.password.markAsTouched();
+    let user : User = {username:this.username.value,password:this.password.value,firstName:'',lastName:'',middleInitial:'', DoB:'',role:'',userID:0};
+    console.log(user);
+    this.http.post(this.api + `login`,user).subscribe((res)=>
     console.log(res))
   }
   ngOnInit(): void {

@@ -64,7 +64,7 @@ app.MapGet("/", () => "Hello World!");
 /*
  *      AuthController End Points
 */
-app.MapPost("/login", (string? username, string? password, AuthController controller) => controller.Login(username, password));
+app.MapPost("/login", (User user, AuthController controller) => controller.Login(user));
 app.MapPost("/register", (User newUser, AuthController controller) => controller.Register(newUser));
 app.MapPut("/reset", (User update, AuthController controller) => controller.ResetPassword(update));
 

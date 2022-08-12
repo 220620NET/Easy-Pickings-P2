@@ -18,11 +18,11 @@ public class AuthController
     /// <param name="username">A valid username</param>
     /// <param name="password">A valid password</param>
     /// <returns>202 and the user</returns>
-    public IResult Login(string? username, string? password)
+    public IResult Login(User user)
     {
         try
         {
-            return Results.Accepted("/login",_authService.Login(username, password));
+            return Results.Accepted("/login",_authService.Login(user.username, user.password));
         }
         catch (InputInvalidException)
         {
