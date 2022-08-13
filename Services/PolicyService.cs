@@ -110,7 +110,7 @@ public class PolicyService
        
         try
         {
-            List<Policy> policyU = GetPolicyByInsurance(policy.insurance);
+             GetPolicyByInsurance(policy.insurance);
             return _repo.CreatePolicy(policy);
         }
         catch (InvalidUserException)
@@ -128,7 +128,7 @@ public class PolicyService
     { 
         try
         {
-            List<Policy> policyU = GetPolicyByInsurance(policy.insurance);
+             GetPolicyByInsurance(policy.insurance);
             Policy thisPolicy = GetPolicyByID(policy.policyID);
             return _repo.UpdatePolicy(policy);
         }

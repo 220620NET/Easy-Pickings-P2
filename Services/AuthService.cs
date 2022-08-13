@@ -95,7 +95,7 @@ namespace Services
         {
             try
             {
-                User test = _userRep.GetUserByName(update.username, false);
+               _userRep.GetUserByName(update.username, false);
                 if (update.userID == null || update.password == null || update.username == null || update.first_name == null || update.last_name == null)
                 {
                     throw new InputInvalidException();
