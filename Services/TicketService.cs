@@ -37,12 +37,12 @@ public class TicketService
         try
         {
             List<Claim> all = _claimRepo.GetAllClaims();
-            bool there = true;
+            bool there = false;
             foreach(Claim ticket in all)
             {
-                if(claimID!= ticket.claimID)
+                if(claimID == ticket.claimID)
                 {
-                    there = false;
+                    there = true;
                 }
             }
             if (!there)
@@ -107,12 +107,12 @@ public class TicketService
         try
         {
             List<User> all = _userRepo.GetAllUsers();
-            bool there = true;
+            bool there = false;
             foreach (User ticket in all)
             {
-                if (patientID != ticket.userID)
+                if (patientID == ticket.userID)
                 {
-                    there = false;
+                    there = true;
                 }
             }
             if (!there)

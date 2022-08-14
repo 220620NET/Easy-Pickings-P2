@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomExceptions", "CustomExceptions\CustomExceptions.csproj", "{9B2375D6-BB60-47CA-B82F-621646387E28}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{40F5E084-AAA6-4734-B2F6-28CE37193E53}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9B2375D6-BB60-47CA-B82F-621646387E28} = {9B2375D6-BB60-47CA-B82F-621646387E28}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{A058CEDC-90F3-4C62-8D44-9760B617E093}"
 EndProject
