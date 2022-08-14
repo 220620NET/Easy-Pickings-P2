@@ -63,7 +63,11 @@ namespace Services
                 if (newUser.password==null||newUser.first_name==null||newUser.last_name==null||newUser.role==null)
                 {
                     throw new InputInvalidException();
-                } else if (newUser.username == test.username)
+                }else if(test ==null)
+                {
+                    return _userRep.CreateUser(newUser);
+                }
+                else if (newUser.username == test.username)
                 {
                     throw new DuplicateRecordException();
                 }

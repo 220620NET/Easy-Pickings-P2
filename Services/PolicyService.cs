@@ -67,12 +67,12 @@ public class PolicyService
         try
         {
             List<User> all = _repos.GetAllUsers();
-            bool there = true;
+            bool there = false;
             foreach (User policy in all)
             {
-                if (insurance != policy.userID)
+                if (insurance == policy.userID)
                 {
-                    there = false;
+                    there = true;
                 }
             }
             if (!there)

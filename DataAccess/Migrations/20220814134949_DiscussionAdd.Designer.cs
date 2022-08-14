@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(InsuranceDbContext))]
-    [Migration("20220803184828_schemas")]
-    partial class schemas
+    [Migration("20220814134949_DiscussionAdd")]
+    partial class DiscussionAdd
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -61,6 +61,33 @@ namespace DataAccess.Migrations
                     b.ToTable("Claims", "P2");
                 });
 
+            modelBuilder.Entity("NewModels.Comment", b =>
+                {
+                    b.Property<int>("commentID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("commentID"), 1L, 1);
+
+                    b.Property<string>("body")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("messageID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("userID")
+                        .HasColumnType("int");
+
+                    b.HasKey("commentID");
+
+                    b.HasIndex("messageID");
+
+                    b.HasIndex("userID");
+
+                    b.ToTable("Comments", "P2");
+                });
+
             modelBuilder.Entity("NewModels.Contact", b =>
                 {
                     b.Property<int>("contactID")
@@ -104,6 +131,32 @@ namespace DataAccess.Migrations
                     b.HasIndex("userID");
 
                     b.ToTable("Contacts", "P2");
+                });
+
+            modelBuilder.Entity("NewModels.Discussion", b =>
+                {
+                    b.Property<int>("discussionID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("discussionID"), 1L, 1);
+
+                    b.Property<string>("body")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("dateCreated")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("userID")
+                        .HasColumnType("int");
+
+                    b.HasKey("discussionID");
+
+                    b.HasIndex("userID");
+
+                    b.ToTable("Discussions", "P2");
                 });
 
             modelBuilder.Entity("NewModels.Policy", b =>
@@ -221,7 +274,31 @@ namespace DataAccess.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("NewModels.Comment", b =>
+                {
+                    b.HasOne("NewModels.Discussion", null)
+                        .WithMany()
+                        .HasForeignKey("messageID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("NewModels.User", null)
+                        .WithMany()
+                        .HasForeignKey("userID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("NewModels.Contact", b =>
+                {
+                    b.HasOne("NewModels.User", null)
+                        .WithMany()
+                        .HasForeignKey("userID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("NewModels.Discussion", b =>
                 {
                     b.HasOne("NewModels.User", null)
                         .WithMany()

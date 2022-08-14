@@ -12,6 +12,8 @@ namespace DataAccess
         public DbSet<Policy> Policies { get; set; }
         public DbSet<Claim> Claims { get; set; } 
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Discussion> Discussions { get; set; }
+        public DbSet<Comment> Comments { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Ticket>().HasOne<User>().WithMany().HasForeignKey(p => p.userID).OnDelete(DeleteBehavior.NoAction);
@@ -22,6 +24,9 @@ namespace DataAccess
             modelBuilder.Entity<Claim>().HasOne<User>().WithMany().HasForeignKey(p => p.doctorID).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Claim>().HasOne<Policy>().WithMany().HasForeignKey(p => p.policyID).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Policy>().HasOne<User>().WithMany().HasForeignKey(p => p.insurance).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Discussion>().HasOne<User>().WithMany().HasForeignKey(p => p.userID).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Comment>().HasOne<User>().WithMany().HasForeignKey(p => p.userID).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Comment>().HasOne<Discussion>().WithMany().HasForeignKey(p => p.messageID).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.HasDefaultSchema("P2");
         }
     }
