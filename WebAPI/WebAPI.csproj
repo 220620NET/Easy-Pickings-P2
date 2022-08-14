@@ -20,8 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CustomExceptions\CustomExceptions.csproj" />
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
-    <ProjectReference Include="..\Models\CustomExceptions.csproj" />
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj" /> 
     <ProjectReference Include="..\NewModels\NewModels.csproj" />
     <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
