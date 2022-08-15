@@ -72,6 +72,7 @@ namespace Services
 
         public User DeleteUser(int userID)
         {
+ 
             try
             {
                 User user = GetUserById(userID);
@@ -82,6 +83,7 @@ namespace Services
             {
                 throw new InvalidUserException();
             }
+ 
         }
 
     }
