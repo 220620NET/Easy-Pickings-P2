@@ -156,7 +156,9 @@ public class PolicyService
             {
                 if(policy.policyID == policyID)
                 {
-                    return _repo.DeletePolicy(policyID);
+                     Policy pol = GetPolicyByID(policyID);
+                    _repo.DeletePolicy(policyID);
+                    return pol;
                 }
             }
             throw new PolicyNotAvailableException();

@@ -37,7 +37,9 @@ namespace Services
         }
         public User DeleteUser(int userID)
         {
-            return _user.DeleteUser(userID) ?? throw new NotImplementedException();
+            User user = GetUserById(userID);
+            _user.DeleteUser(userID);
+            return user;
         }
 
     }

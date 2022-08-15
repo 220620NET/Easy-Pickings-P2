@@ -37,8 +37,9 @@ namespace Services
 
                 if (!found)
                     throw new ContactNotAvailableException();
-
-                return _contactRepo.DeleteContactInfo(contactID) ?? throw new ContactNotAvailableException();
+                Contact contactToDelete = _contactRepo.GetContactInfoById(contactID);
+                _contactRepo.DeleteContactInfo(contactID);
+                return contactToDelete;
             }
             catch (ContactNotAvailableException)
             {

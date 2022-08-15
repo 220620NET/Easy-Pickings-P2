@@ -26,7 +26,7 @@ builder.Services.AddScoped<IPolicy, PolicyRepo>();
 builder.Services.AddScoped<IClaimRepo, ClaimsRepo>();
 builder.Services.AddScoped<IContactRepo, ContactRepo>();
 builder.Services.AddScoped<IUserRepo, UserRepo>();
-
+builder.Services.AddScoped<ICommentRepo, CommentRepo>();
 /*
  *      Service Layer Scoping    
 */
@@ -36,7 +36,7 @@ builder.Services.AddTransient<UserService>();
 builder.Services.AddTransient<ClaimService>();
 builder.Services.AddTransient<ContactService>();
 builder.Services.AddTransient<PolicyService>();
-
+builder.Services.AddTransient<CommentService>();
 /*
  *      Controler Layer Scoping
 */
@@ -46,6 +46,7 @@ builder.Services.AddScoped<UserController>();
 builder.Services.AddScoped<PolicyController>();
 builder.Services.AddScoped<ClaimController>();
 builder.Services.AddScoped<ContactController>();
+builder.Services.AddScoped<CommentController>();
 
 
 /*
@@ -120,5 +121,18 @@ app.MapGet("/contactinfo", (ContactController controller) =>controller.GetAllCon
 app.MapGet("/contact/ID/{contactID}", (int contactID, ContactController controller) => controller.GetContactInfoById(contactID));
 app.MapGet("/contact/email/{email}", (string email, ContactController controller) => controller.GetContactInfoByEmail(email));
 app.MapGet("/contact/phone/{phone}", (int phone, ContactController controller) => controller.GetContactInfoByPhone(phone));
+/*
+ *      DiscussionController End Points
+ */
 
+/*
+ *      CommentController End Points
+ */
+app.MapPost("/submit/comment", (Comment comment, CommentController controller) => controller.CreateComment(comment));
+app.MapPut("/update/comment", (Comment comment, CommentController controller) => controller.UpdateComment(comment));
+app.MapDelete("/delete/comment", (int commentID, CommentController controller) => controller.DeleteComment(commentID));
+app.MapGet("/comment", (CommentController controller) => controller.GetAllComments());
+app.MapGet("/comment/id/{commentID}", (int commentID, CommentController controller) => controller.GetCommentById(commentID));
+app.MapGet("/comment/user/{userID}", (int userID, CommentController controller) => controller.GetCommentByUser(userID));
+app.MapGet("/comment/discussion/{postID}", (int postID, CommentController controller) => controller.GetCommentByPost(postID)); 
 app.Run();

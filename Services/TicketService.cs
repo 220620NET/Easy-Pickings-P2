@@ -241,8 +241,9 @@ public class TicketService
     {
         try
         {
-            GetTicketByID(ticketID);
-            return _ticket.DeleteTicket(ticketID);
+            Ticket ticket = GetTicketByID(ticketID);
+             _ticket.DeleteTicket(ticketID);
+            return ticket;
         }
         catch (TicketNotAvailableException)
         {
