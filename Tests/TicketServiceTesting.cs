@@ -29,7 +29,7 @@ namespace Tests
                 last_name = "Scammer",
                 username = "Micke",
                 password = "1234",
-                DoB = new DateTime(),
+                DoB = "9/19/1999",
                 role = "Employee"
             });
             List<Claim> claim = new();
@@ -90,7 +90,7 @@ namespace Tests
                 last_name = "Scammer",
                 username = "Micke",
                 password = "1234",
-                DoB = new DateTime(),
+                DoB = "9/19/1999",
                 role = "Employee"
             });
             List<Claim> claim = new();
@@ -151,7 +151,7 @@ namespace Tests
                 last_name = "Scammer",
                 username = "Micke",
                 password = "1234",
-                DoB = new DateTime(),
+                DoB = "9/19/1999",
                 role = "Employee"
             });
             List<Claim> claim = new();
@@ -211,7 +211,7 @@ namespace Tests
                 last_name = "Scammer",
                 username = "Micke",
                 password = "1234",
-                DoB = new DateTime(),
+                DoB = "9/19/1999",
                 role = "Employee"
             });
             List<Claim> claim = new();
@@ -289,7 +289,7 @@ namespace Tests
                 last_name = "Scammer",
                 username = "Micke",
                 password = "1234",
-                DoB = new DateTime(),
+                DoB = "9/19/1999",
                 role = "Employee"
             });
             List<Claim> claim = new();
@@ -350,7 +350,7 @@ namespace Tests
                 last_name = "Scammer",
                 username = "Micke",
                 password = "1234",
-                DoB = new DateTime(),
+                DoB = "9/19/1999",
                 role = "Employee"
             });
             List<Claim> claim = new();
@@ -410,7 +410,7 @@ namespace Tests
                 last_name = "Scammer",
                 username = "Micke",
                 password = "1234",
-                DoB = new DateTime(),
+                DoB = "9/19/1999",
                 role = "Employee"
             });
             List<Claim> claim = new();
@@ -472,7 +472,7 @@ namespace Tests
                 last_name = "Scammer",
                 username = "Micke",
                 password = "1234",
-                DoB = new DateTime(),
+                DoB = "9/19/1999",
                 role = "Employee"
             });
             List<Claim> claim = new();
@@ -536,7 +536,7 @@ namespace Tests
                 last_name = "Scammer",
                 username = "Micke",
                 password = "1234",
-                DoB = new DateTime(),
+                DoB = "9/19/1999",
                 role = "Employee"
             });
             List<Claim> claim = new();

@@ -22,7 +22,7 @@ namespace Tests
                 last_name = "Scammer",
                 username = "Micke",
                 password = "1234",
-                DoB = new DateTime(),
+                DoB = "9/19/1999",
                 role = "Employee"
             };
             User userToReturn = new()
@@ -33,7 +33,7 @@ namespace Tests
                 last_name = "Scammer",
                 username = "Micke",
                 password = "5",
-                DoB = new DateTime(),
+                DoB = "9/19/1999",
                 role = "Employee"
             };
             mockedRepo.Setup(r => r.GetUserByName(userToAdd.username, false)).Returns(userToAdd);
@@ -52,7 +52,7 @@ namespace Tests
                 last_name = "Scammer",
                 username = "Micke",
                 password = "1234",
-                DoB = new DateTime(),
+                DoB = "9/19/1999",
                 role = "Employee"
             };
             User userToReturn = new()
@@ -63,7 +63,7 @@ namespace Tests
                 last_name = "Scammer",
                 username = "School",
                 password = "1234",
-                DoB = new DateTime(),
+                DoB = "9/19/1999",
                 role = "Employee"
             };
             mockedRepo.Setup(r => r.GetUserByName(userToAdd.username, false)).Returns(userToAdd);
@@ -81,7 +81,7 @@ namespace Tests
                 last_name = "Scammer",
                 username = "Micke",
                 password = "1234",
-                DoB = new DateTime(),
+                DoB = "9/19/1999",
                 role = "Employee"
             };
             User userToReturn = new()
@@ -92,7 +92,7 @@ namespace Tests
                 last_name = "Scammer",
                 username = "Micke",
                 password = "1234",
-                DoB = new DateTime(),
+                DoB = "9/19/1999",
                 role = "Employee"
             };
             mockedRepo.Setup(repo => repo.GetUserByName(userToReturn.username,true)).Returns(userToReturn);
@@ -109,7 +109,7 @@ namespace Tests
                 middle_init = 'T',
                 last_name = "Scammer",
                 username = "Micke",
-                DoB = new DateTime(),
+                DoB = "9/19/1999",
                 role = "Employee"
             };
             User userToReturn = new()
@@ -120,7 +120,7 @@ namespace Tests
                 last_name = "Scammer",
                 username = "Micke",
                 password = "1234",
-                DoB = new DateTime(),
+                DoB = "9/19/1999",
                 role = "Employee"
             };
             mockedRepo.Setup(repo => repo.GetUserByName(userToAdd.username, true)).Returns(new User());
@@ -139,7 +139,7 @@ namespace Tests
                 last_name = "Scammer",
                 username = "Micke",
                 password = "1234",
-                DoB = new DateTime(),
+                DoB = "9/19/1999",
                 role = "Employee"
             };
             User userToReturn = new()
@@ -150,7 +150,7 @@ namespace Tests
                 last_name = "Scammer",
                 username = "Micke",
                 password = "2",
-                DoB = new DateTime(),
+                DoB = "9/19/1999",
                 role = "Employee"
             };
             mockedRepo.Setup(repo => repo.GetUserByName(userToReturn.username, false)).Returns(userToReturn);
