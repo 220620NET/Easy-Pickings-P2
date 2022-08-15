@@ -14,7 +14,7 @@
                 </p>
                 
         </div>
-        <div class="form-group register" *ngIf="mode==='register'">
+        <div class="form-group register" *ngIf="mode==='register'" [formGroup]="roleForm">
             <h5>Please Register</h5>
             <p>
                 <label for="firstName">First Name:</label>
@@ -41,12 +41,10 @@
                 <input type="text" id="DoB" name="DoB" class="form-control" [formControl]="DoB">
             </p>
             <p>
-                <label for="rol">Select your Role:</label>
-                <select>
-                    <option [formControl]="role">Patient</option>
-                    <option [formControl]="role">Doctor</option>
-                    <option [formControl]="role">Insurance Provider</option>
-                    <option [formControl]="role">Employee of Sketchiest Connections</option>
+                <label >Select your Role:</label>
+                <select formControlName="role">
+                    <option [ngValue]="null" disabled>SelectRole</option>
+                    <option *ngFor="let role of roles" [ngValue]=role.name>{{role.name}}</option>
                 </select>
             </p>
         </div>
