@@ -30,7 +30,7 @@ public class ClaimsRepo : IClaimRepo
     public Claim DeleteClaims(int Id)
     {
         Claim? ClaimToDelete = _context.Claims.AsNoTracking().FirstOrDefault(c => c.claimID == Id)??throw new NotImplementedException();
-        _context.Claims.Remove(ClaimToDelete);
+        _context.Entry(ClaimToDelete).State = EntityState.Deleted; 
         Finish();        
         return ClaimToDelete;
     }

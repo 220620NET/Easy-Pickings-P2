@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataAccess.Migrations
 {
-    public partial class schemas : Migration
+    public partial class DiscussionAdd : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -61,6 +61,28 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Discussions",
+                schema: "P2",
+                columns: table => new
+                {
+                    discussionID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    userID = table.Column<int>(type: "int", nullable: false),
+                    body = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    dateCreated = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Discussions", x => x.discussionID);
+                    table.ForeignKey(
+                        name: "FK_Discussions_Users_userID",
+                        column: x => x.userID,
+                        principalSchema: "P2",
+                        principalTable: "Users",
+                        principalColumn: "userID");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Policies",
                 schema: "P2",
                 columns: table => new
@@ -76,6 +98,34 @@ namespace DataAccess.Migrations
                     table.ForeignKey(
                         name: "FK_Policies_Users_insurance",
                         column: x => x.insurance,
+                        principalSchema: "P2",
+                        principalTable: "Users",
+                        principalColumn: "userID");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Comments",
+                schema: "P2",
+                columns: table => new
+                {
+                    commentID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    userID = table.Column<int>(type: "int", nullable: false),
+                    messageID = table.Column<int>(type: "int", nullable: false),
+                    body = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comments", x => x.commentID);
+                    table.ForeignKey(
+                        name: "FK_Comments_Discussions_messageID",
+                        column: x => x.messageID,
+                        principalSchema: "P2",
+                        principalTable: "Discussions",
+                        principalColumn: "discussionID");
+                    table.ForeignKey(
+                        name: "FK_Comments_Users_userID",
+                        column: x => x.userID,
                         principalSchema: "P2",
                         principalTable: "Users",
                         principalColumn: "userID");
@@ -171,9 +221,27 @@ namespace DataAccess.Migrations
                 column: "userID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Comments_messageID",
+                schema: "P2",
+                table: "Comments",
+                column: "messageID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_userID",
+                schema: "P2",
+                table: "Comments",
+                column: "userID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Contacts_userID",
                 schema: "P2",
                 table: "Contacts",
+                column: "userID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Discussions_userID",
+                schema: "P2",
+                table: "Discussions",
                 column: "userID");
 
             migrationBuilder.CreateIndex(
@@ -204,11 +272,19 @@ namespace DataAccess.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Comments",
+                schema: "P2");
+
+            migrationBuilder.DropTable(
                 name: "Contacts",
                 schema: "P2");
 
             migrationBuilder.DropTable(
                 name: "Tickets",
+                schema: "P2");
+
+            migrationBuilder.DropTable(
+                name: "Discussions",
                 schema: "P2");
 
             migrationBuilder.DropTable(

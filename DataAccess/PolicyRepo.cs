@@ -62,12 +62,16 @@ namespace DataAccess
         /// </summary>
         /// <param name="policyID">Policy ID to delete</param>
         /// <returns>Policy deleted</returns>
-        public Policy DeletePolicy(int policyID)
+        public bool DeletePolicy(int policyID)
         {
-            Policy policyToDelete =_dbContext.Policies.FirstOrDefault(policy=>policy.policyID==policyID)??throw new NotImplementedException();
-            _dbContext.Policies.Remove(policyToDelete);
-            Finish();
-            return policyToDelete;
+            Policy? policyToDelete = _dbContext.Policies.FirstOrDefault(ticket => ticket.policyID == policyID);
+            if (policyToDelete != null)
+            {
+                _dbContext.Entry(policyToDelete).State = EntityState.Deleted;
+                _dbContext.SaveChanges();
+                return true;
+            }
+            return false;
         }
         /// <summary>
         /// Will update a policy

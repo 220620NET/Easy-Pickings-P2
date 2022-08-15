@@ -89,12 +89,16 @@ public class UserRepo : IUserRepo
             return user;
         
     }
-    public User DeleteUser(int userID)
+    public bool DeleteUser(int userID)
     {
-        User? userToDelete = _context.Users.AsNoTracking().FirstOrDefault(user => user.userID == userID) ?? throw new NotImplementedException();
-        _context.Users.Remove(userToDelete);
-        Finish();
-        return userToDelete;
+        User? ticketToDelete = _context.Users.FirstOrDefault(ticket => ticket.userID == userID);
+        if (ticketToDelete != null)
+        {
+            _context.Entry(ticketToDelete).State = EntityState.Deleted;
+            _context.SaveChanges();
+            return true;
+        }
+        return false;
     }
     protected void Finish()
     {

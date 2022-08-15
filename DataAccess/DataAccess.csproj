@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Models\CustomExceptions.csproj" />
+    <ProjectReference Include="..\CustomExceptions\CustomExceptions.csproj" /> 
     <ProjectReference Include="..\NewModels\NewModels.csproj" />
   </ItemGroup>
 

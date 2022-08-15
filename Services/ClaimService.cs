@@ -53,8 +53,10 @@ public class ClaimService
 
    public Claim DeleteClaims(int ID)
    {
-        return _repo.DeleteClaims(ID);
-   }
+        Claim claim = GetClaimById(ID);
+        _repo.DeleteClaims(ID);
+        return claim;
+    }
 
    public Claim GetClaimById(int ID)
    {

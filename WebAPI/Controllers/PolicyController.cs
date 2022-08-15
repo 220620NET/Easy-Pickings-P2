@@ -92,7 +92,7 @@ namespace WebAPI.Controllers;
             {
                 return Results.Accepted("/submit/policy", _Services.CreatePolicy(policy));
             }
-            catch (NotImplementedException)
+            catch (InvalidUserException)
             {
                 return Results.BadRequest();
             }

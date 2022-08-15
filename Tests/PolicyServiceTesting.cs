@@ -38,7 +38,7 @@ namespace Tests
 
             Policy policy1 = new()
             {
-                policyID = 2,
+                policyID = 1,
                 insurance = 1,
                 coverage = "Test"
             };
@@ -85,7 +85,7 @@ namespace Tests
             mockedUser.Setup(r => r.GetAllUsers()).Returns(user);
             mockedPolicy.Setup(r => r.GetAllPolicy()).Returns(policy);
             PolicyService policyService = new(mockedPolicy.Object, mockedUser.Object);
-            Assert.Throws<PolicyNotAvailable>(() => policyService.DeletePolicy(policy1.policyID));
+            Assert.Throws<PolicyNotAvailableException>(() => policyService.DeletePolicy(policy1.policyID));
         }
         [Fact]
         public void PolicyCreationFailsWithInvalidUser()
@@ -157,7 +157,7 @@ namespace Tests
             mockedUser.Setup(r => r.GetAllUsers()).Returns(user);
             mockedPolicy.Setup(r => r.GetAllPolicy()).Returns(policy);
             PolicyService policyService = new(mockedPolicy.Object, mockedUser.Object);
-            Assert.Throws<PolicyNotAvailable>(() => policyService.GetPolicyByID(policy1.policyID));
+            Assert.Throws<PolicyNotAvailableException>(() => policyService.GetPolicyByID(policy1.policyID));
         }
         [Fact]
         public void GetPolicyByInsuranceIDFailsWithNonExistentInsuurance()

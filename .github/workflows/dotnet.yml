@@ -2,7 +2,7 @@ name: .NET
 
 on:
   push:
-    branches: [ "main" ,"anthony","Kris","kabiru","Sarah","Sonia"]
+    branches: [ "main" ,"anthony","Kris","kabiru","Sarah","Sonia","sarah2"]
 
 jobs:
 # a job's name
