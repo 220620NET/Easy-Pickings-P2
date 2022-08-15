@@ -59,11 +59,11 @@ export class StartScreenComponent implements OnInit {
   }
   register():void{
     let user:UserRegister ={
-      username: this.username.value,
-      password: this.password.value,
       firstName: this.firstName.value,
       middleInitial: this.middleInitial.value,
       lastName: this.lastName.value,
+      username: this.username.value,
+      password: this.password.value,
       DoB: this.DoB.value,
       role: this.role.value
     };
