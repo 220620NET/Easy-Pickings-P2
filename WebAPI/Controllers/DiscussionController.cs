@@ -32,10 +32,7 @@ namespace WebAPI.Controllers
             {
                 return Results.BadRequest("That user does not exist");
             }
-            catch (InvalidClaimException)
-            {
-                return Results.BadRequest("That claim does not exist");
-            }
+
             catch (DiscussionNotAvailableException)
             {
                 return Results.BadRequest("That discussion does not exist.");
@@ -52,5 +49,40 @@ namespace WebAPI.Controllers
                 return Results.BadRequest("That discussion does not exist.");
             }
         }
+
+        public IResult GetAllDiscussions()
+        {
+            try
+            {
+                return Results.Accepted("/discussion", _service.GetAllDiscussions());
+            }
+            catch (DiscussionNotAvailableException)
+            {
+                return Results.BadRequest("No Current Posts");
+            }
+        }
+        public IResult GetByID(int discussionID)
+        {
+            try
+            {
+                return Results.Accepted("/discussion/id/{discussionID}", _service.GetByID(discussionID));
+            }
+            catch (DiscussionNotAvailableException)
+            {
+                return Results.BadRequest("No current posts by that ID");
+            }
+        }
+        public IResult GetByUserID(int userID)
+        {
+            try
+            {
+                return Results.Accepted("/discussion/userid/{userID}", _service.GetByUserID(userID));
+            }
+            catch (DiscussionNotAvailableException)
+            {
+                return Results.BadRequest("No current posts by that ID");
+            }
+        }
+
     }
 }
