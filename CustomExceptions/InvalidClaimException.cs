@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomExceptions
 {
+    [System.Serializable]
     public class InvalidClaimException : Exception
     {
         public InvalidClaimException()

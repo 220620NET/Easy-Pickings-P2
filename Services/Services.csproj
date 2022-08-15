@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
-    <ProjectReference Include="..\Models\CustomExceptions.csproj" />
+    <ProjectReference Include="..\CustomExceptions\CustomExceptions.csproj" />
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj" /> 
   </ItemGroup>
 
 </Project>

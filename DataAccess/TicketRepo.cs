@@ -22,7 +22,7 @@ namespace DataAccess
         { 
             _dbContext.Tickets.Add(ticket);
             Finish();
-            return ticket ?? throw new TicketNotAvailable();
+            return ticket ?? throw new TicketNotAvailableException();
         }
 
         /// <summary>
@@ -31,12 +31,16 @@ namespace DataAccess
         /// <param name="ticketID">Ticket ID to delete</param>
         /// <returns>Ticket that was deleted</returns> 
         /// <exception cref="TicketNotAvailable">That ticket does not exist</exception>
-        public Ticket DeleteTicket(int ticketID)
+        public bool DeleteTicket(int ticketID)
         {
-            Ticket ticketToDelete =_dbContext.Tickets.FirstOrDefault(ticket=>ticket.ticketID==ticketID)??throw new TicketNotAvailable();
-            _dbContext.Tickets.Remove(ticketToDelete);
-            Finish();
-            return ticketToDelete;
+            Ticket? ticketToDelete =_dbContext.Tickets.FirstOrDefault(ticket=>ticket.ticketID==ticketID);
+            if (ticketToDelete != null)
+            {
+                _dbContext.Entry(ticketToDelete).State = EntityState.Deleted;
+                _dbContext.SaveChanges();
+                return true;
+            } 
+            return false;
         }
 
         /// <summary>
@@ -66,7 +70,7 @@ namespace DataAccess
         /// <exception cref="TicketNotAvailable">That ticket does not exist</exception>
         public Ticket GetTicketByID(int ticketID)
         {
-            return _dbContext.Tickets.AsNoTracking().FirstOrDefault(p => p.ticketID == ticketID)?? throw new TicketNotAvailable();
+            return _dbContext.Tickets.AsNoTracking().FirstOrDefault(p => p.ticketID == ticketID)?? throw new TicketNotAvailableException();
         }
         /// <summary>
         /// Will grab all tickets related to a patient
@@ -99,7 +103,7 @@ namespace DataAccess
         {
             _dbContext.Tickets.Update(ticket);
             Finish();
-            return ticket ?? throw new TicketNotAvailable();
+            return ticket ?? throw new TicketNotAvailableException();
         }
         /// <summary>
         /// Persist changes and clear the tracker

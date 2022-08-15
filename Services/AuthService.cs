@@ -63,7 +63,11 @@ namespace Services
                 if (newUser.password==null||newUser.first_name==null||newUser.last_name==null||newUser.role==null)
                 {
                     throw new InputInvalidException();
-                } else if (newUser.username == test.username)
+                }else if(test ==null)
+                {
+                    return _userRep.CreateUser(newUser);
+                }
+                else if (newUser.username == test.username)
                 {
                     throw new DuplicateRecordException();
                 }
@@ -95,7 +99,7 @@ namespace Services
         {
             try
             {
-                User test = _userRep.GetUserByName(update.username, false);
+               _userRep.GetUserByName(update.username, false);
                 if (update.userID == null || update.password == null || update.username == null || update.first_name == null || update.last_name == null)
                 {
                     throw new InputInvalidException();

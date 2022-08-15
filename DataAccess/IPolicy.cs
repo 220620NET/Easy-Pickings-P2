@@ -10,7 +10,7 @@ namespace DataAccess
        public List<Policy> GetPolicyByInsurance(int insurance);
         public List<Policy> GetPolicyBycoverage(string coverage);
         public Policy UpdatePolicy(Policy policy);
-        public Policy DeletePolicy(int ID);
+        public bool DeletePolicy(int ID);
         public Policy CreatePolicy(Policy policy);
     }
 }

@@ -50,7 +50,36 @@ public class UserServiceTesting
 		UserService userService = new (mockedUser.Object);
 
 		//Act
-		Assert.Throws<UserNotFound>(() => userService.DeleteUser((int)user.userID));
+		Assert.Throws<InvalidUserException>(() => userService.DeleteUser((int)user.userID));
+
+	}
+    [Fact]
+
+	public void GetUserByUsernameFailsWithInvalidUsername()
+    {
+		var mockedUser = new Mock<IUserRepo>();
+
+		List<User> users = new();
+		users.Add(new()
+
+		{
+			userID = 1,
+			first_name = "Janet",
+			middle_init = 'L',
+			last_name = "Ruger",
+			username = "jrug",
+			password = "1234",
+			DoB = new DateTime(),
+			role = "Doctor"
+		});
+		int userID = 2;
+
+		mockedUser.Setup(repo => repo.GetAllUsers()).Returns(users);
+
+		UserService userService = new(mockedUser.Object);
+
+		//Act
+		Assert.Throws<InvalidUserException>(() => userService.GetUserById(userID));
 
 	}
 }

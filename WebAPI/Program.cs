@@ -3,7 +3,7 @@ using NewModels;
 using DataAccess;
 using WebAPI.Controllers;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +13,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("MyAllowAllHeadersPolicy",
         builder =>
         {
-            builder.WithOrigins("*")
+            builder.WithOrigins("http://localhost:4200/", "https://yellow-tree-02390bb10.1.azurestaticapps.net/")
                    .AllowAnyHeader()
                    .AllowAnyMethod();
         });
@@ -26,7 +26,7 @@ builder.Services.AddScoped<IPolicy, PolicyRepo>();
 builder.Services.AddScoped<IClaimRepo, ClaimsRepo>();
 builder.Services.AddScoped<IContactRepo, ContactRepo>();
 builder.Services.AddScoped<IUserRepo, UserRepo>();
-
+builder.Services.AddScoped<ICommentRepo, CommentRepo>();
 /*
  *      Service Layer Scoping    
 */
@@ -36,7 +36,7 @@ builder.Services.AddTransient<UserService>();
 builder.Services.AddTransient<ClaimService>();
 builder.Services.AddTransient<ContactService>();
 builder.Services.AddTransient<PolicyService>();
-
+builder.Services.AddTransient<CommentService>();
 /*
  *      Controler Layer Scoping
 */
@@ -46,6 +46,7 @@ builder.Services.AddScoped<UserController>();
 builder.Services.AddScoped<PolicyController>();
 builder.Services.AddScoped<ClaimController>();
 builder.Services.AddScoped<ContactController>();
+builder.Services.AddScoped<CommentController>();
 
 
 /*
@@ -58,12 +59,13 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
+app.UseCors("MyAllowAllHeadersPolicy");
 app.MapGet("/", () => "Hello World!");
 
 /*
  *      AuthController End Points
 */
-app.MapPost("/login", (string? username, string? password, AuthController controller) => controller.Login(username, password));
+app.MapPost("/login", (User user, AuthController controller) => controller.Login(user));
 app.MapPost("/register", (User newUser, AuthController controller) => controller.Register(newUser));
 app.MapPut("/reset", (User update, AuthController controller) => controller.ResetPassword(update));
 
@@ -119,5 +121,18 @@ app.MapGet("/contactinfo", (ContactController controller) =>controller.GetAllCon
 app.MapGet("/contact/ID/{contactID}", (int contactID, ContactController controller) => controller.GetContactInfoById(contactID));
 app.MapGet("/contact/email/{email}", (string email, ContactController controller) => controller.GetContactInfoByEmail(email));
 app.MapGet("/contact/phone/{phone}", (int phone, ContactController controller) => controller.GetContactInfoByPhone(phone));
+/*
+ *      DiscussionController End Points
+ */
 
+/*
+ *      CommentController End Points
+ */
+app.MapPost("/submit/comment", (Comment comment, CommentController controller) => controller.CreateComment(comment));
+app.MapPut("/update/comment", (Comment comment, CommentController controller) => controller.UpdateComment(comment));
+app.MapDelete("/delete/comment", (int commentID, CommentController controller) => controller.DeleteComment(commentID));
+app.MapGet("/comment", (CommentController controller) => controller.GetAllComments());
+app.MapGet("/comment/id/{commentID}", (int commentID, CommentController controller) => controller.GetCommentById(commentID));
+app.MapGet("/comment/user/{userID}", (int userID, CommentController controller) => controller.GetCommentByUser(userID));
+app.MapGet("/comment/discussion/{postID}", (int postID, CommentController controller) => controller.GetCommentByPost(postID)); 
 app.Run();

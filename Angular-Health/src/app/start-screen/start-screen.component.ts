@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { FormControl, Validators } from '@angular/forms';
-
+import { UserLogin } from '../models/UserLogin';
 import { Injectable } from '@angular/core';
 import { User } from '../models/User';
 import { Observable } from 'rxjs';
+import { AuthServiceService } from '../services/AuthService/auth-service.service';
+import { UserRegister } from '../models/UserRegister';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-start-screen',
   templateUrl: './start-screen.component.html',
@@ -12,7 +15,7 @@ import { Observable } from 'rxjs';
 })
 export class StartScreenComponent implements OnInit {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private auth:AuthServiceService, private router:Router) { }
 
   api: string = 'https://easy-pickings-p2.azurewebsites.net/';
   username : FormControl = new FormControl('', [
@@ -21,19 +24,43 @@ export class StartScreenComponent implements OnInit {
   password : FormControl = new FormControl('', [
     Validators.required
   ]); 
-  user:User ={
-    userID:0,
-    firstName:'',
-    middleInitial:'',
-    lastName:'',
-    username: this.username.value,
-    password : this.password.value,
-    DoB: '',
-    role:''
-  };
+  firstName : FormControl = new FormControl('', [
+    Validators.required
+  ]); 
+  lastName : FormControl = new FormControl('', [
+    Validators.required
+  ]); 
+  middleInitial : FormControl = new FormControl('', [
+    Validators.required
+  ]); 
+  DoB : FormControl = new FormControl('', [
+    Validators.required
+  ]); 
+  role : FormControl = new FormControl('', [
+    Validators.required
+  ]); 
+  
+  mode:string='login';
+  modes:any={
+    login:'login',
+    register:'register'
+  }
   login() : void{
-    this.http.post(this.api + `login`,this.user).subscribe((res)=>
-    console.log(res))
+    this.username.markAsTouched();
+    this.password.markAsTouched();
+    let user : UserLogin = {username:this.username.value,password:this.password.value};
+    console.log(user);
+    this.http.post(this.api + `login`,user).subscribe((res)=>{
+      console.log(res);
+      this.auth.setCurrentUser(res as User);
+      this.router.navigateByUrl('/main');
+    }
+    )
+  }
+  switchMode(mode:string):void{
+    this.mode=mode;
+    this.username.reset();
+    this.password.reset();
   }
   ngOnInit(): void {
   }

@@ -22,12 +22,16 @@ namespace DataAccess
         }
         //probably don't need
 
-        public Contact DeleteContactInfo(int contactID)
+        public bool DeleteContactInfo(int contactID)
         {
-            Contact contactToDelete =_dbContext.Contacts.AsNoTracking().FirstOrDefault(contact=>contact.contactID==contactID)??throw new ContactNotAvailableException();
-            _dbContext.Contacts.Remove(contactToDelete);
-            Finish();
-            return contactToDelete;
+            Contact? contactToDelete =_dbContext.Contacts.FirstOrDefault(contact=>contact.contactID==contactID);
+            if(contactToDelete != null)
+            {
+                _dbContext.Entry(contactToDelete).State = EntityState.Deleted;
+                _dbContext.SaveChanges(); 
+                return true;
+            }
+            return false;
         }
         public List<Contact> GetAllContactInfo()
         {
@@ -50,7 +54,7 @@ namespace DataAccess
             return contact ?? throw new ContactNotAvailableException();
         }
 
-        public Contact GetContactInfoByPhone(int phone)
+        public Contact GetContactInfoByPhone(long phone)
         {
 
             Contact? contact = _dbContext.Contacts.AsNoTracking().FirstOrDefault(contact => contact.phone == phone);

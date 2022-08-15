@@ -22,7 +22,7 @@ namespace WebAPI.Controllers
             {
                 return Results.Accepted("/ticket",ticketService.GetAllTickets());
             }
-            catch (TicketNotAvailable)
+            catch (TicketNotAvailableException)
             {
                 return Results.BadRequest("No tickets have been made or all tickets have been removed by their owners");
             }
@@ -39,7 +39,7 @@ namespace WebAPI.Controllers
             {
                 return Results.Accepted("/ticket/id/{ticketID}",ticketService.GetTicketByID(ticketID));
             }
-            catch (TicketNotAvailable)
+            catch (TicketNotAvailableException)
             {
                 return Results.BadRequest("That Ticket does not exist yet, please make sure what the ticket ID is before requesting it");
             }
@@ -60,7 +60,7 @@ namespace WebAPI.Controllers
             {
                 return Results.BadRequest("That claim does not exist yet.");
             }
-            catch (TicketNotAvailable)
+            catch (TicketNotAvailableException)
             {
                 return Results.BadRequest("There is no ticket associated with that claim");
             }
@@ -81,7 +81,7 @@ namespace WebAPI.Controllers
             {
                 return Results.BadRequest("That patient does not exist yet.");
             }
-            catch (TicketNotAvailable)
+            catch (TicketNotAvailableException)
             {
                 return Results.BadRequest("That patient hasn't made any tickets yet");
             }
@@ -92,7 +92,7 @@ namespace WebAPI.Controllers
             {
                 return Results.Accepted("/tickets/policy/{id}", ticketService.GetTicketByPolicy(policyID));
             }
-            catch (TicketNotAvailable)
+            catch (TicketNotAvailableException)
             {
                 return Results.BadRequest("There are no tickets associated with that policy.");
             }
@@ -139,7 +139,7 @@ namespace WebAPI.Controllers
             {
                 return Results.BadRequest("That policy does not exist");
             }
-            catch (TicketNotAvailable)
+            catch (TicketNotAvailableException)
             {
                 return Results.BadRequest("That ticket does not exist.");
             }
@@ -150,7 +150,7 @@ namespace WebAPI.Controllers
             {
                 return Results.Accepted("/delete/ticket", ticketService.DeleteTicket(ticketID));
             }
-            catch (TicketNotAvailable)
+            catch (TicketNotAvailableException)
             {
                 return Results.BadRequest("That ticket does not exist.");
             }

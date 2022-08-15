@@ -13,8 +13,8 @@ public interface IContactRepo
     public List<Contact> GetAllContactInfo();  
     public Contact CreateContactInfo(Contact contact);
     public Contact UpdateContactInfo(Contact contact);
-    public Contact DeleteContactInfo(int contactID);
+    public bool DeleteContactInfo(int contactID);
     public Contact GetContactInfoById(int contactID);
     public Contact GetContactInfoByEmail(string email);
-    public Contact GetContactInfoByPhone(int phone);
+    public Contact GetContactInfoByPhone(long phone);
 }

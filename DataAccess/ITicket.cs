@@ -16,6 +16,6 @@ namespace DataAccess
         public List<Ticket> GetTicketByPolicy(int policyID);
         public Ticket CreateTicket(Ticket ticket);
         public Ticket UpdateTicket(Ticket ticket);
-        public Ticket DeleteTicket(int ticketID);
+        public bool DeleteTicket(int ticketID);
     }
 }
