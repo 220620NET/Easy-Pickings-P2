@@ -28,7 +28,7 @@ public class UserServiceTesting
 					last_name = "Ruger",
 					username = "jrug",
 					password = "1234",
-					DoB = new DateTime(),
+					DoB = "9/19/1999",
 					role = "Doctor"
 				});
 
@@ -41,7 +41,7 @@ public class UserServiceTesting
 					last_name = "Blue",
 					username = "hblue",
 					password = "1234",
-					DoB = new DateTime(),
+					DoB = "9/19/1999",
 					role = "Patient"
 				};
 		
@@ -69,7 +69,7 @@ public class UserServiceTesting
 			last_name = "Ruger",
 			username = "jrug",
 			password = "1234",
-			DoB = new DateTime(),
+			DoB = "9/19/1999",
 			role = "Doctor"
 		});
 		int userID = 2;
