@@ -31,12 +31,16 @@ namespace DataAccess
         /// <param name="ticketID">Ticket ID to delete</param>
         /// <returns>Ticket that was deleted</returns> 
         /// <exception cref="TicketNotAvailable">That ticket does not exist</exception>
-        public Ticket DeleteTicket(int ticketID)
+        public bool DeleteTicket(int ticketID)
         {
-            Ticket ticketToDelete =_dbContext.Tickets.FirstOrDefault(ticket=>ticket.ticketID==ticketID)??throw new TicketNotAvailableException();
-            _dbContext.Tickets.Remove(ticketToDelete);
-            Finish();
-            return ticketToDelete;
+            Ticket? ticketToDelete =_dbContext.Tickets.FirstOrDefault(ticket=>ticket.ticketID==ticketID);
+            if (ticketToDelete != null)
+            {
+                _dbContext.Entry(ticketToDelete).State = EntityState.Deleted;
+                _dbContext.SaveChanges();
+                return true;
+            } 
+            return false;
         }
 
         /// <summary>
