@@ -124,6 +124,12 @@ app.MapGet("/contact/phone/{phone}", (int phone, ContactController controller) =
 /*
  *      DiscussionController End Points
  */
+app.MapPost("/submit/discussion", (Discussion discussion, DiscussionController controller) => controller.CreateDiscussion(discussion));
+app.MapPut("/update/discussion", (Discussion discussion, DiscussionController controller) => controller.UpdateDiscussion(discussion));
+app.MapDelete("/delete/discussion", (int discussionID, DiscussionController controller) => controller.DeleteDiscussion(discussionID));
+app.MapGet("/discussion", (DiscussionController controller) => controller.GetAllDiscussions());
+app.MapGet("/discussion/id/{discussionID}", (int discussionID, DiscussionController controller) => controller.GetByID(discussionID));
+app.MapGet("/discussion/userid/{userID}", (int userID, DiscussionController controller) => controller.GetByUserID(userID));
 
 /*
  *      CommentController End Points
@@ -134,5 +140,5 @@ app.MapDelete("/delete/comment", (int commentID, CommentController controller) =
 app.MapGet("/comment", (CommentController controller) => controller.GetAllComments());
 app.MapGet("/comment/id/{commentID}", (int commentID, CommentController controller) => controller.GetCommentById(commentID));
 app.MapGet("/comment/user/{userID}", (int userID, CommentController controller) => controller.GetCommentByUser(userID));
-app.MapGet("/comment/discussion/{postID}", (int postID, CommentController controller) => controller.GetCommentByPost(postID)); 
+app.MapGet("/comment/discussion/{postID}", (int postID, CommentController controller) => controller.GetCommentByPost(postID));
 app.Run();

@@ -19,7 +19,7 @@ namespace Services
         public Discussion CreateDiscussision(Discussion newDiscussion)
         {
             return _discussion.CreateDiscussion(newDiscussion);
-            throw new NotImplementedException();
+            throw new DiscussionNotAvailableException();
         }
         public Discussion DeleteDiscussion(int discussionID)
         {
