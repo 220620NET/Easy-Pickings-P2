@@ -58,9 +58,19 @@ namespace DataAccess
 
         public Comment UpdateComment(Comment CommentToUpdate)
         {
-            _dbContext.Comments.Update(CommentToUpdate);
-            Finish();
-            return CommentToUpdate ?? throw new CommentNotAvailableException();
+            try
+            {
+                Comment? c = _dbContext.Comments.FirstOrDefault(t => t.commentID == CommentToUpdate.commentID);
+                c.userID = CommentToUpdate.userID != 0 ? CommentToUpdate.userID : c.userID;
+                c.messageID = CommentToUpdate.messageID != 0 ? CommentToUpdate.messageID : c.messageID;
+                c.body = CommentToUpdate.body != "" ? CommentToUpdate.body : c.body;
+                Finish();
+                return c ?? throw new CommentNotAvailableException();
+            }
+            catch (ArgumentNullException)
+            {
+                throw new CommentNotAvailableException();
+            }
         }
         protected void Finish()
         {

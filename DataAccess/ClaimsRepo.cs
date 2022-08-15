@@ -76,10 +76,22 @@ public class ClaimsRepo : IClaimRepo
     /// <returns>updated claim</returns>
     public Claim UpdateClaims(Claim claim)
     {
-        //update the claim
-        _context.Claims.Update(claim);
-        Finish();
-        return claim; 
+        try
+        {
+            Claim? c = _context.Claims.FirstOrDefault(t => t.claimID == claim.claimID);
+            c.userID = claim.userID != 0 ? claim.userID : c.userID;
+            c.doctorID = claim.doctorID != 0 ? claim.doctorID : c.doctorID;
+            c.policyID = claim.policyID != 0 ? claim.policyID : c.policyID;
+            c.reasonForVisit = claim.reasonForVisit != "" ? claim.reasonForVisit : c.reasonForVisit;
+            c.status = claim.status != "" || c.status == "Approved" || c.status == "Denied" ? claim.status : c.status;
+            Finish();
+            return c ?? throw new InvalidClaimException();
+
+        }
+        catch (ArgumentNullException)
+        {
+            throw new InvalidClaimException();
+        }
     }
     protected void Finish()
     {

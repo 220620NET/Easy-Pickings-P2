@@ -80,9 +80,19 @@ namespace DataAccess
         /// <returns>updated policy</returns>
          public Policy UpdatePolicy(Policy policy)
         {
-            _dbContext.Policies.Update(policy);
-            Finish();
-            return policy ?? throw new NotImplementedException();
+            try
+            {
+                Policy? p = _dbContext.Policies.FirstOrDefault(t => t.policyID == policy.policyID);
+                p.insurance = policy.insurance != 0 ? policy.insurance : p.insurance;                 
+                p.coverage = policy.coverage != "" ? policy.coverage : p.coverage;
+                Finish();
+                return p ?? throw new NotImplementedException();
+
+            }
+            catch (ArgumentNullException)
+            {
+                throw new NotImplementedException();
+            }
         }
         /// <summary>
         /// Persist changes and clear the tracker

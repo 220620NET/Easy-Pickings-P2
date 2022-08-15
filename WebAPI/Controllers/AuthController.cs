@@ -2,8 +2,8 @@ using Services;
 using NewModels;
 using CustomExceptions;
 using DataAccess;
+using Microsoft.AspNetCore.Mvc;
 namespace WebAPI.Controllers;
-
 public class AuthController
 {
     private readonly AuthService _authService;

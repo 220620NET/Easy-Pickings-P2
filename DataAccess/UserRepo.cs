@@ -84,10 +84,25 @@ public class UserRepo : IUserRepo
 
     public User ResetPassword(User user)
     {
-            _context.Users.Update(user);
+        try
+        {
+            User? u = _context.Users.FirstOrDefault(t => t.userID == user.userID);
+            u.first_name = user.first_name != "" ? user.first_name : u.first_name;
+            u.middle_init = u.middle_init;
+            u.last_name = user.last_name != "" ? user.last_name : u.last_name;
+            u.username = user.username != "" ? user.username : u.username;
+            u.password = user.password != "" ? user.password : u.password;
+            u.DoB = user.DoB.ToString()!="" ? user.DoB : u.DoB;
+            u.role = user.role == "" ? user.role : u.role;
             Finish();
-            return user;
-        
+            return u ?? throw new InputInvalidException();
+
+        }
+        catch (ArgumentNullException)
+        {
+            throw new InputInvalidException();
+        }
+
     }
     public bool DeleteUser(int userID)
     {

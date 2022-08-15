@@ -101,7 +101,7 @@ public class TicketService
     /// <param name="patientID">The patient in question</param>
     /// <returns></returns>
     /// <exception cref="InvalidUserException">There are no tickets related to that patient</exception>
-    /// <exception cref="TicketNotAvailable">There are no tickets</exception>
+    /// <exception cref="TicketNotAvailableException">There are no tickets</exception>
     public List<Ticket> GetTicketByPatient(int patientID)
     {
         try
@@ -203,7 +203,7 @@ public class TicketService
     /// <exception cref="InvalidClaimException">That claim does not exist yet</exception>
     /// <exception cref="InvalidUserException">That user does not exist yet</exception>
     /// <exception cref="InvalidPolicyException">That policy does not exist yet</exception>
-    /// <exception cref="TicketNotAvailable">That ticket does not exist</exception>
+    /// <exception cref="TicketNotAvailableException">That ticket does not exist</exception>
     public Ticket UpdateTicket(Ticket ticket)
     {
         try
@@ -236,7 +236,7 @@ public class TicketService
     /// </summary>
     /// <param name="ticketID">A valid Ticket Id</param>
     /// <returns>The ticket that was deleted</returns>
-    /// <exception cref="TicketNotAvailable">That ticket doesn't exist</exception>
+    /// <exception cref="TicketNotAvailableException">That ticket doesn't exist</exception>
     public Ticket DeleteTicket(int ticketID)
     {
         try

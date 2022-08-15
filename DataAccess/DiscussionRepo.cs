@@ -32,11 +32,16 @@ namespace DataAccess
         /// <param name="discussionID"></param>
         /// <returns></returns>
         /// <exception cref="DiscussionNotAvailableException"></exception>
-        public Discussion DeleteDiscussion(int discussionID)
+        public bool DeleteDiscussion(int discussionID)
         {
-            Discussion discussionToDelete = _dbContext.Discussions.FirstOrDefault(discussion => discussion.discussionID == discussionID) ?? throw new DiscussionNotAvailableException();
-            Finish();
-            return discussionToDelete;
+            Discussion? discussionToDelete = _dbContext.Discussions.FirstOrDefault(d => d.discussionID == discussionID);
+            if (discussionToDelete != null)
+            {
+                _dbContext.Entry(discussionToDelete).State = EntityState.Deleted;
+                _dbContext.SaveChanges();
+                return true;
+            }
+            return false;
         }
         /// <summary>
         /// Lists All Discussion Posts
@@ -73,9 +78,20 @@ namespace DataAccess
         /// <exception cref="DiscussionNotAvailableException"></exception>
         public Discussion UpdateDiscussion(Discussion discussion)
         {
-            _dbContext.Discussions.Update(discussion);
-            Finish();
-            return discussion ?? throw new DiscussionNotAvailableException();
+            try
+            {
+                Discussion? d = _dbContext.Discussions.FirstOrDefault(t => t.discussionID == discussion.discussionID);
+                d.userID = discussion.userID != 0 ? discussion.userID : d.userID;
+                d.dateCreated = discussion.dateCreated != "" ? discussion.dateCreated : d.dateCreated;
+                d.body = discussion.body != "" ? discussion.body : d.body;
+                Finish();
+                return d ?? throw new DiscussionNotAvailableException();
+
+            }
+            catch (ArgumentNullException)
+            {
+                throw new DiscussionNotAvailableException();
+            }
         }
         protected void Finish()
         {
