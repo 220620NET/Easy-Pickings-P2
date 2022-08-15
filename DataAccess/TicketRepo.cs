@@ -101,9 +101,22 @@ namespace DataAccess
         /// <exception cref="TicketNotAvailable">That ticket does not exist</exception>
         public Ticket UpdateTicket(Ticket ticket)
         {
-            _dbContext.Tickets.Update(ticket);
-            Finish();
-            return ticket ?? throw new TicketNotAvailableException();
+            try
+            {
+                Ticket? t=_dbContext.Tickets.FirstOrDefault(t=>t.ticketID==ticket.ticketID);
+                t.userID = ticket.userID != 0 ? ticket.userID : t.userID;
+                t.claimID = ticket.claimID != 0 ? ticket.claimID : t.claimID;
+                t.policyID = ticket.policyID != 0 ? ticket.policyID : t.policyID;
+                t.details = ticket.details != ""?ticket.details:t.details;
+                Finish();
+                return t ?? throw new TicketNotAvailableException();
+
+            }
+            catch (ArgumentNullException)
+            {
+                throw new TicketNotAvailableException();
+            }
+            
         }
         /// <summary>
         /// Persist changes and clear the tracker

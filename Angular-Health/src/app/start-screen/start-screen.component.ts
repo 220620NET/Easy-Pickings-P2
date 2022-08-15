@@ -57,6 +57,22 @@ export class StartScreenComponent implements OnInit {
     }
     )
   }
+  register():void{
+    let user:UserRegister ={
+      firstName: this.firstName.value,
+      middleInitial: this.middleInitial.value,
+      lastName: this.lastName.value,
+      username: this.username.value,
+      password: this.password.value,
+      DoB: this.DoB.value,
+      role: this.role.value
+    };
+    this.http.post(this.api+'register',user).subscribe((res)=>{
+      console.log(res);
+      this.auth.setCurrentUser(res as User);
+      this.router.navigateByUrl('/main')
+    })
+  }
   switchMode(mode:string):void{
     this.mode=mode;
     this.username.reset();

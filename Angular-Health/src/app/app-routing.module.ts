@@ -3,8 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ProfileComponent } from './profile/profile.component';
 
-const routes: Routes = [
-  {path: 'profile',component:ProfileComponent}
 
 import { StartScreenComponent } from './start-screen/start-screen.component';
 import { HomePageComponent } from './home-page/home-page.component';

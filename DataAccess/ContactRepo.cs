@@ -63,9 +63,26 @@ namespace DataAccess
 
         public Contact UpdateContactInfo(Contact contact)
         {
-            _dbContext.Contacts.Update(contact);
-            Finish();
-            return contact ?? throw new ContactNotAvailableException();
+            try
+            {
+                Contact? c = _dbContext.Contacts.FirstOrDefault(t => t.contactID == contact.contactID);
+                c.PO_or_street = contact.PO_or_street;
+                c.PO_number = contact.PO_number!=0?contact.PO_number:c.PO_number;
+                c.street_number = contact.street_number != 0 ? contact.street_number : c.street_number;
+                c.street_name = contact.street_name != "" ? contact.street_name : c.street_name;
+                c.city_state = contact.city_state != "" ? contact.city_state : c.city_state;
+                c.zipcode = contact.zipcode != 0 ? contact.zipcode : c.zipcode;
+                c.userID=contact.userID!=0?contact.userID:c.userID;
+                c.phone= c.phone!=0?contact.phone:c.phone;
+                c.email = contact.email!=""?contact.email:c.email;
+                Finish();
+                return c ?? throw new ContactNotAvailableException();
+
+            }
+            catch (ArgumentNullException)
+            {
+                throw new ContactNotAvailableException();
+            }
         }
 
          /// <summary>

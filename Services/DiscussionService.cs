@@ -25,8 +25,9 @@ namespace Services
         {
             try
             {
-                GetByID(discussionID);
-                return _discussion.DeleteDiscussion(discussionID);
+                Discussion d =GetByID(discussionID);
+                _discussion.DeleteDiscussion(discussionID);
+                return d;
             }
             catch (DiscussionNotAvailableException)
             {
