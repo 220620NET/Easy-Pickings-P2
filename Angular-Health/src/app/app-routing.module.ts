@@ -7,7 +7,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { StartScreenComponent } from './start-screen/start-screen.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HealthServicesService } from './services/health-services.service';
+import { PolicyTableComponent } from './policy-table/policy-table.component';
 const routes: Routes = [
+  {path: 'policy', component: PolicyTableComponent},
   {
     path: '',
     redirectTo: '/login',
