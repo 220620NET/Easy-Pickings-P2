@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'; 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
-
+import { Router,RouterLink } from '@angular/router';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -9,8 +9,10 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private router:Router) { }
+  routeHandler(a:string):void{
+    this.router.navigateByUrl('/ticket')
+  }
   ngOnInit(): void {
   }
 
