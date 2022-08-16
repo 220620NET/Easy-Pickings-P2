@@ -7,6 +7,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { StartScreenComponent } from './start-screen/start-screen.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HealthServicesService } from './services/health-services.service';
+import { TicketTableComponent } from './ticket-table/ticket-table.component';
 const routes: Routes = [
   {
     path: '',
@@ -21,6 +22,9 @@ const routes: Routes = [
   {
     path: 'login',
     component:StartScreenComponent
+  },{
+    path: 'ticket',
+    component:TicketTableComponent
   },
   {path: '*', redirectTo: '/login', pathMatch: 'full'}
 
