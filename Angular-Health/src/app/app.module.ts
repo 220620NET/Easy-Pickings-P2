@@ -20,6 +20,8 @@ import { MatInputModule } from '@angular/material/input';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatTableModule} from '@angular/material/table';
+import { FormsModule } from '@angular/forms';
  
 @NgModule({
   declarations: [
@@ -33,14 +35,17 @@ import {MatSidenavModule} from '@angular/material/sidenav';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
+    AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NoopAnimationsModule,
-    MatToolbarModule,
-    AngularWebStorageModule,
+    AngularWebStorageModule, 
+    MatButtonModule,
+    MatCardModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    FormsModule,
     MatInputModule,
-    MatSidenavModule
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
