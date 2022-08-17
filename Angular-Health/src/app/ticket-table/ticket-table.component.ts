@@ -6,9 +6,9 @@ import { User } from '../models/User';
 import { AuthServiceService } from '../services/AuthService/auth-service.service';
 import { Ticket } from '../models/Ticket';
 import { TicketServiceService } from '../services/TicketService/ticket-service.service';
-import { _MatDialogContainerBase } from '@angular/material/dialog';
-import {MatTableModule} from '@angular/material/table';
+import { _MatDialogContainerBase } from '@angular/material/dialog'; 
 import { Router, RouteReuseStrategy } from '@angular/router';
+import { FormBuilder, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-ticket-table',
   templateUrl: './ticket-table.component.html',
@@ -35,7 +35,7 @@ export class TicketTableComponent implements OnInit {
     policyID :0,
     details:'here'
   }]
-  constructor(private http:HttpClient,private local:LocalStorageService, private auth:AuthServiceService, private tick:TicketServiceService, private router:Router) { }
+  constructor(private http:HttpClient,private local:LocalStorageService, private auth:AuthServiceService, private tick:TicketServiceService, private router:Router ) { }
   getTickets():void{
     this.tick.getTicketsByID(this.currentUser.userID).subscribe((res)=>{
       console.log(res);

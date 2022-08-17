@@ -11,6 +11,7 @@ import { TicketTableComponent } from './ticket-table/ticket-table.component';
 import { PolicyTableComponent } from './policy-table/policy-table.component';
 import { ClaimTableComponent } from './claim-table/claim-table.component';
 import { AddEditComponent } from './ticket-table/add-edit/add-edit.component';
+import { ContactTableComponent } from './contact-table/contact-table.component';
 const routes: Routes = [
   {
     path: '',
@@ -39,7 +40,7 @@ const routes: Routes = [
   },{
     path:'update/ticket',
     component: AddEditComponent
-  },
+  },{path:'contact',component:ContactTableComponent},
   {path: '*', redirectTo: '/login', pathMatch: 'full'}
 
 ];
