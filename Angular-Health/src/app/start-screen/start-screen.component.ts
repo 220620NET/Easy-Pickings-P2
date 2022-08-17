@@ -16,22 +16,13 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./start-screen.component.css']
 })
 export class StartScreenComponent implements OnInit {
-  roleForm : FormGroup=new FormGroup('',[]);
-  roles=[{
-    name:"Patient"
-  },{name:"Doctor"},{name:"Employee"},{name: "Insurance Company"}];
+  roles=[{name:"Patient"},{name:"Doctor"},{name:"Employee"},{name: "Insurance Company"}]; 
   constructor(private http:HttpClient, private auth:AuthServiceService, private router:Router, private fb:FormBuilder) { }
 
   api: string = 'https://easy-pickings-p2.azurewebsites.net/';
-  username : FormControl = new FormControl('', [
-    Validators.required
-  ]);
-  password : FormControl = new FormControl('', [
-    Validators.required
-  ]); 
-  firstName : FormControl = new FormControl('', [
-    Validators.required
-  ]); 
+  username : FormControl = new FormControl('', [Validators.required]);
+  password : FormControl = new FormControl('', [Validators.required]); 
+  firstName : FormControl = new FormControl('', [Validators.required]); 
   lastName : FormControl = new FormControl('', [
     Validators.required
   ]); 
@@ -41,7 +32,7 @@ export class StartScreenComponent implements OnInit {
   DoB : FormControl = new FormControl('', [
     Validators.required
   ]); 
-  
+  role:string='Patient';
   mode:string='login';
   modes:any={
     login:'login',
@@ -68,7 +59,7 @@ export class StartScreenComponent implements OnInit {
       username: this.username.value,
       password: this.password.value,
       doB: this.DoB.value,
-      role: this.roleForm.value
+      role: this.role
     };
     console.log(user);
     this.http.post(this.api+'register',user).subscribe((res)=>{
@@ -82,8 +73,11 @@ export class StartScreenComponent implements OnInit {
     this.username.reset();
     this.password.reset();
   }
+  switchRole(role:string):void{ 
+    this.role =role;
+  }
   ngOnInit(): void {
-    this.roleForm=this.fb.group({role:[null]});
+    
   }
 
 }

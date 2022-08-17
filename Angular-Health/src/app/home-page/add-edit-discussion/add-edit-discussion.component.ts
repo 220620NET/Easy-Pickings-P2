@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DiscussionService } from 'src/app/discussion.service';
 
 @Component({
@@ -8,13 +8,29 @@ import { DiscussionService } from 'src/app/discussion.service';
 })
 export class AddEditDiscussionComponent implements OnInit {
 
-  constructor(private service:DiscussionService) {
-
-  
-   }
+  constructor(private service:DiscussionService) {}
+  @Input() discussion: any;
+  DiscussionID!: string;
+  DiscussionBody!: string;
 
   ngOnInit(): void {
-
+    this.DiscussionID=this.discussion.DiscussionID;
+    this.DiscussionBody=this.discussion.DiscussionBody;
   }
 
+  createDiscussion(){
+    let val = {DiscussionID: this.DiscussionID,
+          DiscussionBody: this.DiscussionBody};
+          this.service.createDiscussion(val).subscribe(res=>{
+                alert(res.toString())
+               });
+
+  }
+  updateDiscussion(){
+    let val = {DiscussionID: this.DiscussionID,
+          DiscussionBody: this.DiscussionBody};
+          this.service.createDiscussion(val).subscribe(res=>{
+                alert(res.toString())
+               });
+    }
 }

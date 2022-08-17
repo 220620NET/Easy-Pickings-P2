@@ -3,6 +3,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { DiscussionService } from 'src/app/discussion.service';
 
+import { Router,RouterLink } from '@angular/router';
+import { LocalStorageService } from 'angular-web-storage';
+
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -10,16 +13,15 @@ import { DiscussionService } from 'src/app/discussion.service';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor(private service: DiscussionService) { }
-  DiscussionList:any=[];
-
-  ngOnInit(): void {
-    this.refreshDiscussionList
+  constructor(private router:Router, private local:LocalStorageService) { }
+  routeHandler(a:string):void{
+    this.router.navigateByUrl(`/${a}`)
   }
-  refreshDiscussionList(){
-    this.service.getAllDiscussions().subscribe(data=>{
-      this.DiscussionList=data;
-    });
+  logout():void{
+    this.local.clear();
+  }
+  ngOnInit(): void {
+    
   }
 
 }

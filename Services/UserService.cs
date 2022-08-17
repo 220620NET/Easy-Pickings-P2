@@ -26,12 +26,12 @@ namespace Services
             try
             {
                 List<User> all = _user.GetAllUsers();
-                bool there = true;
+                bool there = false;
                 foreach (User user in all)
                 {
-                    if (userID != user.userID)
+                    if (userID == user.userID)
                     {
-                        there = false;
+                        there = true;
                     }
                 }
                 if (!there)

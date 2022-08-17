@@ -22,9 +22,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { DiscussionService } from './discussion.service';
 import { AddEditDiscussionComponent } from './home-page/add-edit-discussion/add-edit-discussion.component';
+import { FormsModule } from '@angular/forms';
+import {MatTableModule} from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon';
+import { AddEditComponent } from './ticket-table/add-edit/add-edit.component';
+import { ShowDiscussionComponent } from './home-page/show-discussion/show-discussion.component';
 
 
- 
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,17 +39,24 @@ import { AddEditDiscussionComponent } from './home-page/add-edit-discussion/add-
     PolicyTableComponent,
     TicketTableComponent,
     AddEditDiscussionComponent,
+    AddEditComponent,
+    ShowDiscussionComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
+    AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NoopAnimationsModule,
-    MatToolbarModule,
-    AngularWebStorageModule,
+    AngularWebStorageModule, 
+    MatButtonModule,
+    MatCardModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    FormsModule,
     MatInputModule,
-    MatSidenavModule
+    MatTableModule,
+    MatIconModule
   ],
   providers: [DiscussionService],
   bootstrap: [AppComponent]
