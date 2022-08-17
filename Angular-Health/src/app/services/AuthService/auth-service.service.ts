@@ -12,6 +12,9 @@ export class AuthServiceService {
       this.local.set('currentUser', user);
     }
   }
+  public getCurrentUser():User{
+    return this.local.get('currentUser');
+  }
   public isAuthenticated(){
     if(this.local.get('currentUser')) return true;
     return false;
