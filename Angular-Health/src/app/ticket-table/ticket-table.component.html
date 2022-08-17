@@ -1,1 +1,22 @@
-<p>ticket-table works!</p>
+<div class="ticket-table">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Ticket ID</th>
+                <th>User ID</th>
+                <th>Claim ID</th>
+                <th>Policy ID</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ticket of tickets">
+                <td>{{ticket.ticketID}}</td>
+                <td>{{ticket.userID}}</td>
+                <td>{{ticket.claimID}}</td>
+                <td>{{ticket.policyID}}</td>
+                <td>{{ticket.details}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

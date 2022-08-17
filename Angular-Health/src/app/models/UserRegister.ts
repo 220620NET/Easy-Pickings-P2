@@ -1,10 +1,10 @@
 export interface UserRegister{
     
-    firstName: string;
-    middleInitial: string;
-    lastName: string;
+    first_name: string;
+    middle_init: string;
+    last_name: string;
     username: string;
     password: string;
-    DoB: string;
+    doB: string;
     role: string;
 }

@@ -27,6 +27,8 @@ builder.Services.AddScoped<IClaimRepo, ClaimsRepo>();
 builder.Services.AddScoped<IContactRepo, ContactRepo>();
 builder.Services.AddScoped<IUserRepo, UserRepo>();
 builder.Services.AddScoped<ICommentRepo, CommentRepo>();
+builder.Services.AddScoped<IDiscussionRepo, DiscussionRepo>();
+
 /*
  *      Service Layer Scoping    
 */
@@ -37,6 +39,7 @@ builder.Services.AddTransient<ClaimService>();
 builder.Services.AddTransient<ContactService>();
 builder.Services.AddTransient<PolicyService>();
 builder.Services.AddTransient<CommentService>();
+builder.Services.AddScoped<DiscussionService>();
 /*
  *      Controler Layer Scoping
 */
@@ -47,7 +50,7 @@ builder.Services.AddScoped<PolicyController>();
 builder.Services.AddScoped<ClaimController>();
 builder.Services.AddScoped<ContactController>();
 builder.Services.AddScoped<CommentController>();
-
+builder.Services.AddScoped<DiscussionController>();
 
 /*
  *      Setting up web app
