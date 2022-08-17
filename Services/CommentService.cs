@@ -61,12 +61,12 @@ namespace Services
             try
             {
                 List<Comment> all = _commentRepo.GetAllComments();
-                bool there = true;
+                bool there = false;
                 foreach (Comment comment in all)
                 {
-                    if (commentID != comment.commentID)
+                    if (commentID == comment.commentID)
                     {
-                        there = false;
+                        there = true;
                     }
                 }
                 if (!there)

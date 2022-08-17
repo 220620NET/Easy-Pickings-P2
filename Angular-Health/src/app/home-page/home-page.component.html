@@ -1,12 +1,12 @@
 <nav class="navbar bg-light">
     <div class="container-fluid">
-        <form class="form-inline"><button class="mat-fab profile">Profile</button></form> 
-        <form class="form-inline"><button class="mat-stroked-button claims">Claim Table</button></form>
-        <form class="form-inline"><button class="mat-stroked-button policy">Policy Table</button></form>
-        <form class="form-inline"><button class="mat-stroked-button ticket"(click)="routeHandler('claim')">Ticket Table</button></form>
-        <form class="form-inline"><button class="mat-stroked-button logout" >Logout</button></form>
+        <form class="form-inline"><button class="mat-fab profile" (click)="routeHandler('profile')">Profile</button></form> 
+        <form class="form-inline"><button class="mat-stroked-button claims" (click)="routeHandler('claim')">Claim Table</button></form>
+        <form class="form-inline"><button class="mat-stroked-button policy" (click)="routeHandler('policy')">Policy Table</button></form>
+        <form class="form-inline"><button class="mat-stroked-button ticket"(click)="routeHandler('ticket')">Ticket Table</button></form>
+        <form class="form-inline"><button class="mat-stroked-button logout" (click)="logout()">Logout</button></form>
     </div>
-</nav>
+  </nav>
 <body>
     Cards
 </body>

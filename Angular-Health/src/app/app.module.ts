@@ -20,7 +20,10 @@ import { MatInputModule } from '@angular/material/input';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
- 
+import {MatTableModule} from '@angular/material/table';
+import { FormsModule } from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
+import { AddEditComponent } from './ticket-table/add-edit/add-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,18 +32,23 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     ProfileComponent,
     ClaimTableComponent,
     PolicyTableComponent,
-    TicketTableComponent, 
+    TicketTableComponent,
+    AddEditComponent, 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
+    AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NoopAnimationsModule,
-    MatToolbarModule,
-    AngularWebStorageModule,
+    AngularWebStorageModule, 
+    MatButtonModule,
+    MatCardModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    FormsModule,
     MatInputModule,
-    MatSidenavModule
+    MatTableModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
