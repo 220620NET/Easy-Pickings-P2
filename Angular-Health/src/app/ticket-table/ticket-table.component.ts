@@ -46,6 +46,13 @@ export class TicketTableComponent implements OnInit {
       this.local.set('ticketID',tick.ticketID);
       this.router.navigateByUrl('/update/ticket');
     }
+    deleteTicket(tick:Ticket):void{
+      console.log(tick.ticketID);
+      this.tick.deleteTick(tick.ticketID).subscribe((res)=>{
+        console.log(res)
+      })
+      this.getTickets()
+    }
     routeHandler(a:string):void{
       this.router.navigateByUrl(`/${a}`)
     }
