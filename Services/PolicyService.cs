@@ -128,7 +128,7 @@ public class PolicyService
     { 
         try
         {
-             GetPolicyByInsurance(policy.insurance);
+            GetPolicyByInsurance(policy.insurance);
             Policy thisPolicy = GetPolicyByID(policy.policyID);
             return _repo.UpdatePolicy(policy);
         }

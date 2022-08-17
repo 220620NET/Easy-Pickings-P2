@@ -141,12 +141,12 @@ public class TicketService
         try
         {
             List<Ticket> all = _ticket.GetAllTickets();
-            bool there = true;
+            bool there = false;
             foreach (Ticket ticket in all)
             {
-                if (ticketId != ticket.ticketID)
+                if (ticketId == ticket.ticketID)
                 {
-                    there = false;
+                    there = true;
                 }
             }
             if (!there)
