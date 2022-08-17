@@ -21,6 +21,7 @@ import {MatTableModule} from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import { AddEditComponent } from './ticket-table/add-edit/add-edit.component';
+import { PolicyToAdd } from './models/PolicyToAdd';
 @NgModule({
   declarations: [
     AppComponent,
