@@ -1,0 +1,16 @@
+<div class="d-flex flex-row bd-highlight mb-3">
+
+    <div class="form-group" >
+
+        <p><label for="policyID">policyID:</label><input type="number" id="policyID" name="policyID" class="form-control" [formControl]="policyID" ></p>
+        <p><label for="claimID">claimID:</label><input type="number" id="claimID" name="claimID" class="form-control" [formControl]="claimID" ></p>
+        <p><label for="details">details:</label><input type="text" id="details" name="details" class="form-control"  [formControl]="details"></p> 
+    
+    </div>
+
+</div>
+<button (click)="addTicket()" class="btn btn-primary"> Add </button>
+
+<button (click)="updateTicket()"  class="btn btn-primary">
+    Update
+</button>

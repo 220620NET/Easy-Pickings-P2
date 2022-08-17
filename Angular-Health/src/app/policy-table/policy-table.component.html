@@ -1,66 +1,38 @@
-
-
-<!-- Button trigger model -->
-<button type="button" class="btn btn-primary float-right m-2" 
-data-toggle="modal" data-target="#exampleModal" 
-(click)="addClick()"
-data-backdrop="static" data-keyboard="false"
->
-  Add Policy
-</button>
-
-<!--Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-           <div class="modal-header">
-            <h5 class="modal-tittle" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label=""close>
-                <span aria-hidden="true">&times;</span>
-            </button>
-</div>
-<div class="modal-body">
-
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-    <button type="button" class="btn btn-primary">Save changes</button>
-</div>
-
-
-
-
-
-
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>policyID</th>
-            <th>insurance</th>
-            <th>coverage</th>
-            <th>option</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let dataItem of PolicyList">
-            <td>{{dataItem.policyID}}</td>
-            <td>{{dataItem.insurance}}</td>
-            <td>{{dataItem.coverage}}</td>
-            <td>
-                <button type="button" class="btn btn-light mr-1">
-                    Create
-                </button>
-                <button type="button" class="btn btn-light mr-1">
-                    Update
-                </button>
-                <button type="button" class="btn btn-light mr-1">
-                    Delete
-                </button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<nav class="navbar bg-light">
+    <div class="container-fluid">
+        <form class="form-inline"><button class="mat-fab profile" (click)="routeHandler('profile')">Profile</button></form> 
+        <form class="form-inline"><button class="mat-stroked-button policy" (click)="routeHandler('main')">Home</button></form>
+        <form class="form-inline"><button class="mat-stroked-button policy" (click)="routeHandler('policy')">Policy Table</button></form>
+        <form class="form-inline"><button class="mat-stroked-button logout" (click)="logout()">Logout</button></form>
+    </div>
+  </nav>
+  <div class="policy-table">
+      
+      <table mat-table [dataSource]="policy" class="mat-elevation-z8 demo-table"> 
+          <ng-container matColumnDef="demo-id">
+            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let policy"> {{policy.policyID}} </td>
+          </ng-container> 
+          <ng-container matColumnDef="demo-user">
+            <th mat-header-cell *matHeaderCellDef> User ID </th>
+            <td mat-cell *matCellDef="let policy"> {{policy.userID}} </td>
+          </ng-container>  
+          <ng-container matColumnDef="demo-details">
+              <th mat-header-cell *matHeaderCellDef> Details </th>
+              <td mat-cell *matCellDef="let policy"> {{policy.details}} </td>
+            </ng-container>
+            <ng-container matColumnDef="demo-update">
+              <th mat-header-cell *matHeaderCellDef> Update </th>
+              <td mat-cell *matCellDef="let policy"><button>Update</button> </td>
+            </ng-container>
+            <ng-container matColumnDef="demo-delete">
+              <th mat-header-cell *matHeaderCellDef> delete </th>
+              <td mat-cell *matCellDef="let policy"><button>Delete</button> </td>
+            </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+  </div>
 
 
 
