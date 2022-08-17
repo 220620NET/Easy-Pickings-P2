@@ -1,31 +1,53 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LocalStorageService } from 'angular-web-storage';
-import { Observable } from 'rxjs';
+import { LocalStorageService } from 'angular-web-storage'; 
 import { Ticket } from 'src/app/models/Ticket';
-import { TicketServiceService } from 'src/app/services/TicketService/ticket-service.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { TicketServiceService } from 'src/app/services/TicketService/ticket-service.service'; 
+import { TicketToAdd } from 'src/app/models/TicketToAdd';
 @Component({
   selector: 'app-add-edit',
   templateUrl: './add-edit.component.html',
   styleUrls: ['./add-edit.component.css']
 })
 export class AddEditComponent implements OnInit {
-  ticket:Ticket={
-    ticketID :this.local.get('ticketID'),
-    userID:this.local.get('currentUser').userID,
-    claimID:0,
-    policyID:0,
-    details:''
+  constructor(private local:LocalStorageService, private tService:TicketServiceService, private router:Router ) { }
+  claimID:FormControl=new FormControl('', [
+    Validators.required
+  ]);
+  policyID: FormControl = new FormControl('', [
+    Validators.required
+  ]);
+  details:FormControl=new FormControl('', [
+    Validators.required
+  ]);
+  updateTicket():void{  
+    let ticket:Ticket={
+      ticketID :this.local.get('ticketID'),
+      userID:this.local.get('currentUser').userID,
+      claimID:this.claimID.value,
+      policyID:this.policyID.value,
+      details:this.details.value
+    };
+    this.tService.updateTick(ticket).subscribe((res)=>{
+      ticket = res;
+      console.log(ticket);
+      this.router.navigateByUrl('/ticket')
+    })
   }
-  constructor(private local:LocalStorageService, private tService:TicketServiceService, private router:Router) { }
-  updateTicket():Observable<Ticket>{
-    if(document.getElementById('details')){
-      this.ticket.details = document.getElementById('details')?.ariaValueMax as string;
-    }
-    this.ticket.claimID = document.getElementById('claimID')?.ATTRIBUTE_NODE as number;
-    this.ticket.policyID = document.getElementById('policyID')?.ATTRIBUTE_NODE as number;
-    this.router.navigateByUrl('/ticket')
-    return this.tService.updateTick(this.ticket);
+  addTicket():void{  
+    let ticket:TicketToAdd={ 
+      userID:this.local.get('currentUser').userID,
+      claimID:this.claimID.value,
+      policyID:this.policyID.value,
+      details:this.details.value
+    };
+    
+    this.tService.addTick(ticket).subscribe((res)=>{
+      ticket = res;
+      console.log(ticket);
+      this.router.navigateByUrl('/ticket')
+    })
   }
   ngOnInit(): void {
   }
