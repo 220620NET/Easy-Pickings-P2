@@ -21,6 +21,8 @@ import {MatTableModule} from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import { AddEditComponent } from './ticket-table/add-edit/add-edit.component';
+import { ContactTableComponent } from './contact-table/contact-table.component';
+import { AddEditContactComponent } from './contact-table/add-edit-contact/add-edit-contact.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,9 @@ import { AddEditComponent } from './ticket-table/add-edit/add-edit.component';
     ClaimTableComponent,
     PolicyTableComponent,
     TicketTableComponent,
-    AddEditComponent, 
+    AddEditComponent,
+    ContactTableComponent,
+    AddEditContactComponent, 
   ],
   imports: [
     BrowserModule,
