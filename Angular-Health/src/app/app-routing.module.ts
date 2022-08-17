@@ -8,6 +8,8 @@ import { StartScreenComponent } from './start-screen/start-screen.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HealthServicesService } from './services/health-services.service';
 import { TicketTableComponent } from './ticket-table/ticket-table.component';
+import { PolicyTableComponent } from './policy-table/policy-table.component';
+import { ClaimTableComponent } from './claim-table/claim-table.component';
 const routes: Routes = [
   {
     path: '',
@@ -18,13 +20,21 @@ const routes: Routes = [
     path:'main',
     component:HomePageComponent,
     canActivate:[HealthServicesService]
-  },
-  {
+  },{
+    path:'policy',
+    component:PolicyTableComponent
+  },{
     path: 'login',
     component:StartScreenComponent
   },{
     path: 'ticket',
     component:TicketTableComponent
+  },{
+    path:'claim',
+    component:ClaimTableComponent
+  },{
+    path:'profile',
+    component:ProfileComponent
   },
   {path: '*', redirectTo: '/login', pathMatch: 'full'}
 
