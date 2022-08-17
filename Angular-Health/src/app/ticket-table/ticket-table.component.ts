@@ -8,7 +8,7 @@ import { Ticket } from '../models/Ticket';
 import { TicketServiceService } from '../services/TicketService/ticket-service.service';
 import { _MatDialogContainerBase } from '@angular/material/dialog';
 import {MatTableModule} from '@angular/material/table';
-import { Router } from '@angular/router';
+import { Router, RouteReuseStrategy } from '@angular/router';
 @Component({
   selector: 'app-ticket-table',
   templateUrl: './ticket-table.component.html',
@@ -41,6 +41,10 @@ export class TicketTableComponent implements OnInit {
       console.log(res);
       this.tickets=res;
     })
+    }
+    updateTicket(tick:Ticket):void{
+      this.local.set('ticketID',tick.ticketID);
+      this.router.navigateByUrl('/update/ticket');
     }
     routeHandler(a:string):void{
       this.router.navigateByUrl(`/${a}`)

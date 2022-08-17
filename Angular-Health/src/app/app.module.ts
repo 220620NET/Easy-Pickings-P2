@@ -22,7 +22,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTableModule} from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
- 
+import {MatIconModule} from '@angular/material/icon';
+import { AddEditComponent } from './ticket-table/add-edit/add-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { FormsModule } from '@angular/forms';
     ProfileComponent,
     ClaimTableComponent,
     PolicyTableComponent,
-    TicketTableComponent, 
+    TicketTableComponent,
+    AddEditComponent, 
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,8 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,9 +7,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TicketServiceService {
-  api:string = 'https://easy-pickings-p2.azurewebsites.net/ticket';
+  api:string = 'https://easy-pickings-p2.azurewebsites.net/';
   constructor(private http:HttpClient) { }
-  getTicketsByID(ticketID:number):Observable<Ticket[]>{
-    return this.http.get(this.api+`/patient/${ticketID}`) as Observable<Ticket[]>
+  getTicketsByID(patient:number):Observable<Ticket[]>{
+    return this.http.get(this.api+`ticket/patient/${patient}`) as Observable<Ticket[]>
+  }
+  updateTick(tick:Ticket):Observable<Ticket>{
+    return this.http.put(this.api+`update/ticket`,tick) as Observable<Ticket>
   }
 }
