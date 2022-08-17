@@ -1,0 +1,12 @@
+C:\Users\slynn\Documents\Revature\project2\NewModels\bin\Debug\net6.0\NewModels.deps.json
+C:\Users\slynn\Documents\Revature\project2\NewModels\bin\Debug\net6.0\NewModels.dll
+C:\Users\slynn\Documents\Revature\project2\NewModels\bin\Debug\net6.0\NewModels.pdb
+C:\Users\slynn\Documents\Revature\project2\NewModels\obj\Debug\net6.0\NewModels.csproj.AssemblyReference.cache
+C:\Users\slynn\Documents\Revature\project2\NewModels\obj\Debug\net6.0\NewModels.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\slynn\Documents\Revature\project2\NewModels\obj\Debug\net6.0\NewModels.AssemblyInfoInputs.cache
+C:\Users\slynn\Documents\Revature\project2\NewModels\obj\Debug\net6.0\NewModels.AssemblyInfo.cs
+C:\Users\slynn\Documents\Revature\project2\NewModels\obj\Debug\net6.0\NewModels.csproj.CoreCompileInputs.cache
+C:\Users\slynn\Documents\Revature\project2\NewModels\obj\Debug\net6.0\NewModels.dll
+C:\Users\slynn\Documents\Revature\project2\NewModels\obj\Debug\net6.0\refint\NewModels.dll
+C:\Users\slynn\Documents\Revature\project2\NewModels\obj\Debug\net6.0\NewModels.pdb
+C:\Users\slynn\Documents\Revature\project2\NewModels\obj\Debug\net6.0\ref\NewModels.dll

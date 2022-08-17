@@ -18,8 +18,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { DiscussionService } from './discussion.service';
+import { AddEditDiscussionComponent } from './home-page/add-edit-discussion/add-edit-discussion.component';
+
+
  
 @NgModule({
   declarations: [
@@ -29,7 +33,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     ProfileComponent,
     ClaimTableComponent,
     PolicyTableComponent,
-    TicketTableComponent, 
+    TicketTableComponent,
+    AddEditDiscussionComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatInputModule,
     MatSidenavModule
   ],
-  providers: [],
+  providers: [DiscussionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

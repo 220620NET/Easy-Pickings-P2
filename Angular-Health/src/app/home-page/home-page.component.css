@@ -31,3 +31,7 @@
     background-color: aliceblue;
     cursor: pointer;
 }
+.post-discussion {
+    padding-bottom: 9px;
+    margin: 5px 0 5px;
+  }
