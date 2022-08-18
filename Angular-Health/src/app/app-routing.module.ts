@@ -14,6 +14,7 @@ import { AddEditComponent } from './ticket-table/add-edit/add-edit.component';
 import { AppEditPolicyComponent } from './policy-table/app-edit-policy/app-edit-policy.component';
 import { ContactTableComponent } from './contact-table/contact-table.component';
 import { AddEditContactComponent } from './contact-table/add-edit-contact/add-edit-contact.component';
+import { AddEditClaimComponent } from './claim-table/add-edit-claim/add-edit-claim.component';
 const routes: Routes = [
   {
     path: '',
@@ -39,6 +40,9 @@ const routes: Routes = [
   },{
     path:'claim',
     component:ClaimTableComponent
+  },{
+    path:'update/claim',
+    component:AddEditClaimComponent
   },{
     path:'profile',
     component:ProfileComponent

@@ -2,7 +2,7 @@
 
     <div class="form-group" >
 
-        <p><label for="pO_or_street">Do you use a Po Box? [yes or no] </label><input type="test" id="pO_or_street" name="pO_or_street" class="form-control" [formControl]="pO_or_street" ></p>
+        <p><label for="pO_or_street">Do you use a Po Box? [yes or no] </label><input type="text" id="pO_or_street" name="pO_or_street" class="form-control" [formControl]="pO_or_street" ></p>
         <div *ngIf="isPO(); else streetblock">
 
             <p ><label for="pO_number">PO Number: </label><input type="number" id="pO_number" name="pO_number" class="form-control" [formControl]="pO_number" ></p>
