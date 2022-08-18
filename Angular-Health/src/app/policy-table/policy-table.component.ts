@@ -26,8 +26,8 @@ export class PolicyTableComponent implements OnInit {
     DoB: '',
     role: ''
   };
-  displayedColumns:string[]=['policyID', 'userID', ' coverage',  'demo-update', 'demo-delete'];
-  policy:Policy[] =[{
+  displayedColumns:string[]=['policyID', 'userID', 'coverage',  'demo-update', 'demo-delete'];
+  policies:Policy[] =[{
     policyID :0, 
     insurance:0,
     coverage:'here'
@@ -36,13 +36,15 @@ export class PolicyTableComponent implements OnInit {
   getPolicy():void{
     this.tick.getPolicyByID(this.currentUser.userID).subscribe((res)=>{
       console.log(res);
-      this.policy=res;
+      this.policies=res;
     })
     }
     updatePolicy(tick:Policy):void{
       if(this.local.get('currentUser').role === 'Insurance'){
-        this.local.set('policyID',tick.policyID);
+        this.local.set('policy',tick.policyID);
         this.router.navigateByUrl('/update/policy');
+      }else{
+        alert('Not Allowed')
       }
     }
     deletePolicy(tick:Policy):void{

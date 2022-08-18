@@ -1,5 +1,4 @@
-export interface PolicyToAdd{
-    policyID:number;
+export interface PolicyToAdd{ 
     insurance:number;
-    details:string;
+    coverage:string;
 }

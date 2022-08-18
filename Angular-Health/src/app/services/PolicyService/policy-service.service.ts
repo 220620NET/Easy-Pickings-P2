@@ -10,7 +10,7 @@ export class PolicyServiceService {
   api:string = 'https://easy-pickings-p2.azurewebsites.net/';
   constructor(private http:HttpClient) { }
   getPolicyByID(policyID:number):Observable<Policy[]>{
-    return this.http.get(this.api+`/patient/${policyID}`) as Observable<Policy[]>
+    return this.http.get(this.api+'policy') as Observable<Policy[]>
   }
   updateTick(tick:Policy):Observable<Policy>{
     return this.http.put(this.api+`update/policy`,tick) as Observable<Policy>
