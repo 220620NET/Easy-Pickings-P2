@@ -52,6 +52,8 @@ export class ClaimTableComponent implements OnInit {
       this.router.navigateByUrl('/update/claim');
     }
 
+  //  addClaim(claim:Claim)
+
     routeHandler(a:string):void{
     this.router.navigateByUrl(`/${a}`)
     }
