@@ -1,6 +1,8 @@
 <nav class="navbar bg-light">
     <div class="container-fluid">
         <form class="form-inline"><button class="mat-fab profile" (click)="routeHandler('profile')">Profile</button></form> 
+        <form class="form-inline"><button class="mat-stroked-button contact" (click)="routeHandler('contact')">Contact</button></form>
+        <form class="form-inline"><button class="mat-stroked-button main" (click)="routeHandler('main')">Home</button></form>
         <form class="form-inline"><button class="mat-stroked-button claims" (click)="routeHandler('claim')">Claim Table</button></form>
         <form class="form-inline"><button class="mat-stroked-button policy" (click)="routeHandler('policy')">Policy Table</button></form>
         <form class="form-inline"><button class="mat-stroked-button ticket"(click)="routeHandler('ticket')">Ticket Table</button></form>
@@ -8,5 +10,5 @@
     </div>
   </nav>
 <body>
-    Cards
+    <app-show-discussion></app-show-discussion>
 </body>
