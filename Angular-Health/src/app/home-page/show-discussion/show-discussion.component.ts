@@ -17,17 +17,15 @@ export class ShowDiscussionComponent implements OnInit {
   ActivateAddEditDiscComp:boolean=false;
   disc:any;
 
-  DiscussionIDFilter:string="";
-  DiscussionBodyFilter:string="";
-  DiscussionListWithoutFilter:any=[];
-
   ngOnInit(): void {
     this.refreshDiscussionList()
   }
   addClick(){
     this.disc={
       DiscussionID:0,
-      DiscussionBody:""
+      userID: 0,
+      DiscussionBody:"",
+      dateCreated: ""
     }
     this.ModalTitle="Submit Discussion";
     this.ActivateAddEditDiscComp=true;
@@ -53,20 +51,6 @@ export class ShowDiscussionComponent implements OnInit {
   refreshDiscussionList(){
     this.service.getAllDiscussions().subscribe(data=>{
       this.DiscussionList=data;
-      this.DiscussionListWithoutFilter=data;
     });
   }
-//probably don't need this. No clue what it does
-      FilterFn(){
-      let DiscussionIDFilter = this.DiscussionIDFilter;
-      let DiscussionBodyFilter = this.DiscussionBodyFilter;
-
-      this.DiscussionList = this.DiscussionListWithoutFilter.filter(function (el: any){
-        return el.DiscussionID.toString()&&
-        el.DiscussionBody.toString().includes(
-          DiscussionBodyFilter.toString().trim()
-        )
-      });
-    }
-  }
-
+}
