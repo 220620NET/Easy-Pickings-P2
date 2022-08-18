@@ -1,1 +1,25 @@
-<p>profile works!</p>
+<nav class="navbar bg-light">
+    <div class="container-fluid">
+        <form class="form-inline"><button class="mat-fab profile" (click)="routeHandler('profile')">Profile</button></form> 
+        <form class="form-inline"><button class="mat-stroked-button policy" (click)="routeHandler('contact')">Contact</button></form>
+        <form class="form-inline"><button class="mat-stroked-button policy" (click)="routeHandler('main')">Home</button></form>
+        <form class="form-inline"><button class="mat-stroked-button claims" (click)="routeHandler('claim')">Claim Table</button></form>
+        <form class="form-inline"><button class="mat-stroked-button policy" (click)="routeHandler('policy')">Policy Table</button></form>
+        <form class="form-inline"><button class="mat-stroked-button ticket"(click)="routeHandler('ticket')">Ticket Table</button></form>
+        <form class="form-inline"><button class="mat-stroked-button logout" (click)="logout()">Logout</button></form>
+    </div>
+</nav>
+<div >
+    <p>
+        <h2>USER INFORMATION:</h2>
+        UserID: <span>{{user.userID}}</span>
+        firstName: <span>{{user.firstName}}</span>
+        lastName: <span>{{user.lastName}}</span>
+        username: <span>{{user.username}}</span>
+    </p>
+    <p>
+        <h2>CONTACT INFORMATION:</h2>
+        <span>{{contact.street_number}}</span> <span>{{contact.street_name}}</span>
+        <span>{{contact.city_state}}</span> <span>{{contact.zipcode}}</span>
+    </p>
+</div>

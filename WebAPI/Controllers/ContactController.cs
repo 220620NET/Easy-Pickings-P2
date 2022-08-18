@@ -81,6 +81,17 @@ public class ContactController
             return Results.BadRequest();
         }
     }
+    public IResult GetContactInfoByUserId(int userID)
+    {
+        try
+        {
+            return Results.Accepted("/contact/user/{userID}", _service.GetContactInfoById(userID));
+        }
+        catch (NotImplementedException)
+        {
+            return Results.BadRequest();
+        }
+    }
 
     public IResult GetContactInfoByPhone(int phone)
     {

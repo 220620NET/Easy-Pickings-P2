@@ -96,6 +96,32 @@ namespace Services
                 throw new ContactNotAvailableException();
             }
         }
+        public Contact GetContactInfoByUserId(int userID)
+        {
+            try
+            {
+                bool found = false;
+                List<Contact> allContacts = _contactRepo.GetAllContactInfo();
+
+                foreach (Contact contact in allContacts)
+                {
+                    if (contact.userID == userID)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                    throw new ContactNotAvailableException();
+
+                return _contactRepo.GetContactInfoByUserId(userID);
+            }
+            catch (ContactNotAvailableException)
+            {
+                throw new ContactNotAvailableException();
+            }
+        }
         public Contact GetContactInfoByEmail(string email)
         {
             return _contactRepo.GetContactInfoByEmail(email) ?? throw new ContactNotAvailableException();
