@@ -18,7 +18,7 @@ export class DiscussionService {
     return this.http.put<any>(this.APIUrl+'/update/discussion',val)
   }
   deleteDiscussion(val:any){
-    return this.http.delete<any>(this.APIUrl+'/delete/discussion',val)
+    return this.http.delete<any>(this.APIUrl+'/delete/discussion?discussionID='+val)
   }
   getAllDiscussions():Observable<any[]>{
     return this.http.get<any>(this.APIUrl+'/discussion')

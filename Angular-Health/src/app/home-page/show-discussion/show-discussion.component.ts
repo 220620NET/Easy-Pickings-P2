@@ -35,10 +35,12 @@ export class ShowDiscussionComponent implements OnInit {
     this.ModalTitle="Update Discussion"
     this.ActivateAddEditDiscComp=true;
   }
-  deleteClick(item: { discussionID: any; }){
+  deleteClick(item: any){
     if(confirm('Are you sure you want to delete this post?')){
-      this.service.deleteDiscussion(item.discussionID).subscribe((res)=>{this.refreshDiscussionList});
-
+      this.service.deleteDiscussion(item.discussionID).subscribe(data=>{
+        alert(data.toString());
+        this.refreshDiscussionList;
+      })
     }
   }
   closeClick(){
