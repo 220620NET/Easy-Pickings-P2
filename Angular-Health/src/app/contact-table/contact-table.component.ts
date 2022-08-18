@@ -29,7 +29,7 @@ export class ContactTableComponent implements OnInit {
     DoB: '',
     role: ''
   };
-  displayedColumns:string[]=['contactID' , 'PO_number', 'street_number', 'street_name','city_state', 'zipcode','userID', 'phone', 'email', 'demo-update', 'demo-delete'];
+  displayedColumns:string[]=['contactID' , 'PO_number', 'street_number', 'street_name','city_state', 'zipcode','userID', 'phone', 'email' ];
   contacts:Contact[]=[{
     contactID:0,userID:0,phone:0,email:'',pO_number:0, pO_or_street:true ,street_name:'',street_number:0,city_state:'',zipcode:0
   }]
@@ -41,7 +41,7 @@ export class ContactTableComponent implements OnInit {
   }
   logout():void{
     this.local.clear();
-  }
+  } 
   constructor(private http:HttpClient, private local:LocalStorageService, private router:Router, private service:ContactServiceService) { }
   
   ngOnInit(): void {

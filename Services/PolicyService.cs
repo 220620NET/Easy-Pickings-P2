@@ -24,12 +24,12 @@ public class PolicyService
         try
         {
             List<Policy> all = _repo.GetAllPolicy();
-            bool there = true;
+            bool there = false;
             foreach (Policy policy in all)
             {
-                if (policyID != policy.policyID)
+                if (policyID == policy.policyID)
                 {
-                    there = false;
+                    there = true;
                 }
             }
             if (!there)
@@ -150,18 +150,10 @@ public class PolicyService
      public Policy DeletePolicy(int policyID)
     { 
        try
-        {
-            List<Policy> all = GetAllPolicy();
-            foreach(Policy policy in all)
-            {
-                if(policy.policyID == policyID)
-                {
-                     Policy pol = GetPolicyByID(policyID);
-                    _repo.DeletePolicy(policyID);
-                    return pol;
-                }
-            }
-            throw new PolicyNotAvailableException();
+        {         
+            Policy pol = GetPolicyByID(policyID);
+            _repo.DeletePolicy(policyID);
+            return pol; 
         }
         catch (PolicyNotAvailableException)
         {

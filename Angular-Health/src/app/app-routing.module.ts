@@ -11,7 +11,10 @@ import { TicketTableComponent } from './ticket-table/ticket-table.component';
 import { PolicyTableComponent } from './policy-table/policy-table.component';
 import { ClaimTableComponent } from './claim-table/claim-table.component';
 import { AddEditComponent } from './ticket-table/add-edit/add-edit.component';
+import { AppEditPolicyComponent } from './policy-table/app-edit-policy/app-edit-policy.component';
 import { ContactTableComponent } from './contact-table/contact-table.component';
+import { AddEditContactComponent } from './contact-table/add-edit-contact/add-edit-contact.component';
+import { AddEditClaimComponent } from './claim-table/add-edit-claim/add-edit-claim.component';
 const routes: Routes = [
   {
     path: '',
@@ -26,6 +29,9 @@ const routes: Routes = [
     path:'policy',
     component:PolicyTableComponent
   },{
+    path:'update/policy',
+    component:AppEditPolicyComponent
+  },{
     path: 'login',
     component:StartScreenComponent
   },{
@@ -35,13 +41,25 @@ const routes: Routes = [
     path:'claim',
     component:ClaimTableComponent
   },{
+    path:'update/claim',
+    component:AddEditClaimComponent
+  },{
     path:'profile',
     component:ProfileComponent
   },{
     path:'update/ticket',
     component: AddEditComponent
-  },{path:'contact',component:ContactTableComponent},
-  {path: '*', redirectTo: '/login', pathMatch: 'full'}
+  },{
+    path:'contact',
+    component:ContactTableComponent
+  },{
+    path:'update/contact',
+    component:AddEditContactComponent
+  },{
+    path: '*', 
+    redirectTo: '/login', 
+    pathMatch: 'full'
+  }
 
 ];
 

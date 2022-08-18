@@ -1,1 +1,26 @@
-<p>add-edit-contact works!</p>
+<div class="d-flex flex-row bd-highlight mb-3">
+
+    <div class="form-group" >
+
+        <p><label for="pO_or_street">Do you use a Po Box? [yes or no] </label><input type="text" id="pO_or_street" name="pO_or_street" class="form-control" [formControl]="pO_or_street" ></p>
+        <div *ngIf="isPO(); else streetblock">
+
+            <p ><label for="pO_number">PO Number: </label><input type="number" id="pO_number" name="pO_number" class="form-control" [formControl]="pO_number" ></p>
+        </div>
+
+        <ng-template #streetblock>
+            <p ><label for="street_number">Street Number: </label><input type="number" id="street_number" name="street_number" class="form-control" [formControl]="street_number"></p>
+            <p ><label for="street_name"> Street Name: </label><input type="text" id="street_name" name="street_name" class="form-control"  [formControl]="street_name"></p> 
+        </ng-template>
+        <p><label for="city_state">City and state: [city,state] </label><input type="text" id="city_state" name="city_state" class="form-control" [formControl]="city_state"></p>
+        <p><label for="zipcode">Zipcode: </label><input type="number" id="zipcode" name="zipcode" class="form-control" [formControl]="zipcode"></p>
+        <p><label for="phone">Phone Number: </label><input type="number" id="phone" name="phone" class="form-control" [formControl]="phone"></p>
+        <p><label for="email">Emil: </label><input type="text" id="email" name="email" class="form-control" [formControl]="email"></p>
+    </div>
+
+</div>
+<button (click)="addContact()" class="btn btn-primary"> Add </button>
+
+<button (click)="updateContact()" *ngIf="update()"  class="btn btn-primary">
+    Update
+</button>

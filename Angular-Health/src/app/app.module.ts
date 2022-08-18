@@ -23,6 +23,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { AddEditComponent } from './ticket-table/add-edit/add-edit.component';
 import { ContactTableComponent } from './contact-table/contact-table.component';
 import { AddEditContactComponent } from './contact-table/add-edit-contact/add-edit-contact.component';
+import { AppEditPolicyComponent } from './policy-table/app-edit-policy/app-edit-policy.component';
+import { AddEditClaimComponent } from './claim-table/add-edit-claim/add-edit-claim.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,9 @@ import { AddEditContactComponent } from './contact-table/add-edit-contact/add-ed
     TicketTableComponent,
     AddEditComponent,
     ContactTableComponent,
-    AddEditContactComponent, 
+    AddEditContactComponent,
+    AppEditPolicyComponent,
+    AddEditClaimComponent, 
   ],
   imports: [
     BrowserModule,
