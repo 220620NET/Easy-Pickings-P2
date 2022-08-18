@@ -21,9 +21,9 @@ export class ContactTableComponent implements OnInit {
   api:string = 'https://easy-pickings-p2.azurewebsites.net/';
   currentUser:User={
     userID: 0,
-    firstName: '',
-    middleInitial: '',
-    lastName: '',
+    first_name: '',
+    middle_init: '',
+    last_name: '',
     username: '',
     password: '',
     DoB: '',
