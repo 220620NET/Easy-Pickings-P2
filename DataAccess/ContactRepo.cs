@@ -53,6 +53,12 @@ namespace DataAccess
             Contact? contact = _dbContext.Contacts.AsNoTracking().FirstOrDefault(contact => contact.contactID == contactID);
             return contact ?? throw new ContactNotAvailableException();
         }
+        public Contact GetContactInfoByUserId(int userID)
+        {
+
+            Contact? contact = _dbContext.Contacts.AsNoTracking().FirstOrDefault(contact => contact.userID == userID);
+            return contact ?? throw new ContactNotAvailableException();
+        }
 
         public Contact GetContactInfoByPhone(long phone)
         {

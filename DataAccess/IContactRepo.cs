@@ -15,6 +15,7 @@ public interface IContactRepo
     public Contact UpdateContactInfo(Contact contact);
     public bool DeleteContactInfo(int contactID);
     public Contact GetContactInfoById(int contactID);
+    public Contact GetContactInfoByUserId(int userID);
     public Contact GetContactInfoByEmail(string email);
     public Contact GetContactInfoByPhone(long phone);
 }

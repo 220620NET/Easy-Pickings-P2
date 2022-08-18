@@ -122,6 +122,8 @@ app.MapPut("/update/contact", (Contact contact, ContactController controller) =>
 app.MapDelete("/delete/contact", (int contactID, ContactController controller) => controller.DeleteContactInfo(contactID));
 app.MapGet("/contactinfo", (ContactController controller) =>controller.GetAllContactInfo());
 app.MapGet("/contact/ID/{contactID}", (int contactID, ContactController controller) => controller.GetContactInfoById(contactID));
+app.MapGet("/contact/user/{userID}", (int userID, ContactController controller) => controller.GetContactInfoByUserId(userID));
+
 app.MapGet("/contact/email/{email}", (string email, ContactController controller) => controller.GetContactInfoByEmail(email));
 app.MapGet("/contact/phone/{phone}", (int phone, ContactController controller) => controller.GetContactInfoByPhone(phone));
 /*

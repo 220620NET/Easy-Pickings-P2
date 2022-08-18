@@ -13,6 +13,9 @@ export class ContactServiceService {
   getContacts():Observable<Contact[]>{
     return this.http.get('https://easy-pickings-p2.azurewebsites.net/contactinfo') as Observable<Contact[]>
   }
+  getContact():Observable<Contact>{
+    return this.http.get('https://easy-pickings-p2.azurewebsites.net/contact/') as Observable<Contact>
+  }
   addContact(contact:ContactToAdd):Observable<Contact>{
     return this.http.post('https://easy-pickings-p2.azurewebsites.net/submit/contact',contact) as Observable<Contact>
   }
