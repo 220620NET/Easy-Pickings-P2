@@ -4,4 +4,4 @@ export interface Ticket{
     claimID:number;
     policyID:number;
     details:string;
-}
+} 

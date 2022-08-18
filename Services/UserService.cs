@@ -50,12 +50,12 @@ namespace Services
             try
             {
                 List<User> all = _user.GetAllUsers();
-                bool there = true;
+                bool there = false;
                 foreach (User user in all)
                 {
-                    if (username != user.username)
+                    if (username == user.username)
                     {
-                        there = false;
+                        there = true;
                     }
                 }
                 if (!there)

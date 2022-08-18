@@ -1,7 +1,7 @@
 export interface Contact{
     contactID:number,
-    PO_or_street:boolean,
-    PO_number:number,
+    pO_or_street:boolean,
+    pO_number:number,
     street_number:number,
     street_name:string,
     city_state: string,
