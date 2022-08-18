@@ -10,35 +10,35 @@ export class AddEditDiscussionComponent implements OnInit {
 
   constructor(private service:DiscussionService) {}
   @Input() disc: any;
-  DiscussionID!: string;
-  UserID!: string;
-  DiscussionBody!: string;
-  DateCreated!: string;
+  discussionID!: string;
+  userID!: string;
+  body!: string;
+  dateCreated!: string;
 
 
   ngOnInit(): void {
-    this.DiscussionID=this.disc.DiscussionID;
-    this.DiscussionBody=this.disc.DiscussionBody;
-    this.UserID=this.disc.UserID;
-    this.DateCreated=this.disc.DateCreated;
+    this.discussionID=this.disc.discussionID;
+    this.body=this.disc.body;
+    this.userID=this.disc.userID;
+    this.dateCreated=this.disc.dateCreated;
   }
 
   createDiscussion(){
-    let val = {DiscussionID: this.DiscussionID,
-          DiscussionBody: this.DiscussionBody,
-          UserID: this.UserID,
-          DateCreated: this.DateCreated};
-          this.service.createDiscussion(val).subscribe(res=>{
-                alert(res.toString())
+    let val = {discussionID: this.discussionID,
+              body: this.body,
+              userID: this.userID,
+              dateCreated: this.dateCreated};
+        this.service.createDiscussion(val).subscribe(res=>{
+              alert(res.toString())
                });
 
   }
   updateDiscussion(){
-    let val = {DiscussionID: this.DiscussionID,
-          DiscussionBody: this.DiscussionBody,
-          UserID: this.UserID,
-          DateCreated: this.DateCreated};
-          this.service.createDiscussion(val).subscribe(res=>{
+    let val = {discussionID: this.discussionID,
+               body: this.body,
+               userID: this.userID,
+               dateCreated: this.dateCreated};
+          this.service.updateDiscussion(val).subscribe(res=>{
                 alert(res.toString())
                });
     }

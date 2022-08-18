@@ -13,18 +13,18 @@ export class ShowDiscussionComponent implements OnInit {
 
   DiscussionList:any=[];
 
-  ModalTitle: string | undefined; //Who knows...
+  ModalTitle: string | undefined; //this is for my modal add/edit/delete buttons
   ActivateAddEditDiscComp:boolean=false;
   disc:any;
 
   ngOnInit(): void {
     this.refreshDiscussionList()
   }
-  addClick(){
+  addClick(){             //this will be a model of what parameters need added, 
     this.disc={
-      DiscussionID:0,
+      discussionID:0,
       userID: 0,
-      DiscussionBody:"",
+      discussionBody:"",
       dateCreated: ""
     }
     this.ModalTitle="Submit Discussion";
@@ -35,12 +35,10 @@ export class ShowDiscussionComponent implements OnInit {
     this.ModalTitle="Update Discussion"
     this.ActivateAddEditDiscComp=true;
   }
-  deleteClick(item: any){
+  deleteClick(item: { discussionID: any; }){
     if(confirm('Are you sure you want to delete this post?')){
-      this.service.deleteDiscussion(item.DiscussionID).subscribe(data=>{
-        alert(data.toString());
-        this.refreshDiscussionList;
-      })
+      this.service.deleteDiscussion(item.discussionID).subscribe((res)=>{this.refreshDiscussionList});
+
     }
   }
   closeClick(){
