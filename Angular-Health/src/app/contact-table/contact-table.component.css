@@ -21,3 +21,41 @@
 .tabs{
     margin: 20px;
 }
+table {
+    width: 100%; 
+} 
+.mat-column-contactID{
+    padding-right: 12px; 
+    border-right: solid currentColor;
+    border-width: 1px;
+}
+.mat-column-PO_number{ 
+    text-align:center;
+}
+.mat-column-street_number{
+    padding-left: 10px; 
+    text-align: center;
+}
+.mat-column-street_name{
+    padding-left: 10px; 
+    text-align: center;
+}
+.mat-column-city_state{
+    padding-left: 10px;
+    width: 100px;
+    text-align: center;
+}
+.mat-column-zipcode{
+    padding-left: 10px;
+    width: 100px;
+    text-align: center;
+}
+.mat-column-userID{
+    padding-left: 10px;
+    width: 100px;
+    text-align: center;
+}
+.mat-column-delete{
+    width: 32px;
+    text-align: center;
+}

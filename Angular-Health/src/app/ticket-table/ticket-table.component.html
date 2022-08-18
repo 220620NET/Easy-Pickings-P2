@@ -1,6 +1,7 @@
 <nav class="navbar bg-light">
   <div class="container-fluid">
       <form class="form-inline"><button class="mat-fab profile" (click)="routeHandler('profile')">Profile</button></form> 
+      <form class="form-inline"><button class="mat-stroked-button policy" (click)="routeHandler('contact')">Contact</button></form>
       <form class="form-inline"><button class="mat-stroked-button policy" (click)="routeHandler('main')">Home</button></form>
       <form class="form-inline"><button class="mat-stroked-button claims" (click)="routeHandler('claim')">Claim Table</button></form>
       <form class="form-inline"><button class="mat-stroked-button policy" (click)="routeHandler('policy')">Policy Table</button></form>
@@ -11,9 +12,9 @@
 <div class="ticket-table">
     
     <table mat-table [dataSource]="tickets" class="mat-elevation-z8 demo-table"> 
-        <ng-container matColumnDef="demo-id">
+        <ng-container matColumnDef="demo-id"  >
           <th mat-header-cell *matHeaderCellDef> ID </th>
-          <td mat-cell *matCellDef="let ticket"> {{ticket.ticketID}} </td>
+          <td mat-cell *matCellDef="let ticket" > {{ticket.ticketID}} </td>
         </ng-container> 
         <ng-container matColumnDef="demo-user">
           <th mat-header-cell *matHeaderCellDef> User ID </th>

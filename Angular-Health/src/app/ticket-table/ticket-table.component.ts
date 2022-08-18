@@ -35,6 +35,7 @@ export class TicketTableComponent implements OnInit {
     policyID :0,
     details:'here'
   }]
+ 
   constructor(private http:HttpClient,private local:LocalStorageService, private auth:AuthServiceService, private tick:TicketServiceService, private router:Router ) { }
   getTickets():void{
     this.tick.getTicketsByID(this.currentUser.userID).subscribe((res)=>{
@@ -46,12 +47,12 @@ export class TicketTableComponent implements OnInit {
       this.local.set('ticketID',tick.ticketID);
       this.router.navigateByUrl('/update/ticket');
     }
-    deleteTicket(tick:Ticket):void{
-      console.log(tick.ticketID);
-      this.tick.deleteTick(tick.ticketID).subscribe((res)=>{
-        console.log(res)
-      })
-      this.getTickets()
+    deleteTicket(tick:Ticket):void{ 
+      if(confirm('Are you sure')){
+        this.tick.deleteTick(tick.ticketID).subscribe((res)=>{
+          this.getTickets()
+        })
+      }
     }
     routeHandler(a:string):void{
       this.router.navigateByUrl(`/${a}`)

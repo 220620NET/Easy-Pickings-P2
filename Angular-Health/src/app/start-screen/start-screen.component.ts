@@ -67,6 +67,32 @@ export class StartScreenComponent implements OnInit {
       this.router.navigateByUrl('/main')
     })
   }
+  reset():void{
+    let user:User={
+      userID: 0,
+      firstName: '',
+      middleInitial: '',
+      lastName: '',
+      username: this.username.value,
+      password: this.password.value,
+      DoB: '',
+      role: ''
+    };
+    let temp:User;
+    this.http.get(this.api+'user/username/'+this.username.value).subscribe((res)=>{
+      temp=res as User;
+      user.userID= temp.userID;
+      user.firstName=temp.firstName;
+      user.middleInitial= temp.middleInitial;
+      user.lastName=temp.lastName;
+      user.DoB=temp.DoB;
+      user.role=temp.role;
+    })
+    this.http.put(this.api+'reset',user).subscribe((res)=>{
+      this.switchMode('login');
+      alert('update successful');
+    })
+  }
   switchMode(mode:string):void{
     this.mode=mode;
     this.username.reset();

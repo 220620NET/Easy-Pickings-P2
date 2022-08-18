@@ -1,8 +1,8 @@
 <nav class="navbar bg-light">
     <div class="container-fluid">
         <form class="form-inline"><button class="mat-fab profile" (click)="routeHandler('profile')">Profile</button></form> 
-        <form class="form-inline"><button class="mat-stroked-button policy" (click)="routeHandler('contact')">Contact</button></form>
-        <form class="form-inline"><button class="mat-stroked-button policy" (click)="routeHandler('main')">Home</button></form>
+        <form class="form-inline"><button class="mat-stroked-button contact" (click)="routeHandler('contact')">Contact</button></form>
+        <form class="form-inline"><button class="mat-stroked-button main" (click)="routeHandler('main')">Home</button></form>
         <form class="form-inline"><button class="mat-stroked-button claims" (click)="routeHandler('claim')">Claim Table</button></form>
         <form class="form-inline"><button class="mat-stroked-button policy" (click)="routeHandler('policy')">Policy Table</button></form>
         <form class="form-inline"><button class="mat-stroked-button ticket"(click)="routeHandler('ticket')">Ticket Table</button></form>
@@ -16,11 +16,15 @@
         <ng-container matColumnDef="contactID">
             <th mat-header-cell *matHeaderCellDef> ID </th>
             <td mat-cell *matCellDef="let contact"> {{contact.contactID}} </td>
-        </ng-container> 
-        <ng-container matColumnDef="PO_number">
+        </ng-container>  
+        <ng-container matColumnDef="PO_number">   
+          <div>
             <th mat-header-cell *matHeaderCellDef > PO Number </th>
-            <td mat-cell *matCellDef="let contact"> {{contact.PO_number}} </td>
-        </ng-container> 
+            <ng-container *matCellDef="let contact">
+              <td mat-cell > {{contact.pO_number}} </td>
+            </ng-container> 
+          </div>
+        </ng-container>
         <ng-container matColumnDef="street_number">
             <th mat-header-cell *matHeaderCellDef> Street Number </th>
             <td mat-cell *matCellDef="let contact"> {{contact.street_number}} </td>
