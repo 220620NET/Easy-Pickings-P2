@@ -17,7 +17,7 @@ export class PolicyServiceService {
     return this.http.put(this.api+`update/policy`,tick) as Observable<Policy>
   }
   addTick(tick:PolicyToAdd):Observable<PolicyToAdd>{
-    return this.http.post(this.api+`submit/ticket`,tick) as Observable<PolicyToAdd>
+    return this.http.post(this.api+`submit/policy`,tick) as Observable<PolicyToAdd>
   }
   deleteTick(t:number):Observable<Policy>{
     return this.http.delete(this.api+`delete/policy?ID=${t}`) as Observable<Policy>
