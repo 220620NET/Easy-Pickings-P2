@@ -9,6 +9,7 @@ import { AuthServiceService } from '../services/AuthService/auth-service.service
 import { UserRegister } from '../models/UserRegister';
 import { Router, RouterLink } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
+import { LocalStorageService } from 'angular-web-storage';
 @Component({
   selector: 'app-start-screen',
   templateUrl: './start-screen.component.html',
@@ -16,7 +17,7 @@ import { FormBuilder } from '@angular/forms';
 })
 export class StartScreenComponent implements OnInit {
   roles=[{name:"Patient"},{name:"Doctor"},{name:"Employee"},{name: "Insurance Company"}]; 
-  constructor(private http:HttpClient, private auth:AuthServiceService, private router:Router, private fb:FormBuilder) { }
+  constructor(private http:HttpClient, private auth:AuthServiceService, private local:LocalStorageService, private router:Router, private fb:FormBuilder) { }
 
   api: string = 'https://easy-pickings-p2.azurewebsites.net/';
   username : FormControl = new FormControl('', [Validators.required]);
@@ -50,7 +51,7 @@ export class StartScreenComponent implements OnInit {
     )
   };
   register():void{
-    
+    this.local.set('isupdate', 'no');
     let user:UserRegister ={
       first_name: this.firstName.value,
       middle_init: this.middleInitial.value,
@@ -64,7 +65,7 @@ export class StartScreenComponent implements OnInit {
     this.http.post(this.api+'register',user).subscribe((res)=>{
       console.log(res);
       this.auth.setCurrentUser(res as User);
-      this.router.navigateByUrl('/main')
+      this.router.navigateByUrl('/update/contact')
     })
   }
   reset():void{
