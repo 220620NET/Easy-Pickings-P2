@@ -59,6 +59,9 @@ export class TicketTableComponent implements OnInit {
     }
     logout():void{
       this.local.clear();
+      if(this.auth.isAuthenticated()===false){
+        this.routeHandler('login')
+      }
     }
   ngOnInit(): void {
     this.currentUser = this.auth.getCurrentUser();

@@ -58,9 +58,12 @@ export class PolicyTableComponent implements OnInit {
     }
     routeHandler(a:string):void{
       this.router.navigateByUrl(`/${a}`)
-    }
-    logout():void{
+    } 
+     logout():void{
       this.local.clear();
+      if(this.auth.isAuthenticated()===false){
+        this.routeHandler('login')
+      }
     }
   ngOnInit(): void {
     this.currentUser = this.auth.getCurrentUser();

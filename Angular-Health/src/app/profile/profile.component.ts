@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LocalStorageService } from 'angular-web-storage';
 import { Contact } from '../models/Contact';
 import { User } from '../models/User';
+import { AuthServiceService } from '../services/AuthService/auth-service.service';
 import { ContactServiceService } from '../services/ContactService/contact-service.service';
 
 @Component({
@@ -18,9 +19,12 @@ export class ProfileComponent implements OnInit {
   }
   logout():void{
     this.local.clear();
+    if(this.auth.isAuthenticated()===false){
+      this.routeHandler('login')
+    }
   }
   api:string ='https://easy-pickings-p2.azurewebsites.net/';
-  constructor(private local:LocalStorageService, private http:HttpClient, private router:Router, private contactFetch:ContactServiceService) { }
+  constructor(private local:LocalStorageService, private http:HttpClient, private router:Router, private contactFetch:ContactServiceService,private auth:AuthServiceService) { }
   contact:Contact={
     contactID: 0,
     pO_or_street: false,

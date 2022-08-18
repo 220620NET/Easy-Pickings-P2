@@ -9,6 +9,7 @@
         <form class="form-inline"><button class="mat-stroked-button logout" (click)="logout()">Logout</button></form>
     </div>
 </nav>
+<div class="login-component">
 <div >
     <div class="userinfo">
         <h2>USER INFORMATION:</h2>
@@ -26,7 +27,14 @@
     </div>
     
         <h2>CONTACT INFORMATION:</h2>
-        <span>{{contact.street_number}}</span> <span>{{contact.street_name}}</span>
-        <span>{{contact.city_state}}</span> <span>{{contact.zipcode}}</span>
+        <p>
+
+            <span>{{contact.street_number}}</span><span>{{contact.street_name}}</span>
+        </p>
+        <p>
+
+            <span>{{contact.city_state}}</span>     <span>{{contact.zipcode}}</span>
+        </p>
         <button (click)="updateContact()">Update Contact information</button>
+</div>
 </div>

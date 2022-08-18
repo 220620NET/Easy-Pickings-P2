@@ -1,0 +1,57 @@
+.login-component{
+    display:flex;
+    justify-content: center;
+} 
+.login-box{
+    margin-top:5vh;
+    background-color: bisque;
+    border: solid lightgray 1px;
+    border-radius: 2%;
+    padding:40px 40px 10px 40px;
+    max-width: 400px;
+    opacity: 1;
+}
+.welcome-text{
+    text-align: center;
+}
+.login-btn{
+    width: 30%;
+    margin-top:15px;
+    background-color: green;
+    justify-self: left;
+}
+.switchbtn{
+    color:rgb(216, 49, 238);
+}
+
+.switchbtn:hover {
+    cursor: pointer;
+    color: #0b5ed7;
+    text-decoration: underline;
+}
+
+.container-fluid{
+    display: flex;
+    justify-content: center;
+    background-color: bisque;
+    height: 10vh;
+}
+.navbar-brand{
+    margin: 10px;
+}
+
+.form-inline{
+    position: center;
+    justify-self: right;
+    display: flex;
+}
+.form-inline{
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.tabs{
+    margin: 20px;
+}
+table {
+    width: 100%; 
+} 
