@@ -114,7 +114,7 @@ namespace DataAccess
             }
             catch (ArgumentNullException)
             {
-                throw new TicketNotAvailableException();
+                throw new TicketNotAvailableException("Arguement null");
             }
             
         }

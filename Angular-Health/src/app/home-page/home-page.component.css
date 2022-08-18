@@ -6,28 +6,33 @@
     position: right;
     justify-self: right;
 }
-.form-inline{
-    position: center;
-    justify-self: right;
-    display: flex;
-}
-.navbar-brand{
-    margin: 10px;
-}
-.form-inline{
-    margin-left: 40px;
-    margin-right: 40px;
-}
-.container-fluid{
-    display: flex;
-    justify-content: center;
-    background-color: bisque;
-    height: 10vh;
-}
 .logout{
     background-color: green;
 }
 .logout:hover{
     background-color: aliceblue;
     cursor: pointer;
+}
+
+.container-fluid{
+    display: flex;
+    justify-content: center;
+    background-color: bisque;
+    height: 10vh;
+}
+.navbar-brand{
+    margin: 10px;
+}
+
+.form-inline{
+    position: center;
+    justify-self: right;
+    display: flex;
+}
+.form-inline{
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.tabs{
+    margin: 20px;
 }
