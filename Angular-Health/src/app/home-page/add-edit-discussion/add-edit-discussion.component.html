@@ -1,0 +1,24 @@
+<div class="form-group row">
+
+    <label class="col-sm-2 col-form-label">User ID</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="userID"
+        placeholder="Enter UserID">        
+    </div>
+    <label class="col-sm-2 col-form-label">Discussion</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="body"
+        placeholder="Enter DiscussionBody">        
+    </div>
+    <label class="col-sm-2 col-form-label">Date of post</label>
+    <div class="col-sm-10">
+        <input type="date"  [(ngModel)]="dateCreated">
+    </div>
+
+<button (click)="createDiscussion()" *ngIf="disc.discussionID==0" class="btn btn-primary">
+    Add
+</button>
+
+<button (click)="updateDiscussion()" *ngIf="disc.discussionID!=0" class="btn btn-primary">
+    Update
+</button>

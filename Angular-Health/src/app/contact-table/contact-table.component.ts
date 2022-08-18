@@ -21,9 +21,9 @@ export class ContactTableComponent implements OnInit {
   api:string = 'https://easy-pickings-p2.azurewebsites.net/';
   currentUser:User={
     userID: 0,
-    firstName: '',
-    middleInitial: '',
-    lastName: '',
+    first_name: '',
+    middle_init: '',
+    last_name: '',
     username: '',
     password: '',
     DoB: '',
@@ -41,8 +41,11 @@ export class ContactTableComponent implements OnInit {
   }
   logout():void{
     this.local.clear();
-  } 
-  constructor(private http:HttpClient, private local:LocalStorageService, private router:Router, private service:ContactServiceService) { }
+    if(this.auth.isAuthenticated()===false){
+      this.routeHandler('login')
+    }
+  }
+  constructor(private http:HttpClient, private local:LocalStorageService, private router:Router, private service:ContactServiceService, private auth:AuthServiceService) { }
   
   ngOnInit(): void {
     this.getContacts();

@@ -71,9 +71,9 @@ export class StartScreenComponent implements OnInit {
   reset():void{
     let user:User={
       userID: 0,
-      firstName: '',
-      middleInitial: '',
-      lastName: '',
+      first_name: '',
+      middle_init: '',
+      last_name: '',
       username: this.username.value,
       password: this.password.value,
       DoB: '',
@@ -83,9 +83,9 @@ export class StartScreenComponent implements OnInit {
     this.http.get(this.api+'user/username/'+this.username.value).subscribe((res)=>{
       temp=res as User;
       user.userID= temp.userID;
-      user.firstName=temp.firstName;
-      user.middleInitial= temp.middleInitial;
-      user.lastName=temp.lastName;
+      user.first_name=temp.first_name;
+      user.middle_init= temp.middle_init;
+      user.last_name=temp.last_name;
       user.DoB=temp.DoB;
       user.role=temp.role;
     })

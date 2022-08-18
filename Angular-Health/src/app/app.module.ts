@@ -25,6 +25,11 @@ import { ContactTableComponent } from './contact-table/contact-table.component';
 import { AddEditContactComponent } from './contact-table/add-edit-contact/add-edit-contact.component';
 import { AppEditPolicyComponent } from './policy-table/app-edit-policy/app-edit-policy.component';
 import { AddEditClaimComponent } from './claim-table/add-edit-claim/add-edit-claim.component';
+import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
+import { AddEditCommentsComponent } from './home-page/add-edit-comments/add-edit-comments.component';
+import { AddEditDiscussionComponent } from './home-page/add-edit-discussion/add-edit-discussion.component';
+import { ShowCommentsComponent } from './home-page/show-comments/show-comments.component';
+import { ShowDiscussionComponent } from './home-page/show-discussion/show-discussion.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +43,12 @@ import { AddEditClaimComponent } from './claim-table/add-edit-claim/add-edit-cla
     ContactTableComponent,
     AddEditContactComponent,
     AppEditPolicyComponent,
-    AddEditClaimComponent, 
+    AddEditClaimComponent,
+    EditProfileComponent,
+    AddEditCommentsComponent,
+    AddEditDiscussionComponent,
+    ShowCommentsComponent,
+    ShowDiscussionComponent, 
   ],
   imports: [
     BrowserModule,

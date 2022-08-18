@@ -47,6 +47,9 @@ export class ClaimTableComponent implements OnInit {
     }
     logout():void{
       this.local.clear();
+      if(this.auth.isAuthenticated()===false){
+        this.routeHandler('login')
+      }
     }
 
     deleteClaim(claim:Claim):void{
