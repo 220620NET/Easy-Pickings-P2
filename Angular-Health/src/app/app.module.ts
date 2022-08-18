@@ -27,6 +27,10 @@ import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 import { AddEditComponent } from './ticket-table/add-edit/add-edit.component';
 import { ShowDiscussionComponent } from './home-page/show-discussion/show-discussion.component';
+import { ShowCommentsComponent } from './home-page/show-comments/show-comments.component';
+import { AddEditCommentsComponent } from './home-page/add-edit-comments/add-edit-comments.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 
 @NgModule({
@@ -40,7 +44,10 @@ import { ShowDiscussionComponent } from './home-page/show-discussion/show-discus
     TicketTableComponent,
     AddEditDiscussionComponent,
     AddEditComponent,
-    ShowDiscussionComponent
+    ShowDiscussionComponent,
+    ShowCommentsComponent,
+    AddEditCommentsComponent,
+
 
   ],
   imports: [
@@ -56,7 +63,8 @@ import { ShowDiscussionComponent } from './home-page/show-discussion/show-discus
     FormsModule,
     MatInputModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatExpansionModule
   ],
   providers: [DiscussionService],
   bootstrap: [AppComponent]

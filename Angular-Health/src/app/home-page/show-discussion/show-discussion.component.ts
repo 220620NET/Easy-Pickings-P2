@@ -12,10 +12,15 @@ export class ShowDiscussionComponent implements OnInit {
   constructor(private service: DiscussionService) { }
 
   DiscussionList:any=[];
+  CommentList: any=[];
 
   ModalTitle: string | undefined; //this is for my modal add/edit/delete buttons
   ActivateAddEditDiscComp:boolean=false;
   disc:any;
+  ActivateAddEditComComp:boolean=false;
+  com: any;
+  ActivateShowComComp:boolean=false;
+  showcom: any;
 
   ngOnInit(): void {
     this.refreshDiscussionList()
@@ -42,6 +47,22 @@ export class ShowDiscussionComponent implements OnInit {
         this.refreshDiscussionList;
       })
     }
+  }
+
+  replyClick(){
+    this.com={
+      commentID: 0,
+      userID: 0,
+      messageID: 0,
+      body: ""
+    }
+    this.ModalTitle="Create Comment";
+    this.ActivateAddEditComComp=true;
+  }
+  viewClick(){
+    this.ModalTitle="view comments"
+    this.ActivateShowComComp=true;
+
   }
   closeClick(){
     this.ActivateAddEditDiscComp=false;

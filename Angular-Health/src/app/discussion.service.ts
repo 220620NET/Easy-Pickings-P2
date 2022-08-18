@@ -24,11 +24,24 @@ export class DiscussionService {
     return this.http.get<any>(this.APIUrl+'/discussion')
 
   }
+//comment api
+
+  createComment(val:any){
+    return this.http.post<any>(this.APIUrl+'/submit/comment',val)
+  }
+  updateComment(val:any){
+    return this.http.put<any>(this.APIUrl+'/update/comment',val)
+  }
+  deleteComment(val:any){
+    return this.http.delete<any>(this.APIUrl+'/delete/comment?commentID='+val)
+  }
+  getComment():Observable<any[]>{
+    return this.http.get<any>(this.APIUrl+'/comment')
+
+  }
+
 /*
-  app.MapPost("/submit/discussion", (Discussion discussion, DiscussionController controller) => controller.CreateDiscussion(discussion));
-app.MapPut("/update/discussion", (Discussion discussion, DiscussionController controller) => controller.UpdateDiscussion(discussion));
-app.MapDelete("/delete/discussion", (int discussionID, DiscussionController controller) => controller.DeleteDiscussion(discussionID));
-app.MapGet("/discussion", (DiscussionController controller) => controller.GetAllDiscussions());
+
 app.MapGet("/discussion/id/{discussionID}", (int discussionID, DiscussionController controller) => controller.GetByID(discussionID));
 app.MapGet("/discussion/userid/{userID}", (int userID, DiscussionController controller) => controller.GetByUserID(userID));
 
