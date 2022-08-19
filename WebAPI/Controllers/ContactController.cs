@@ -51,7 +51,7 @@ public class ContactController
     { 
         try
         {
-            return Results.Accepted("/contact/ID/{contactID}", _service.DeleteContactInfo(contactID));
+            return Results.Accepted("/delete/contact/{contactID}", _service.DeleteContactInfo(contactID));
         }
         catch (NotImplementedException)
         {
@@ -85,7 +85,7 @@ public class ContactController
     {
         try
         {
-            return Results.Accepted("/contact/user/{userID}", _service.GetContactInfoById(userID));
+            return Results.Accepted("/contact/user/{userID}", _service.GetContactInfoByUserId(userID));
         }
         catch (NotImplementedException)
         {

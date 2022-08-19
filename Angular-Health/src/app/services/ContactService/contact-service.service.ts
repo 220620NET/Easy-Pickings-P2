@@ -9,7 +9,7 @@ import { ContactToAdd } from 'src/app/models/ContactToAdd';
 })
 export class ContactServiceService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {}
   getContacts():Observable<Contact[]>{
     return this.http.get('https://easy-pickings-p2.azurewebsites.net/contactinfo') as Observable<Contact[]>
   }

@@ -28,7 +28,32 @@ th{
     font-size:large;
     font-weight: bold;
     color:black;
+    background-color: var(--nav-background-color);
 }
 td{
     font-size: medium;
+}
+tr:nth-child(even){
+    background-color: var(--background-color);
+}
+tr:nth-child(odd){
+    background-color: var(--form-back);
+}
+:root,
+:root.light {
+    --background-color: lightgrey;
+    --color: rgb(0, 0, 0);
+    --nav-background-color: grey;
+    --nav-color: black;
+    --form-back: teal;
+    --form: white;
+
+}
+:root.dark {
+    --nav-background-color:black;
+    --nav-color:white;
+    --background-color: #381e1e;
+    --color: #2db61b; 
+    --form-back: #64200f;
+    --form: #1d7c8f;
 }

@@ -35,13 +35,18 @@ export class TicketTableComponent implements OnInit {
     policyID :0,
     details:'here'
   }]
- 
+  
+  theme:string = 'light';
   constructor(private http:HttpClient,private local:LocalStorageService, private auth:AuthServiceService, private tick:TicketServiceService, private router:Router ) { }
   getTickets():void{
     this.tick.getTicketsByID(this.currentUser.userID).subscribe((res)=>{
       console.log(res);
       this.tickets=res;
     })
+    }
+    setTheme(a:string):void{
+      this.theme = a;
+      document.documentElement.className = this.theme;
     }
     updateTicket(tick:Ticket):void{
       this.local.set('ticketID',tick.ticketID);
