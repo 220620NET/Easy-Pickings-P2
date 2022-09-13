@@ -5,12 +5,12 @@ namespace DataAccess
 {
     public interface IPolicy
     {
-       public Policy GetPolicyByID(int policyID);
-       public List<Policy> GetAllPolicy();
-       public List<Policy> GetPolicyByInsurance(int insurance);
-        public List<Policy> GetPolicyBycoverage(string coverage);
-        public Policy UpdatePolicy(Policy policy);
-        public bool DeletePolicy(int ID);
-        public Policy CreatePolicy(Policy policy);
+        Policy GetPolicyByID(int policyID);
+        List<Policy> GetAllPolicy();
+        List<Policy> GetPolicyByInsurance(int insurance);
+        List<Policy> GetPolicyBycoverage(string coverage);
+        Policy UpdatePolicy(Policy policy);
+        bool DeletePolicy(int ID);
+        Policy CreatePolicy(Policy policy);
     }
 }

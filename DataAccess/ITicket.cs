@@ -9,13 +9,13 @@ namespace DataAccess
 {
     public interface ITicket
     {
-        public List<Ticket> GetAllTickets();
-        public Ticket GetTicketByID(int ticketID);
-        public List<Ticket> GetTicketByClaim(int claimID);
-        public List<Ticket> GetTicketByPatient(int patientID);
-        public List<Ticket> GetTicketByPolicy(int policyID);
-        public Ticket CreateTicket(Ticket ticket);
-        public Ticket UpdateTicket(Ticket ticket);
-        public bool DeleteTicket(int ticketID);
+        List<Ticket> GetAllTickets();
+        Ticket GetTicketByID(int ticketID);
+        List<Ticket> GetTicketByClaim(int claimID);
+        List<Ticket> GetTicketByPatient(int patientID);
+        List<Ticket> GetTicketByPolicy(int policyID);
+        Ticket CreateTicket(Ticket ticket);
+        Ticket UpdateTicket(Ticket ticket);
+        bool DeleteTicket(int ticketID);
     }
 }

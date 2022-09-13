@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomExceptions
 {
+    [Serializable]
     public class InvalidDiscussionException : Exception
     {
         public InvalidDiscussionException()

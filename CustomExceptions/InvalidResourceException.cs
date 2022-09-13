@@ -1,6 +1,6 @@
 namespace CustomExceptions;
 
-[System.Serializable]
+[Serializable]
 public class InvalidResourceException : System.Exception
 {
     public InvalidResourceException() { }

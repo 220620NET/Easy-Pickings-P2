@@ -1,5 +1,5 @@
 namespace CustomExceptions;
-
+[Serializable]
 public class InputInvalidException : Exception
 {
   public InputInvalidException() { }

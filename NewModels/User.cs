@@ -11,7 +11,7 @@ namespace NewModels
         public string last_name { get; set; } = null!;
         public string username { get; set; } = null!;
         public string password { get; set; } = null!;
-        public string DoB { get; set; } 
+        public string DoB { get; set; } = null!;
         public string role { get; set; } = null!;
     }
 }

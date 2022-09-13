@@ -86,16 +86,16 @@ public class UserRepo : IUserRepo
     {
         try
         {
-            User? u = _context.Users.FirstOrDefault(t => t.userID == user.userID);
+            User u = _context.Users.FirstOrDefault(t => t.userID == user.userID) ?? throw new InputInvalidException();
             u.first_name = user.first_name != "" ? user.first_name : u.first_name;
-            u.middle_init = u.middle_init;
+            u.middle_init = char.IsLetter(user.middle_init) ? user.middle_init : u.middle_init; 
             u.last_name = user.last_name != "" ? user.last_name : u.last_name;
             u.username = user.username != "" ? user.username : u.username;
             u.password = user.password != "" ? user.password : u.password;
             u.DoB = user.DoB.ToString()!="" ? user.DoB : u.DoB;
             u.role = user.role == "" ? user.role : u.role;
             Finish();
-            return u ?? throw new InputInvalidException();
+            return u;
 
         }
         catch (ArgumentNullException)

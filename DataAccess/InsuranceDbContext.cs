@@ -7,13 +7,13 @@ namespace DataAccess
     {
         public InsuranceDbContext() : base() { }
         public InsuranceDbContext(DbContextOptions options) : base(options) { }
-        public DbSet<Ticket> Tickets { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Policy> Policies { get; set; }
-        public DbSet<Claim> Claims { get; set; } 
-        public DbSet<Contact> Contacts { get; set; }
-        public DbSet<Discussion> Discussions { get; set; }
-        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Ticket> Tickets { get; set; } = null!;
+        public DbSet<User> Users { get; set; } = null!;
+        public DbSet<Policy> Policies { get; set; } = null!;
+        public DbSet<Claim> Claims { get; set; } = null!;
+        public DbSet<Contact> Contacts { get; set; } = null!;
+        public DbSet<Discussion> Discussions { get; set; } = null!;
+        public DbSet<Comment> Comments { get; set; } = null!;
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Ticket>().HasOne<User>().WithMany().HasForeignKey(p => p.userID).OnDelete(DeleteBehavior.NoAction);

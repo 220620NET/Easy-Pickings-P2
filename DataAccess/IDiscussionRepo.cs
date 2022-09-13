@@ -10,12 +10,12 @@ namespace DataAccess
 {
     public interface IDiscussionRepo
     {
-        public Discussion CreateDiscussion(Discussion discussion);
-        public bool DeleteDiscussion(int discussionID);
-        public List<Discussion> GetAllDiscussions();
-        public Discussion GetByID(int discussionID);
-        public List<Discussion> GetByUserID(int userID);
-        public Discussion UpdateDiscussion(Discussion discussion);
+        Discussion CreateDiscussion(Discussion discussion);
+        bool DeleteDiscussion(int discussionID);
+        List<Discussion> GetAllDiscussions();
+        Discussion GetByID(int discussionID);
+        List<Discussion> GetByUserID(int userID);
+        Discussion UpdateDiscussion(Discussion discussion);
         
     }
 }

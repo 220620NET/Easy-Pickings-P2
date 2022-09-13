@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Tests;
     
-public class ContactTesting
+public class ContactServiceTesting
 {
     [Fact]
     public void CreateContactWithValidInfo()

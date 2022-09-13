@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomExceptions
 {
-    [System.Serializable]
+    [Serializable]
     public class InvalidUserException : Exception
     {
         public InvalidUserException()

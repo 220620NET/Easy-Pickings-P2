@@ -103,13 +103,13 @@ namespace DataAccess
         {
             try
             {
-                Ticket? t=_dbContext.Tickets.FirstOrDefault(t=>t.ticketID==ticket.ticketID);
+                Ticket t=_dbContext.Tickets.FirstOrDefault(t=>t.ticketID==ticket.ticketID) ?? throw new TicketNotAvailableException();
                 t.userID = ticket.userID != 0 ? ticket.userID : t.userID;
                 t.claimID = ticket.claimID != 0 ? ticket.claimID : t.claimID;
                 t.policyID = ticket.policyID != 0 ? ticket.policyID : t.policyID;
                 t.details = ticket.details != ""?ticket.details:t.details;
                 Finish();
-                return t ?? throw new TicketNotAvailableException();
+                return t;
 
             }
             catch (ArgumentNullException)

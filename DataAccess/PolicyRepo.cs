@@ -82,11 +82,11 @@ namespace DataAccess
         {
             try
             {
-                Policy? p = _dbContext.Policies.FirstOrDefault(t => t.policyID == policy.policyID);
+                Policy p = _dbContext.Policies.FirstOrDefault(t => t.policyID == policy.policyID) ?? throw new NotImplementedException();
                 p.insurance = policy.insurance != 0 ? policy.insurance : p.insurance;                 
                 p.coverage = policy.coverage != "" ? policy.coverage : p.coverage;
                 Finish();
-                return p ?? throw new NotImplementedException();
+                return p;
 
             }
             catch (ArgumentNullException)

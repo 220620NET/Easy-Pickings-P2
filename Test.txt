@@ -1,2 +1,16 @@
-In the test branch
-Second Time
+Sketchiest Connections: Health Care App
+As the health care insurance world becomes more complicted as various companies strive to confuse patient health billing, Easy Pickings strives to simplify the process with a stream-lined user interface to manage claims amongst various insurance companies and hospitals. We serve as an intermediary between all parties and where users have the independence to file and montitor their own claims. This will remove the strain on the hospitals to deal with the business side of these claims so they can focus on getting everyone back in working order.
+
+Technologies Used:
+C#
+ASP.NET Core
+SQL Server
+Azure Cloud Service
+Angular
+HTML
+CSS
+TypeScript
+Github Action
+CI/CD pipeline to automate the publication process of the WebAPI
+Entity Framework Core
+Used for generating a connection to and tables for the database to

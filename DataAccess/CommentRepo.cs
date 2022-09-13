@@ -10,13 +10,7 @@ namespace DataAccess
         public CommentRepo(InsuranceDbContext dbContext)
         {
             _dbContext = dbContext;
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="commentToAdd"></param>
-        /// <returns></returns>
-        /// <exception cref="TicketNotAvailableException"></exception>
+        } 
         public Comment CreateComment(Comment commentToAdd)
         {
             _dbContext.Comments.Add(commentToAdd);
@@ -60,12 +54,12 @@ namespace DataAccess
         {
             try
             {
-                Comment? c = _dbContext.Comments.FirstOrDefault(t => t.commentID == CommentToUpdate.commentID);
+                Comment c = _dbContext.Comments.FirstOrDefault(t => t.commentID == CommentToUpdate.commentID) ??throw new CommentNotAvailableException();
                 c.userID = CommentToUpdate.userID != 0 ? CommentToUpdate.userID : c.userID;
                 c.messageID = CommentToUpdate.messageID != 0 ? CommentToUpdate.messageID : c.messageID;
                 c.body = CommentToUpdate.body != "" ? CommentToUpdate.body : c.body;
                 Finish();
-                return c ?? throw new CommentNotAvailableException();
+                return c;
             }
             catch (ArgumentNullException)
             {

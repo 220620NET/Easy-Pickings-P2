@@ -10,10 +10,10 @@ namespace DataAccess;
 
 public interface IUserRepo
 {
-    public List<User> GetAllUsers();
-    public User GetUserById(int userID);
-    public User GetUserByName(string username, bool registering);
-    public User CreateUser(User user);
-    public User ResetPassword(User user);
-    public bool DeleteUser(int userID);
+    List<User> GetAllUsers();
+    User GetUserById(int userID);
+    User GetUserByName(string username, bool registering);
+    User CreateUser(User user);
+    User ResetPassword(User user);
+    bool DeleteUser(int userID);
 }

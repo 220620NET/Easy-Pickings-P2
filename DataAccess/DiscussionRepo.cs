@@ -20,11 +20,11 @@ namespace DataAccess
         /// </summary>
         /// <param name="discussion"></param>
         /// <returns></returns>
-        public Discussion CreateDiscussion(Discussion newDiscussion)
+        public Discussion CreateDiscussion(Discussion discussion)
         {
-            _dbContext.Discussions.Add(newDiscussion);
+            _dbContext.Discussions.Add(discussion);
             Finish();
-            return newDiscussion ?? throw new DiscussionNotAvailableException();
+            return discussion ?? throw new DiscussionNotAvailableException();
         }
         /// <summary>
         /// Deletes discussion post
@@ -80,12 +80,12 @@ namespace DataAccess
         {
             try
             {
-                Discussion? d = _dbContext.Discussions.FirstOrDefault(t => t.discussionID == discussion.discussionID);
+                Discussion d = _dbContext.Discussions.FirstOrDefault(t => t.discussionID == discussion.discussionID) ?? throw new DiscussionNotAvailableException();
                 d.userID = discussion.userID != 0 ? discussion.userID : d.userID;
                 d.dateCreated = discussion.dateCreated != "" ? discussion.dateCreated : d.dateCreated;
                 d.body = discussion.body != "" ? discussion.body : d.body;
                 Finish();
-                return d ?? throw new DiscussionNotAvailableException();
+                return d;
 
             }
             catch (ArgumentNullException)

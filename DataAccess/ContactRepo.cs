@@ -71,7 +71,7 @@ namespace DataAccess
         {
             try
             {
-                Contact? c = _dbContext.Contacts.FirstOrDefault(t => t.contactID == contact.contactID);
+                Contact c = _dbContext.Contacts.FirstOrDefault(t => t.contactID == contact.contactID) ?? throw new ContactNotAvailableException();
                 c.PO_or_street = contact.PO_or_street;
                 c.PO_number = contact.PO_number!=0?contact.PO_number:c.PO_number;
                 c.street_number = contact.street_number != 0 ? contact.street_number : c.street_number;
@@ -82,7 +82,7 @@ namespace DataAccess
                 c.phone= c.phone!=0?contact.phone:c.phone;
                 c.email = contact.email!=""?contact.email:c.email;
                 Finish();
-                return c ?? throw new ContactNotAvailableException();
+                return c;
 
             }
             catch (ArgumentNullException)

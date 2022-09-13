@@ -5,8 +5,8 @@ namespace NewModels
 {
     public class Insurance
     {
-        [ForeignKey("Policy")]public int? provider { get; set; }
-        [ForeignKey("User")]public int? benefactor { get; set; } 
+        [ForeignKey("Policy")]public int provider { get; set; }
+        [ForeignKey("User")]public int benefactor { get; set; } 
         
     }
 }

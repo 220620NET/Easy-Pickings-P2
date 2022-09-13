@@ -10,12 +10,12 @@ namespace DataAccess;
 
 public interface IContactRepo
 {
-    public List<Contact> GetAllContactInfo();  
-    public Contact CreateContactInfo(Contact contact);
-    public Contact UpdateContactInfo(Contact contact);
-    public bool DeleteContactInfo(int contactID);
-    public Contact GetContactInfoById(int contactID);
-    public Contact GetContactInfoByUserId(int userID);
-    public Contact GetContactInfoByEmail(string email);
-    public Contact GetContactInfoByPhone(long phone);
+    List<Contact> GetAllContactInfo();  
+    Contact CreateContactInfo(Contact contact);
+    Contact UpdateContactInfo(Contact contact);
+    bool DeleteContactInfo(int contactID);
+    Contact GetContactInfoById(int contactID);
+    Contact GetContactInfoByUserId(int userID);
+    Contact GetContactInfoByEmail(string email);
+    Contact GetContactInfoByPhone(long phone);
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomExceptions
 {
+    [Serializable]
     public class CommentNotAvailableException : Exception
     {
         public CommentNotAvailableException()

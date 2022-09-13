@@ -78,14 +78,14 @@ public class ClaimsRepo : IClaimRepo
     {
         try
         {
-            Claim? c = _context.Claims.FirstOrDefault(t => t.claimID == claim.claimID);
+            Claim c = _context.Claims.FirstOrDefault(t => t.claimID == claim.claimID) ??throw new InvalidClaimException();
             c.userID = claim.userID != 0 ? claim.userID : c.userID;
             c.doctorID = claim.doctorID != 0 ? claim.doctorID : c.doctorID;
             c.policyID = claim.policyID != 0 ? claim.policyID : c.policyID;
             c.reasonForVisit = claim.reasonForVisit != "" ? claim.reasonForVisit : c.reasonForVisit;
             c.status = claim.status != "" || c.status == "Approved" || c.status == "Denied" ? claim.status : c.status;
             Finish();
-            return c ?? throw new InvalidClaimException();
+            return c;
 
         }
         catch (ArgumentNullException)
@@ -95,8 +95,7 @@ public class ClaimsRepo : IClaimRepo
     }
     protected void Finish()
     {
-        _context.SaveChanges();
-        //Clear the change tracker
+        _context.SaveChanges(); 
         _context.ChangeTracker.Clear();
     }
 }

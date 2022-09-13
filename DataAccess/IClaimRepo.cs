@@ -5,13 +5,13 @@ namespace DataAccess;
 
      public interface IClaimRepo
      {
-          public List<Claim> GetAllClaims();
-          public Claim CreateClaims(Claim claim);
-          public Claim UpdateClaims(Claim claim);
-          public Claim DeleteClaims(int ID);
-          public Claim GetClaimById(int ID);
-          public List<Claim> GetClaimByPatientID(int ID);
-          public List<Claim> GetClaimByStatus(string status);
+          List<Claim> GetAllClaims();
+          Claim CreateClaims(Claim claim);
+          Claim UpdateClaims(Claim claim);
+          Claim DeleteClaims(int ID);
+          Claim GetClaimById(int ID);
+          List<Claim> GetClaimByPatientID(int ID);
+          List<Claim> GetClaimByStatus(string status);
      }
 
 

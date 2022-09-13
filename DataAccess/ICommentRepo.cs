@@ -4,13 +4,13 @@ namespace DataAccess
 {
     public interface ICommentRepo
     {
-        public Comment CreateComment(Comment commentToAdd);
-        public Comment UpdateComment(Comment CommentToUpdate);
-        public bool DeleteComment(int commentIDToDelete);
-        public List<Comment> GetAllComments();
-        public Comment GetCommentByID(int commentID);
-        public List<Comment> GetCommentByUser(int userID);
-        public List<Comment> GetCommentByPost(int postID);
+        Comment CreateComment(Comment commentToAdd);
+        Comment UpdateComment(Comment CommentToUpdate);
+        bool DeleteComment(int commentIDToDelete);
+        List<Comment> GetAllComments();
+        Comment GetCommentByID(int commentID);
+        List<Comment> GetCommentByUser(int userID);
+        List<Comment> GetCommentByPost(int postID);
 
     }
 }
