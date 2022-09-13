@@ -6,6 +6,7 @@
       <form class="form-inline"><button class="mat-stroked-button claims" (click)="routeHandler('claim')">Claim Table</button></form>
       <form class="form-inline"><button class="mat-stroked-button policy" (click)="routeHandler('policy')">Policy Table</button></form>
       <form class="form-inline"><button class="mat-stroked-button ticket"(click)="routeHandler('ticket')">Ticket Table</button></form>
+      <button class="theme-btn light" rel="colortheme" (click)="setTheme('light')" *ngIf="theme === 'dark'">Light Mode</button><button class="theme-btn dark" rel="colortheme" (click)="setTheme('dark')" *ngIf="theme === 'light'">Dark Mode</button>
       <form class="form-inline"><button class="mat-stroked-button logout" (click)="logout()">Logout</button></form>
   </div>
 </nav>
