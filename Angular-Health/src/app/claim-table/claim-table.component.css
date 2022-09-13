@@ -29,3 +29,11 @@ table {
     width: 32px;
     text-align: center;
 }
+th{
+    font-size:large;
+    font-weight: bold;
+    color:black;
+}
+td{
+    font-size: medium;
+}

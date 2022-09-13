@@ -8,7 +8,14 @@
 .navbar-brand{
     margin: 10px;
 }
-
+th{
+    font-size:large;
+    font-weight: bold;
+    color:black;
+}
+td{
+    font-size: medium;
+}
 .form-inline{
     position: center;
     justify-self: right;

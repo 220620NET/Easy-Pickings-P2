@@ -9,17 +9,32 @@
         <form class="form-inline"><button class="mat-stroked-button logout" (click)="logout()">Logout</button></form>
     </div>
 </nav>
+<div class="login-component">
 <div >
-    <p>
+    <div class="userinfo">
         <h2>USER INFORMATION:</h2>
-        UserID: <span>{{user.userID}}</span>
-        firstName: <span>{{user.firstName}}</span>
-        lastName: <span>{{user.lastName}}</span>
-        username: <span>{{user.username}}</span>
-    </p>
-    <p>
+        <p>UserID: <span>{{user.userID}}</span></p>
+        <p>First Name: <span>{{user.first_name}}</span></p>
+        <p>
+
+            Last Name: <span>{{user.last_name}}</span>
+        </p>
+        <p>
+
+            username: <span>{{user.username}}</span>
+        </p>
+        <button (click)="updateUser()">Update User information</button>
+    </div>
+    
         <h2>CONTACT INFORMATION:</h2>
-        <span>{{contact.street_number}}</span> <span>{{contact.street_name}}</span>
-        <span>{{contact.city_state}}</span> <span>{{contact.zipcode}}</span>
-    </p>
+        <p>
+
+            <span>{{contact.street_number}}</span><span>{{contact.street_name}}</span>
+        </p>
+        <p>
+
+            <span>{{contact.city_state}}</span>     <span>{{contact.zipcode}}</span>
+        </p>
+        <button (click)="updateContact()">Update Contact information</button>
+</div>
 </div>

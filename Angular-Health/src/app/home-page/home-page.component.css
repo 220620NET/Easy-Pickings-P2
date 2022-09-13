@@ -13,6 +13,10 @@
     background-color: aliceblue;
     cursor: pointer;
 }
+.post-discussion {
+    padding-bottom: 9px;
+    margin: 5px 0 5px;
+  }
 
 .container-fluid{
     display: flex;
@@ -22,6 +26,19 @@
 }
 .navbar-brand{
     margin: 10px;
+}
+
+.form-inline{
+    position: center;
+    justify-self: right;
+    display: flex;
+}
+.form-inline{
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.tabs{
+    margin: 20px;
 }
 
 .form-inline{

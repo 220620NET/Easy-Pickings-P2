@@ -1,0 +1,29 @@
+<div >
+    <p>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" class="form-control" [formControl]="firstName">
+    </p>
+    <p>
+        <label for="middleInitial">Middle Initial:</label>
+        <input type="text" id="middleInitial" name="middleInitial" class="form-control" [formControl]="middleInitial">
+    </p>
+    <p>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" class="form-control" [formControl]="lastName">
+    </p>
+    <p>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" class="form-control" [formControl]="username">
+    </p>
+    <p>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" class="form-control" [formControl]="password">
+    </p>
+    <p>
+        <label for="DoB">Date Of Birth:</label>
+        <input type="date" id="DoB" name="DoB" class="form-control" [formControl]="DoB">
+    </p> 
+    <p>
+        <button (click)="submit()">Submit</button>
+    </p>
+</div> 

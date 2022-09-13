@@ -21,3 +21,14 @@
 .tabs{
     margin: 20px;
 }
+table {
+    width: 100%; 
+} 
+th{
+    font-size:large;
+    font-weight: bold;
+    color:black;
+}
+td{
+    font-size: medium;
+}

@@ -18,9 +18,9 @@ export class PolicyTableComponent implements OnInit {
   api:string = 'https://easy-pickings-p2.azurewebsites.net/';
   currentUser:User={
     userID: 0,
-    firstName: '',
-    middleInitial: '',
-    lastName: '',
+    first_name: '',
+    middle_init: '',
+    last_name: '',
     username: '',
     password: '',
     DoB: '',
@@ -58,9 +58,12 @@ export class PolicyTableComponent implements OnInit {
     }
     routeHandler(a:string):void{
       this.router.navigateByUrl(`/${a}`)
-    }
-    logout():void{
+    } 
+     logout():void{
       this.local.clear();
+      if(this.auth.isAuthenticated()===false){
+        this.routeHandler('login')
+      }
     }
   ngOnInit(): void {
     this.currentUser = this.auth.getCurrentUser();
